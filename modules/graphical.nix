@@ -28,6 +28,7 @@
     gsettings-desktop-schemas
     pamixer
     qbittorrent
+    xdg-utils
   ];
 
   services.acpid.enable = true;
