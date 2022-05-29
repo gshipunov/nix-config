@@ -1,0 +1,10 @@
+keys:
+  - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
+  - &microwave age1eysr2m8ust6gq9jk88lpzzcy8gdrzlts69zlfqul766t6gvqw9qq24z68l
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        age:
+        - *microwave

@@ -19,7 +19,9 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          sops-nix.nixosModules.sops
           ./hosts/microwave/configuration.nix
+          ./hosts/microwave/secrets.nix
           ./hosts/microwave/hardware-configuration.nix
           ./modules/graphical.nix
           ./modules/hw-accel-intel.nix
