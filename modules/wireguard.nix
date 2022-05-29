@@ -3,7 +3,7 @@
 {
   networking.wg-quick.interfaces = {
     wg-zw = {
-      privateKeyFile="/root/zw-wg-key";
+      privateKeyFile="/etc/wg/zw-wg-key";
       address = ["172.20.76.226" ];
       dns = [ "172.20.73.8" ];
       peers = [
@@ -15,7 +15,7 @@
       ];
     };
     wg-dvb = {
-      privateKeyFile = "/root/wg-dvb";
+      privateKeyFile="/etc/wg/wg-dvb";
       address = [ "10.13.37.3/32" ];
 
       peers = [
@@ -29,7 +29,7 @@
     };
 
     mlwd-nl = {
-      privateKeyFile = "/root/mlvd";
+      privateKeyFile = "/etc/wg/mlvd";
       address = [ "10.65.79.164/32" "fc00:bbbb:bbbb:bb01::2:4fa3/128" ];
       dns = [ "193.138.218.74" ];
 

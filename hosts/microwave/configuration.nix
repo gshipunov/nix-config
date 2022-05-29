@@ -5,11 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   # SWAP
   zramSwap = {
     enable = true;
@@ -24,9 +19,8 @@
     gimp
     inkscape
   ];
-  networking.firewall.enable = true;
-  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
 
+  networking.firewall.enable = true;
   networking = {
     hostName = "microwave"; # Define your hostname.
     networkmanager.enable = true;
@@ -54,26 +48,6 @@
   # update the microcode
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableAllFirmware = true;
-
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-
-  # Enable touchpad support.
-  services.xserver.libinput = {
-    enable = true;
-    touchpad = {
-    disableWhileTyping = true;
-    naturalScrolling = true;
-    scrollMethod = "twofinger";
-    tapping = true;
-    accelProfile = "adaptive";
-    # clickMethod = "clickfinger";
-  };
-  };
 
   # Shell config (bash)
   programs.bash = {
