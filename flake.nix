@@ -30,7 +30,7 @@
           ./modules/emacs.nix
           ./modules/radio.nix
           ./modules/tlp.nix
-          ./modules/chromium.nix
+          # ./modules/chromium.nix
           ./modules/wireguard.nix
           ./modules/binary-caches.nix
           ./modules/science.nix
