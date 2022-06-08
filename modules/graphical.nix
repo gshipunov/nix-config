@@ -11,16 +11,15 @@
     firefox-wayland
     dino
     alacritty
-    kitty
     xclip
     flameshot
     wl-clipboard
     brightnessctl
-    pulseaudio-ctl
     feh
     mpv
     zathura
     pulsemixer
+    pulseaudioFull
     screen-message
     cmus
     gtk-engine-murrine
@@ -43,7 +42,6 @@
     monoid
     spleen
     terminus_font
-    iosevka
     creep
     corefonts
     dina-font
@@ -76,11 +74,18 @@
   };
 
   # Enable sound.
+  sound.enable = true;
   security.rtkit.enable = true;
+  hardware.pulseaudio = {
+    zeroconf.discovery.enable = true;
+    extraClientConf = ''
+      autospawn=yes
+      '';
+    };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
   };
 
@@ -128,4 +133,5 @@
   programs.bash.vteIntegration = true;
   services.upower.enable = true;
 
+  qt5.platformTheme = "gnome";
 }

@@ -27,7 +27,7 @@
       "DefaultNotificationSetting" = 2;
       "BackgroundModeEnabled" = false;
       "DefaultSearchProviderEnabled" = true;
-      "DefaultSearchProviderSearchURL" = "https://duckduckgo.com/?q={searchTerms}";
+      "DefaultSearchProviderSearchURL" = "https://google.com/?q={searchTerms}";
       "SearchSuggestEnable" = false;
     };
   };
