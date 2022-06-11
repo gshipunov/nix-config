@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -14,7 +15,8 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
+    {
+      device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
       fsType = "btrfs";
       options = [ "subvol=root" "noatime" "compress=zstd" ];
     };
@@ -22,26 +24,30 @@
   boot.initrd.luks.devices."nixos-crypt".device = "/dev/disk/by-uuid/dbee4082-85ae-40f0-9c80-034f3574688f";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4B02-CE16";
+    {
+      device = "/dev/disk/by-uuid/4B02-CE16";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
+    {
+      device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
       fsType = "btrfs";
-      options = [ "subvol=home"  "noatime" "compress=zstd" ];
+      options = [ "subvol=home" "noatime" "compress=zstd" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
+    {
+      device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
       fsType = "btrfs";
-      options = [ "subvol=nix"  "noatime" "compress=zstd" ];
+      options = [ "subvol=nix" "noatime" "compress=zstd" ];
     };
 
   fileSystems."/tmp" =
-    { device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
+    {
+      device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
       fsType = "btrfs";
-      options = [ "subvol=tmp"  "noatime" "compress=zstd" ];
+      options = [ "subvol=tmp" "noatime" "compress=zstd" ];
     };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.

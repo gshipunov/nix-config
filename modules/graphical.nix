@@ -80,8 +80,8 @@
     zeroconf.discovery.enable = true;
     extraClientConf = ''
       autospawn=yes
-      '';
-    };
+    '';
+  };
 
   services.pipewire = {
     enable = true;
@@ -132,6 +132,12 @@
   programs.zsh.vteIntegration = true;
   programs.bash.vteIntegration = true;
   services.upower.enable = true;
+
+  services.udisks2.enable = true;
+  environment.shellAliases = {
+    mnt = "udisksctl mount -b";
+    umnt = "udisksctl unmount -b";
+  };
 
   qt5.platformTheme = "gnome";
 }

@@ -62,8 +62,8 @@
     ls = "exa";
     ll = "exa -l";
     l = "exa -al";
-    ssh="TERM=xterm-256color ssh";
-    mutt="neomutt";
+    ssh = "TERM=xterm-256color ssh";
+    mutt = "neomutt";
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -75,10 +75,10 @@
       bindkey -e
     '';
     promptInit = ''
-      source /run/current-system/sw/share/zsh/plugins/liquidprompt/liquidprompt
-if [[ -n "$IN_NIX_SHELL" ]]; then
-	prompt_tag "(nix-shell)"
-fi
+            source /run/current-system/sw/share/zsh/plugins/liquidprompt/liquidprompt
+      if [[ -n "$IN_NIX_SHELL" ]]; then
+        prompt_tag "(nix-shell)"
+      fi
     '';
   };
 

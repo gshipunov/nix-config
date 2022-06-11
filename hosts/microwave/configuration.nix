@@ -34,7 +34,7 @@
   services.fstrim.enable = true;
 
   boot = {
-    supportedFilesystems = ["btrfs"];
+    supportedFilesystems = [ "btrfs" ];
 
     # use systemd boot by default
     loader = {
@@ -62,8 +62,16 @@
   # Users
   users.users.grue = {
     createHome = true;
-    extraGroups = [ "wheel" "networkmanager" "wireshark" "video"
-                    "libvirtd" "plugdev" "dialout" "bluetooth" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "wireshark"
+      "video"
+      "libvirtd"
+      "plugdev"
+      "dialout"
+      "bluetooth"
+    ];
     group = "users";
     home = "/home/grue";
     isNormalUser = true;
@@ -75,6 +83,8 @@
     package = pkgs.wireshark;
   };
 
+
+  programs.steam.enable = true;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

@@ -1,5 +1,9 @@
 { pkgs, lib, ... }: {
   nix = {
+    extraOptions = ''
+      builders-use-substitutes = true
+    '';
+
     registry.microvm = {
       from = {
         type = "indirect";

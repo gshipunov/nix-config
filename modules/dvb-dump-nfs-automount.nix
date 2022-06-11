@@ -16,7 +16,7 @@
   systemd.automounts = [{
     wantedBy = [ "multi-user.target" ];
     requires = [ "wg-quick-wg-dvb.service" ];
-    automountConfig= {
+    automountConfig = {
       TimeoutIdleSec = "600";
     };
     where = "/mnt/dvb";
