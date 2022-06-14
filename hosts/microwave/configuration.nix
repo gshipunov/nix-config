@@ -5,6 +5,8 @@
 { config, pkgs, ... }:
 
 {
+  # services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
+
   # SWAP
   zramSwap = {
     enable = true;

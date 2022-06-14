@@ -24,16 +24,19 @@
           ./hosts/microwave/secrets.nix
           ./hosts/microwave/hardware-configuration.nix
           ./modules/graphical.nix
+          ./modules/basic-tools.nix
+          ./modules/gnupg.nix
           ./modules/hw-accel-intel.nix
           ./modules/kernel-latest.nix
           ./modules/virtualization.nix
           ./modules/emacs.nix
           ./modules/radio.nix
           ./modules/tlp.nix
-          # ./modules/chromium.nix
+          ./modules/chromium.nix
           ./modules/wireguard.nix
           ./modules/binary-caches.nix
           ./modules/science.nix
+          ./modules/gnome.nix
         ];
       };
     };
