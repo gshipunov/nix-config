@@ -4,11 +4,13 @@
     gnome.gnome-boxes
     gnome.gnome-tweaks
     nextcloud-client
+    amberol
   ];
 
   environment.gnome.excludePackages = with pkgs; [
     gnome.totem
     gnome.geary
+    gnome.gnome-music
 
     gnome-console
     epiphany
@@ -25,12 +27,12 @@
   programs = {
     seahorse.enable = true;
 
-  evolution = {
-    enable = true;
-    plugins = [ pkgs.evolution-ews ];
-  };
+    evolution = {
+      enable = true;
+      plugins = [ pkgs.evolution-ews ];
+    };
 
-  gnome-terminal.enable = true;
+    gnome-terminal.enable = true;
   };
 
   qt5 = {
