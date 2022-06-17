@@ -1,8 +1,7 @@
 {
-  description = "oxa's system configs";
-
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
+    nixpkgs-unstable.url = github:NixOS/nixpkgs/nixos-unstable;
+    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
     sops-nix = {
       url = github:Mic92/sops-nix;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,11 +12,10 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, sops-nix, microvm, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, microvm, ... }: {
     nixosConfigurations = {
-      microwave = nixpkgs.lib.nixosSystem {
+      microwave = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
         modules = [
           sops-nix.nixosModules.sops
           ./hosts/microwave/configuration.nix
@@ -29,14 +27,12 @@
           ./modules/hw-accel-intel.nix
           ./modules/kernel-latest.nix
           ./modules/virtualization.nix
-          ./modules/emacs.nix
           ./modules/radio.nix
           ./modules/tlp.nix
-          ./modules/chromium.nix
           ./modules/wireguard.nix
           ./modules/binary-caches.nix
           ./modules/science.nix
-          ./modules/gnome.nix
+          ./modules/sway.nix
         ];
       };
     };
