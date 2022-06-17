@@ -4,12 +4,23 @@
 {
   environment.systemPackages = with pkgs; [
     firefox-wayland
-    dino
-    flameshot
     wl-clipboard
     pulseaudioFull
     screen-message
     qbittorrent
+    dino
+    feh
+    mpv
+    zathura
+    brightnessctl
+    alacritty
+    pulsemixer
+    cmus
+    gtk-engine-murrine
+    gtk_engines
+    gsettings-desktop-schemas
+    xdg-utils
+    nextcloud-client
   ];
 
   #on the desktop, we need nice fonts ^^
@@ -73,16 +84,65 @@
     package = pkgs.bluezFull;
   };
 
-
-  nix = {
-    binaryCaches = [
-      "https://dump-dvb.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "dump-dvb.cachix.org-1:+Dq7gqpQG4YlLA2X3xJsG1v3BrlUGGpVtUKWk0dTyUU="
-    ];
-  };
   programs.zsh.vteIntegration = true;
   programs.bash.vteIntegration = true;
   services.upower.enable = true;
+
+  services.acpid.enable = true;
+  programs.light.enable = true;
+
+  services.blueman.enable = true;
+
+  programs.xwayland.enable = true;
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+      swaylock-fancy
+      swayidle
+      wl-clipboard
+      mako
+      alacritty
+      wofi
+      wofi-emoji
+      grim
+      slurp
+      waybar
+      gnome3.adwaita-icon-theme
+      i3status-rust
+    ];
+  };
+  environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; };
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
+
+  services.udisks2.enable = true;
+  environment.shellAliases = {
+    mnt = "udisksctl mount -b";
+    umnt = "udisksctl unmount -b";
+    unlock = "udisksctl unlock -b";
+    lock = "udisksctl lock -b";
+  };
+
+  qt5.platformTheme = "gtk";
+
+  services.gnome.gnome-keyring.enable = true;
+
+  programs.evolution = {
+    enable = true;
+    plugins = [ pkgs.evolution-ews ];
+  };
+
+
+  # required to autounlock gnome-keyring
+  services.xserver = {
+    enable = true;
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
+  };
+
 }
