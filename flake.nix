@@ -43,6 +43,15 @@
           ./modules/basic-tools.nix
         ];
       };
+      dishwasher = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          sops-nix.nixosModules.sops
+          #microvm.nixosModules.host
+          ./hosts/dishwasher/configuration.nix
+          ./modules/basic-tools.nix
+        ];
+      };
     };
   };
 }
