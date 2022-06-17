@@ -7,16 +7,14 @@
     fd
     file
     fzf
-    gitFull
+    git
     gnupg
     htop
     irssi
     killall
-    mercurial
     neovim
     ripgrep
     tealdeer
-    tokei
     traceroute
     tree
     liquidprompt
@@ -26,8 +24,6 @@
     bind
     nnn
     man-pages
-    neomutt
-    cachix
   ];
 
   nix = {
@@ -59,9 +55,6 @@
     vi = "nvim";
     vf = "$EDITOR $(fzf)";
     vff = "$EDITOR $(ls|fzf)";
-    ls = "exa";
-    ll = "exa -l";
-    l = "exa -al";
     ssh = "TERM=xterm-256color ssh";
     mutt = "neomutt";
   };
@@ -89,9 +82,7 @@
       LP_ENABLE_SCREEN_TITLE=1
     '';
   };
-  programs.msmtp = {
-    enable = true;
-  };
+
   programs.iftop.enable = true;
   programs.mosh.enable = true;
 }

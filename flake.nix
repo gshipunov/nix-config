@@ -32,6 +32,7 @@
           ./modules/wireguard.nix
           ./modules/binary-caches.nix
           ./modules/science.nix
+          ./modules/mail.nix
         ];
       };
     };
