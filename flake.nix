@@ -35,6 +35,14 @@
           ./modules/mail.nix
         ];
       };
+      cirrus = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          sops-nix.nixosModules.sops
+          ./hosts/cirrus/configuration.nix
+          ./modules/basic-tools.nix
+        ];
+      };
     };
   };
 }
