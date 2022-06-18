@@ -26,7 +26,7 @@
     networks."oxalab" = {
       matchConfig.Name = "oxalab";
       networkConfig = {
-        Address = "10.13.37.100";
+        Address = "10.66.66.100";
       };
     };
   };
