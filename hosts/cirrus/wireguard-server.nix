@@ -39,6 +39,7 @@
       matchConfig.Name = "oxalab";
       networkConfig = {
         Address = "10.66.66.1/24";
+        IPForward = "ipv4";
       };
     };
   };
