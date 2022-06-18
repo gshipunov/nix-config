@@ -39,7 +39,7 @@
         system = "x86_64-linux";
         modules = [
           sops-nix.nixosModules.sops
-          ./hosts/cirrus/configuration.nix
+          ./hosts/cirrus
           ./modules/basic-tools.nix
         ];
       };
@@ -47,8 +47,8 @@
         system = "x86_64-linux";
         modules = [
           sops-nix.nixosModules.sops
-          #microvm.nixosModules.host
-          ./hosts/dishwasher/configuration.nix
+          microvm.nixosModules.host
+          ./hosts/dishwasher
           ./modules/basic-tools.nix
         ];
       };

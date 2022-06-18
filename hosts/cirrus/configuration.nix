@@ -5,11 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -27,7 +22,7 @@
     networks."uplink" = {
       matchConfig = { Name = "enp1s0"; };
       networkConfig = {
-        DHCP="yes";
+        DHCP="yes"; # hetzner suggests this as default
       };
     };
   };

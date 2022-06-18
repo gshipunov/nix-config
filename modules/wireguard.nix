@@ -14,18 +14,17 @@
         }
       ];
     };
+    
     wg-dvb = {
       privateKeyFile = config.sops.secrets."wg/wg-dvb-seckey".path;
       address = [ "10.13.37.3/32" ];
 
-      peers = [
-        {
+      peers = [ {
           publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY=";
           allowedIPs = [ "10.13.37.0/24" ];
           endpoint = "academicstrokes.com:51820";
           persistentKeepalive = 25;
-        }
-      ];
+        } ];
     };
 
     mlwd-nl = {
@@ -37,6 +36,18 @@
         publicKey = "StMPmol1+QQQQCJyAkm7t+l/QYTKe5CzXUhw0I6VX14=";
         allowedIPs = [ "0.0.0.0/0" "::0/0" ];
         endpoint = "92.60.40.194:51820";
+      }];
+    };
+
+    oxalab = {
+      privateKeyFile = config.sops.secrets."wg/oxalab-seckey".path;
+      address = [ "10.66.66.10/32" ];
+
+      peers = [{
+        publicKey = "5nCVC21BL+1r70OGwA4Q6Z/gcPLC3+ZF8sTurdn7N0E=";
+        allowedIPs = [ "10.66.66.0/24" ];
+        endpoint = "95.216.166.21:51820";
+        persistentKeepalive = 25;
       }];
     };
   };

@@ -2,6 +2,7 @@ keys:
   - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
   - &microwave age1eysr2m8ust6gq9jk88lpzzcy8gdrzlts69zlfqul766t6gvqw9qq24z68l
   - &cirrus age1qm70jkg7us4ft4x3nh7kwxlul022kteescjj83ywvjhysj6nsq5sw7l6p8
+  - &dishwasher age1cxlskqynwl5njjm0qf363308dsjwxjq59rq7pn6ucpscpzpvry4qwtpx73
 creation_rules:
   - path_regex: secrets/microwave/[^/]+\.yaml$
     key_groups:
@@ -15,3 +16,9 @@ creation_rules:
         - *admin_oxa
         age:
         - *cirrus
+  - path_regex: secrets/dishwasher/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        age:
+        - *dishwasher
