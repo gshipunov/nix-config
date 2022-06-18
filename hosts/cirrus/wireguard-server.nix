@@ -28,7 +28,7 @@
           # Dishwasher
           wireguardPeerConfig = {
           # nextcloud down, have to keep things in here: https://www.youtube.com/watch?v=1c6v7j1TUBI
-          PublicKey = "xrremJFIcxwR6snoTUK+mytjez60I91XE120OQGQ7gc=";
+          PublicKey = "AdWUBbyeRkxdP9HUu25PpISoxbgQ8oeCw3BmV93xtAw=";
           AllowedIPs = [ "10.66.66.100/32" ];
           PersistentKeepalive = 25;
         };
