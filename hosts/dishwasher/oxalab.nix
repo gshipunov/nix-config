@@ -1,5 +1,6 @@
 { config, ... }:
 {
+  networking.wireguard.enable = true;
   systemd.network = {
     netdevs."oxalab" = {
       netdevConfig = {

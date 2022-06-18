@@ -39,7 +39,10 @@
         system = "x86_64-linux";
         modules = [
           sops-nix.nixosModules.sops
-          ./hosts/cirrus
+          ./hosts/cirrus/configuration.nix
+          ./hosts/cirrus/hardware-configuration.nix
+          ./hosts/cirrus/secrets.nix
+          ./hosts/cirrus/wireguard-server.nix
           ./modules/basic-tools.nix
         ];
       };
@@ -48,7 +51,10 @@
         modules = [
           sops-nix.nixosModules.sops
           microvm.nixosModules.host
-          ./hosts/dishwasher
+          ./hosts/dishwasher/configuration.nix
+          ./hosts/dishwasher/hardware-configuration.nix
+          ./hosts/dishwasher/oxalab.nix
+          ./hosts/dishwasher/secrets.nix
           ./modules/basic-tools.nix
         ];
       };
