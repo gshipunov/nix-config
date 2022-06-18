@@ -16,8 +16,22 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-zramSwap = { enable = true; algorithm = "zstd"; };
-  networking.hostName = "cirrus"; # Define your hostname.
+  zramSwap = { enable = true; algorithm = "zstd"; };
+
+  networking = {
+    hostName = "cirrus"; # Define your hostname.
+  };
+
+  systemd.network = {
+    enable = true;
+    networks."uplink" = {
+      matchConfig = { Name = "enp1s0"; };
+      networkConfig = {
+        DHCP="yes";
+      };
+    };
+  };
+
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";

@@ -19,7 +19,7 @@
     interfaces.enp1s0.useDHCP = true;
     hostName = "dishwasher"; # Define your hostname.
     useNetworkd = true;
-    firewall.enable = false;
+    firewall.enable = true;
   };
 
   time.timeZone = "Europe/Amsterdam";
