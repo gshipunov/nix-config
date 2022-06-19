@@ -7,5 +7,8 @@
     "wg/oxalab-seckey" = {
       owner = config.users.users.systemd-network.name;
     };
+    "wg/oxaproxy-seckey" = {
+      owner = config.users.users.systemd-network.name;
+    };
   };
 }

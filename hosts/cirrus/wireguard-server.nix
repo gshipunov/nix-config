@@ -1,8 +1,9 @@
 { config, ... }:
 {
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.allowedUDPPorts = [ 51820 51821 ];
   networking.wireguard.enable = true;
   systemd.network = {
+    # oxalab
     netdevs."oxalab" = {
       netdevConfig = {
         Kind = "wireguard";
@@ -40,6 +41,28 @@
       networkConfig = {
         Address = "10.66.66.1/24";
         IPForward = "ipv4";
+      };
+    };
+
+
+    # oxaproxy
+    netdevs."oxaproxy" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "oxaproxy";
+        Description = "oxa's enterprise reverse-proxy network";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = config.sops.secrets."wg/oxaproxy-seckey".path;
+        #own pubkey 0KMtL2fQOrrCH6c2a2l4FKiM73G86sUuyaNj4FarzVM=
+        ListenPort = 51821;
+      };
+      wireguardPeers = [ ];
+    };
+    networks."oxaproxy" = {
+      matchConfig.Name = "oxaproxy";
+      networkConfig = {
+        Address = "10.34.45.1/24";
       };
     };
   };
