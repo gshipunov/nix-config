@@ -3,7 +3,7 @@ keys:
   - &microwave age1eysr2m8ust6gq9jk88lpzzcy8gdrzlts69zlfqul766t6gvqw9qq24z68l
   - &cirrus age1qm70jkg7us4ft4x3nh7kwxlul022kteescjj83ywvjhysj6nsq5sw7l6p8
   - &dishwasher age1cxlskqynwl5njjm0qf363308dsjwxjq59rq7pn6ucpscpzpvry4qwtpx73
-  - &nextcloud age17ucx2sux2n7xnphzu0ajgdemz3th05m7lkl5gculetdms8a7mpdsycg5lf
+  - &nextcloud age1ds7zgenz9a664jqx5308m6q5mgtavzmelg239xsj8mdh64pmqa9qtkffmk
 creation_rules:
   - path_regex: secrets/microwave/[^/]+\.yaml$
     key_groups:
