@@ -15,11 +15,11 @@
         {
           # cirrus
           wireguardPeerConfig = {
-          PublicKey = "5nCVC21BL+1r70OGwA4Q6Z/gcPLC3+ZF8sTurdn7N0E=";
-          AllowedIPs = [ "10.66.66.0/24" ];
-          Endpoint = [ "95.216.166.21:51820" ];
-          PersistentKeepalive = 25;
-        };
+            PublicKey = "5nCVC21BL+1r70OGwA4Q6Z/gcPLC3+ZF8sTurdn7N0E=";
+            AllowedIPs = [ "10.66.66.0/24" ];
+            Endpoint = [ "95.216.166.21:51820" ];
+            PersistentKeepalive = 25;
+          };
         }
       ];
     };

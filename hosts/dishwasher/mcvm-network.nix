@@ -11,14 +11,15 @@
         DHCPServer = false;
         IPv6SendRA = true;
       };
-      addresses = [ {
+      addresses = [{
         addressConfig.Address = "10.99.99.1/24";
-        } {
-        addressConfig.Address = "fd12:3456:789a::1/64";
-        } ];
-        ipv6Prefixes = [ {
+      }
+        {
+          addressConfig.Address = "fd12:3456:789a::1/64";
+        }];
+      ipv6Prefixes = [{
         ipv6PrefixConfig.Prefix = "fd12:3456:789a::/64";
-        } ];
+      }];
       # networkConfig = {
       #   Address = "10.99.99.1/24";
       #   IPForward = "ipv4";
@@ -27,9 +28,9 @@
       #   routeConfig = {
       #   GatewayOnLink = true;
       # };}];
-        # IPForward = "ipv4";
-        # DHCPServer = true;
-        # IPv6SendRA = true;
+      # IPForward = "ipv4";
+      # DHCPServer = true;
+      # IPv6SendRA = true;
       # addresses = [{
       #   addressConfig.Address = "10.99.99.1/24";
       # }];

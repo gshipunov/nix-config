@@ -19,20 +19,20 @@
         {
           # microwave
           wireguardPeerConfig = {
-          # nextcloud down, have to keep things in here: https://www.youtube.com/watch?v=1c6v7j1TUBI
-          PublicKey = "0zpfcNrmbsNwwbnDDX4SMl4BVTB0zuhGKixT9TJQoHc=";
-          AllowedIPs = [ "10.66.66.10/32" ];
-          PersistentKeepalive = 25;
-        };
+            # nextcloud down, have to keep things in here: https://www.youtube.com/watch?v=1c6v7j1TUBI
+            PublicKey = "0zpfcNrmbsNwwbnDDX4SMl4BVTB0zuhGKixT9TJQoHc=";
+            AllowedIPs = [ "10.66.66.10/32" ];
+            PersistentKeepalive = 25;
+          };
         }
         {
           # Dishwasher
           wireguardPeerConfig = {
-          # nextcloud down, have to keep things in here: https://www.youtube.com/watch?v=1c6v7j1TUBI
-          PublicKey = "AdWUBbyeRkxdP9HUu25PpISoxbgQ8oeCw3BmV93xtAw=";
-          AllowedIPs = [ "10.66.66.100/32" ];
-          PersistentKeepalive = 25;
-        };
+            # nextcloud down, have to keep things in here: https://www.youtube.com/watch?v=1c6v7j1TUBI
+            PublicKey = "AdWUBbyeRkxdP9HUu25PpISoxbgQ8oeCw3BmV93xtAw=";
+            AllowedIPs = [ "10.66.66.100/32" ];
+            PersistentKeepalive = 25;
+          };
         }
       ];
     };
@@ -60,12 +60,12 @@
       wireguardPeers = [
         # nextcloud
         {
-        wireguardPeerConfig = {
-          PublicKey ="KCYoGx7TGei4X79EZo2NONCcmQjPzBUN1Ds6I9lQbz0=";
-          AllowedIPs = [ "10.34.45.100/32" ];
-          PersistentKeepalive = 25;
-        };
-      }
+          wireguardPeerConfig = {
+            PublicKey = "KCYoGx7TGei4X79EZo2NONCcmQjPzBUN1Ds6I9lQbz0=";
+            AllowedIPs = [ "10.34.45.100/32" ];
+            PersistentKeepalive = 25;
+          };
+        }
       ];
     };
     networks."oxaproxy" = {

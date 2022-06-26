@@ -6,9 +6,10 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+    [
+      # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -35,7 +36,7 @@
       };
       networkConfig = {
         DHCP = "yes";
-        LinkLocalAddressing="ipv6";
+        LinkLocalAddressing = "ipv6";
         IPv6AcceptRA = "yes";
       };
       dhcpV6Config = {
@@ -47,7 +48,7 @@
     };
   };
 
-  services.resolved={
+  services.resolved = {
     enable = true;
     fallbackDns = [
       "8.8.8.8"

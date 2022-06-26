@@ -24,14 +24,14 @@
     '';
     locations = {
       "/" = {
-      #  extraConfig = '' return 503; '';
-      proxyPass = "http://10.34.45.100:8080";
+        #  extraConfig = '' return 503; '';
+        proxyPass = "http://10.34.45.100:8080";
       };
       "/well-known/carddav" = {
-      return = "301 $scheme://$host/remote.php/dav";
+        return = "301 $scheme://$host/remote.php/dav";
       };
       "/well-known/caldav" = {
-      return = "301 $scheme://$host/remote.php/dav";
+        return = "301 $scheme://$host/remote.php/dav";
       };
 
     };

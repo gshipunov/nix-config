@@ -14,17 +14,17 @@
         }
       ];
     };
-    
+
     wg-dvb = {
       privateKeyFile = config.sops.secrets."wg/wg-dvb-seckey".path;
       address = [ "10.13.37.3/32" ];
 
-      peers = [ {
-          publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY=";
-          allowedIPs = [ "10.13.37.0/24" ];
-          endpoint = "academicstrokes.com:51820";
-          persistentKeepalive = 25;
-        } ];
+      peers = [{
+        publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY=";
+        allowedIPs = [ "10.13.37.0/24" ];
+        endpoint = "academicstrokes.com:51820";
+        persistentKeepalive = 25;
+      }];
     };
 
     mlwd-nl = {

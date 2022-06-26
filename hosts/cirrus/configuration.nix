@@ -22,7 +22,7 @@
     networks."uplink" = {
       matchConfig = { Name = "enp1s0"; };
       networkConfig = {
-        DHCP="yes"; # hetzner suggests this as default
+        DHCP = "yes"; # hetzner suggests this as default
       };
     };
   };

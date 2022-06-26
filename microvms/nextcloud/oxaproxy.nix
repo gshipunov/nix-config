@@ -12,9 +12,9 @@
       wireguardConfig = {
         PrivateKeyFile = config.sops.secrets."wg/oxaproxy-seckey".path;
         #own pubkey: KCYoGx7TGei4X79EZo2NONCcmQjPzBUN1Ds6I9lQbz0=
-        };
-        wireguardPeers = [
-          {
+      };
+      wireguardPeers = [
+        {
           # cirrus
           wireguardPeerConfig = {
             PublicKey = "0KMtL2fQOrrCH6c2a2l4FKiM73G86sUuyaNj4FarzVM=";
@@ -40,16 +40,16 @@
       routes = [
         {
           routeConfig = {
-            Gateway="10.99.99.1";
-            Destination="0.0.0.0/0";
-            Metric=1024;
+            Gateway = "10.99.99.1";
+            Destination = "0.0.0.0/0";
+            Metric = 1024;
           };
         }
         {
           routeConfig = {
-            Gateway="10.99.99.1";
-            Destination="10.99.99.0/24";
-            Metric=1024;
+            Gateway = "10.99.99.1";
+            Destination = "10.99.99.0/24";
+            Metric = 1024;
           };
         }
       ];
