@@ -61,6 +61,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
+  programs.mosh.enable = true;
   services.openssh = {
     enable = true;
     permitRootLogin = "prohibit-password";

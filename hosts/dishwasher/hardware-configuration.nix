@@ -31,6 +31,12 @@
       options = [ "subvol=var-log" "compress=zstd" "noatime" ];
     };
 
+  fileSystems."/var/microvms" =
+    { device = "/dev/disk/by-uuid/2971597a-b364-405d-8bb2-287556e819e1";
+      fsType = "btrfs";
+      options = [ "subvol=microvms" "compress=zstd" "noatime" ];
+    };
+
   fileSystems."/nix" =
     { device = "/dev/disk/by-uuid/2971597a-b364-405d-8bb2-287556e819e1";
       fsType = "btrfs";
