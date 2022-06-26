@@ -57,7 +57,16 @@
         #own pubkey 0KMtL2fQOrrCH6c2a2l4FKiM73G86sUuyaNj4FarzVM=
         ListenPort = 51821;
       };
-      wireguardPeers = [ ];
+      wireguardPeers = [
+        # nextcloud
+        {
+        wireguardPeerConfig = {
+          PublicKey ="KCYoGx7TGei4X79EZo2NONCcmQjPzBUN1Ds6I9lQbz0=";
+          AllowedIPs = [ "10.34.45.100/32" ];
+          PersistentKeepalive = 25;
+        };
+      }
+      ];
     };
     networks."oxaproxy" = {
       matchConfig.Name = "oxaproxy";
