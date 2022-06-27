@@ -10,9 +10,12 @@
       url = github:astro/microvm.nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = github:oxalica/rust-overlay;
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, microvm, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, sops-nix, microvm, rust-overlay, ... }: {
     nixosConfigurations = {
       microwave = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
@@ -25,14 +28,19 @@
           ./modules/basic-tools.nix
           ./modules/gnupg.nix
           ./modules/hw-accel-intel.nix
-          ./modules/kernel-latest.nix
-          ./modules/virtualization.nix
           ./modules/radio.nix
           ./modules/tlp.nix
           ./modules/wireguard.nix
           ./modules/binary-caches.nix
           ./modules/science.nix
           ./modules/mail.nix
+           ({ pkgs, ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlay ];
+            environment.systemPackages = with pkgs; [
+              rust-bin.stable.latest.default
+              gcc
+            ];
+          })
         ];
       };
       cirrus = nixpkgs.lib.nixosSystem {

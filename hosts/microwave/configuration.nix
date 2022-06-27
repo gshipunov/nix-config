@@ -5,8 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  # services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
-
   # SWAP
   zramSwap = {
     enable = true;
@@ -20,6 +18,7 @@
     kicad
     gimp
     inkscape
+    element-desktop-wayland
   ];
 
   networking.firewall.enable = true;
