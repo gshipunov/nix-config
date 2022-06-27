@@ -29,7 +29,6 @@
     julia-mono
     uw-ttyp0
     gohufont
-    monoid
     spleen
     terminus_font
     creep
