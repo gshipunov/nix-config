@@ -34,7 +34,7 @@
           ./modules/binary-caches.nix
           ./modules/science.nix
           ./modules/mail.nix
-           ({ pkgs, ... }: {
+          ({ pkgs, ... }: {
             nixpkgs.overlays = [ rust-overlay.overlay ];
             environment.systemPackages = with pkgs; [
               rust-bin.stable.latest.default
