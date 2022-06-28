@@ -59,13 +59,6 @@
           ./hosts/dishwasher
           ./modules/basic-tools.nix
           ./modules/binary-caches.nix
-
-          {
-            microvm.vms.nextcloud = {
-              flake = self;
-              updateFlake = "git+file:///etc/nixos";
-            };
-          }
         ];
       };
       nextcloud = nixpkgs.lib.nixosSystem {
