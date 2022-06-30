@@ -13,7 +13,6 @@
     mpv
     zathura
     brightnessctl
-    alacritty
     pulsemixer
     cmus
     gtk-engine-murrine
@@ -21,6 +20,7 @@
     gsettings-desktop-schemas
     xdg-utils
     nextcloud-client
+    foot
   ];
 
   #on the desktop, we need nice fonts ^^
@@ -101,7 +101,7 @@
       swayidle
       wl-clipboard
       mako
-      alacritty
+      foot
       wofi
       wofi-emoji
       grim
