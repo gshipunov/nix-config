@@ -34,6 +34,8 @@
           ./modules/binary-caches.nix
           ./modules/science.nix
           ./modules/mail.nix
+          ./modules/emacs.nix
+          ./modules/virtualization.nix
           ({ pkgs, ... }: {
             nixpkgs.overlays = [ rust-overlay.overlay ];
             environment.systemPackages = with pkgs; [
