@@ -37,7 +37,7 @@
           ./modules/emacs.nix
           ./modules/virtualization.nix
           ({ pkgs, ... }: {
-            nixpkgs.overlays = [ rust-overlay.overlay ];
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
             environment.systemPackages = with pkgs; [
               rust-bin.stable.latest.default
               gcc
