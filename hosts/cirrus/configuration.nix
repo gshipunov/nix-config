@@ -22,7 +22,9 @@
     networks."uplink" = {
       matchConfig = { Name = "enp1s0"; };
       networkConfig = {
-        DHCP = "yes"; # hetzner suggests this as default
+        Address = "95.216.166.21/32";
+        Gateway = "172.31.1.1";
+        DNS = "1.1.1.1";
       };
     };
   };
