@@ -82,6 +82,7 @@
   microvm = {
     hypervisor = "qemu";
     mem = 4 * 1024;
+    vcpu = 3;
 
     shares = [{
       source = "/nix/store";
