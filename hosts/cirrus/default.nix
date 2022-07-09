@@ -5,5 +5,6 @@
     ./secrets.nix
     ./wireguard-server.nix
     ./nextcloud-proxy.nix
+    ./ddix.nix
   ];
 }
