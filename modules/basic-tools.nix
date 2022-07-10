@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     bat
-    exa
+    lsd
     fd
     file
     fzf
@@ -27,7 +27,6 @@
   ];
 
   nix = {
-    package = pkgs.nixUnstable;
     autoOptimiseStore = true;
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -51,6 +50,11 @@
   };
 
   environment.shellAliases = {
+    ls = "lsd";
+    l = "lsd -l";
+    la = "lsd -la";
+    ll = "lsd -lah";
+    lt = "lsd --tree";
     vim = "nvim";
     vi = "nvim";
     vf = "$EDITOR $(fzf)";

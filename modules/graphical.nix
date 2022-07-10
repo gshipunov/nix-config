@@ -25,6 +25,8 @@
 
   #on the desktop, we need nice fonts ^^
   fonts.fonts = with pkgs; [
+    monoid
+    (nerdfonts.override { fonts = [ "Monoid" ]; })
     dejavu_fonts
     julia-mono
     uw-ttyp0
@@ -133,7 +135,6 @@
     enable = true;
     plugins = [ pkgs.evolution-ews ];
   };
-
 
   # required to autounlock gnome-keyring
   services.xserver = {
