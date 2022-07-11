@@ -21,14 +21,6 @@
     element-desktop-wayland
   ];
 
-  networking.firewall.enable = true;
-  networking = {
-    hostName = "microwave"; # Define your hostname.
-    networkmanager.enable = true;
-    wireguard.enable = true;
-
-  };
-
 
   nixpkgs.config.allowUnfree = true;
 
@@ -65,7 +57,6 @@
     createHome = true;
     extraGroups = [
       "wheel"
-      "networkmanager"
       "wireshark"
       "video"
       "libvirtd"

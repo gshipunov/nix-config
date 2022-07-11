@@ -38,16 +38,13 @@
           modules = [
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
-            ./hosts/microwave/configuration.nix
-            ./hosts/microwave/secrets.nix
-            ./hosts/microwave/hardware-configuration.nix
+            ./hosts/microwave
             ./modules/graphical.nix
             ./modules/basic-tools.nix
             ./modules/gnupg.nix
             ./modules/hw-accel-intel.nix
             ./modules/radio.nix
             ./modules/tlp.nix
-            ./modules/wireguard.nix
             ./modules/binary-caches.nix
             ./modules/science.nix
             ./modules/mail.nix
@@ -55,7 +52,6 @@
             ./modules/virtualization.nix
             ({ pkgs, ... }: {
               services.throttled.enable = true;
-              services.influxdb.enable = true;
             })
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ fenix.overlay ];
