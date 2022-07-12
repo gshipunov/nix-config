@@ -28,19 +28,35 @@ systemd.network = {
     # wait-online.ignoredInterfaces = [ "wlan0" "enp53s0" ];
 
       # Interfaces on the machine
-      networks."10-ether" = {
-        matchConfig = { Name = "enp53s0"; };
-        networkConfig = {
-          DHCP = "yes";
-          IPv6AcceptRA = true;
+      netdevs."10-james" = {
+        netdevConfig = {
+          Name = "james";
+          Kind = "bond";
+        };
+        bondConfig = {
+          Mode = "active-backup";
+          PrimaryReselectPolicy = "always";
+          MIIMonitorSec = "1s";
         };
       };
-      networks."10-wlan" = {
+      networks."10-ether-bond" = {
+        matchConfig = { Name = "enp53s0"; };
+        networkConfig = {
+          Bond = "james";
+          PrimarySlave = true;
+        };
+      };
+      networks."10-wlan-bond" = {
         matchConfig = { Name = "wlan0"; };
+        networkConfig = {
+          Bond = "james";
+        };
+      };
+      networks."10-james-bond" = {
+        matchConfig = { Name = "james"; };
         networkConfig = {
           DHCP = "yes";
           IPv6AcceptRA = true;
-          IgnoreCarrierLoss = true;
         };
       };
 
