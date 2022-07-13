@@ -18,7 +18,7 @@
     }];
   };
 
-  services.redis.enable = true;
+  services.redis.servers.nextcloud.enable = true;
 
   services.nginx = {
     enable = true;
