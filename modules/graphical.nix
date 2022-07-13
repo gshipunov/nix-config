@@ -26,7 +26,8 @@
   #on the desktop, we need nice fonts ^^
   fonts.fonts = with pkgs; [
     monoid
-    (nerdfonts.override { fonts = [ "Monoid" ]; })
+    (nerdfonts.override { fonts = [ "Monoid" "Hack" ]; })
+    font-awesome
     dejavu_fonts
     julia-mono
     uw-ttyp0
@@ -99,6 +100,7 @@
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
+      pamixer
       swaylock-fancy
       swayidle
       wl-clipboard
@@ -144,5 +146,5 @@
       wayland = true;
     };
   };
-
+  programs.gnupg.agent.pinentryFlavor = "curses";
 }
