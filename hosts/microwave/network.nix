@@ -62,7 +62,7 @@ systemd.network = {
 
       # Wireguard
       # Dump-dvb
-      netdevs."10-wg-dumpdvb" = {
+      netdevs."30-wg-dumpdvb" = {
         netdevConfig = {
           Kind = "wireguard";
           Name = "wg-dumpdvb";
@@ -82,10 +82,10 @@ systemd.network = {
           }
         ];
       };
-      networks."10-wg-dumpdvb" = {
+      networks."30-wg-dumpdvb" = {
         matchConfig = { Name = "wg-dumpdvb"; };
         networkConfig = {
-          Address = "10.13.37.3";
+          Address = "10.13.37.3/24";
           IPv6AcceptRA = true;
         };
         routes = [
@@ -93,7 +93,7 @@ systemd.network = {
         ];
       };
 
-      # Dump-dvb
+      # oxalab
       netdevs."10-wg-oxalab" = {
         netdevConfig = {
           Kind = "wireguard";
@@ -150,9 +150,13 @@ systemd.network = {
       networks."10-wg-zentralwerk" = {
         matchConfig = { Name = "wg-zentralwerk"; };
         networkConfig = {
-          Address = "172.20.76.226";
+          Address = "172.20.76.226/21";
           IPv6AcceptRA = true;
           DNS = "172.20.73.8";
+          Domains = [
+            "~.c3d2.de"
+            "~.zentralwerk.org"
+          ];
         };
         routes = [
           {
@@ -169,5 +173,78 @@ systemd.network = {
           }
         ];
       };
+
+      # VPN
+      netdevs."10-wg-mullvad" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg-mullvad";
+        };
+        wireguardConfig = {
+          PrivateKeyFile = config.sops.secrets."wg/mlwd-nl-seckey".path;
+          FirewallMark = 34952; # 0x8888
+          RouteTable = "off";
+        };
+        wireguardPeers = [
+          {
+            wireguardPeerConfig = {
+              PublicKey = "C6SfQFOfq6/q9nHRdLDN98U/BTxH47Ec1l/PaQZuRk4=";
+              Endpoint = "169.150.196.2:51820";
+              AllowedIPs = [ "0.0.0.0/0" "::0/0" ];
+            };
+          }
+        ];
+      };
+      networks."10-wg-mullvad" = {
+        address = [ "10.65.79.164/32" "fc00:bbbb:bbbb:bb01::2:4fa3/128" ];
+        matchConfig.Name = "wg-mullvad";
+        networkConfig = {
+          DNS = "10.64.0.1";
+          DNSDefaultRoute = true;
+          Domains = [ "~." ];
+        };
+        routes  = map (gate: {
+          routeConfig = {
+            Gateway = gate;
+            Table = 1000;
+          };
+        }) [ "0.0.0.0" "::" ];
+
+       routingPolicyRules = [
+         {
+           routingPolicyRuleConfig = {
+             Family = "both";
+             FirewallMark = 34952; # 0x8888
+             InvertRule = true;
+             Table = "1000";
+             Priority = 10;
+           };
+         }
+         {
+           routingPolicyRuleConfig = {
+             Family = "both";
+             SuppressPrefixLength = 0;
+             Table = "main";
+             Priority = 9;
+           };
+         }
+       ] ++ map (net: { # only route global addresses over VPN
+       routingPolicyRuleConfig = {
+         Priority = 8;
+         To = net;
+       };
+     }) [
+       # Public
+       "169.150.196.2/32"
+       # "10.0.0.0/8"
+       "10.13.37.0/24"
+       "10.66.66.0/24"
+       # "172.16.0.0/12"
+       "172.16.0.0/12"
+       # "182.168.0.0/16"
+       "182.168.0.0/16"
+       # "fc00::/7"
+     ];
     };
-  }
+  };
+}
