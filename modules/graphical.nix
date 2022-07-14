@@ -26,7 +26,7 @@
   #on the desktop, we need nice fonts ^^
   fonts.fonts = with pkgs; [
     monoid
-    (nerdfonts.override { fonts = [ "Monoid" "Hack" ]; })
+    (nerdfonts.override { fonts = [ "Monoid" "Hack" "FiraMono" ]; })
     font-awesome
     dejavu_fonts
     julia-mono
@@ -38,8 +38,6 @@
     corefonts
     dina-font
     fira
-    fira-code
-    fira-code-symbols
     fira-mono
     hack-font
     liberation_ttf
@@ -119,6 +117,7 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   services.udisks2.enable = true;
@@ -129,14 +128,13 @@
     lock = "udisksctl lock -b";
   };
 
-  qt5.platformTheme = "gtk";
+  qt5 = {
+    enable = true;
+    platformTheme = "gnome";
+    style ="adwaita-dark";
+  };
 
   services.gnome.gnome-keyring.enable = true;
-
-  programs.evolution = {
-    enable = true;
-    plugins = [ pkgs.evolution-ews ];
-  };
 
   # required to autounlock gnome-keyring
   services.xserver = {
