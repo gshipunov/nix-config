@@ -16,47 +16,47 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
-      fsType = "btrfs";
-      options = [ "subvol=root" "noatime" "compress=zstd" ];
-    };
-
-  boot.initrd.luks.devices."nixos-crypt".device = "/dev/disk/by-uuid/dbee4082-85ae-40f0-9c80-034f3574688f";
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/4B02-CE16";
-      fsType = "vfat";
-    };
-
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
-      fsType = "btrfs";
-      options = [ "subvol=home" "noatime" "compress=zstd" ];
+      device = "rpool/nixos";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
     };
 
   fileSystems."/nix" =
     {
-      device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "noatime" "compress=zstd" ];
+      device = "rpool/nixos/nix";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
     };
 
-  fileSystems."/tmp" =
+  fileSystems."/home" =
     {
-      device = "/dev/disk/by-uuid/f9edd500-f47b-42e5-9b88-7b6d86f76caa";
-      fsType = "btrfs";
-      options = [ "subvol=tmp" "noatime" "compress=zstd" ];
+      device = "rpool/userdata/home";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
     };
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = lib.mkDefault false;
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-uuid/A8AA-1CC4";
+      fsType = "vfat";
+      options = [ "X-mount.mkdir" ];
+    };
+
+  swapDevices =
+    [{
+      device = "/dev/disk/by-partuuid/f9712640-96a5-46e1-b07d-53b0cba19057";
+      randomEncryption = true;
+    }];
+
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
   networking.interfaces.enp53s0.useDHCP = lib.mkDefault true;
   networking.interfaces.wlp54s0.useDHCP = lib.mkDefault true;
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

@@ -27,15 +27,27 @@
   services.fstrim.enable = true;
 
   boot = {
-    supportedFilesystems = [ "btrfs" ];
-
-    # use systemd boot by default
     loader = {
-      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+      };
     };
-    tmpOnTmpfs = true;
+    supportedFilesystems = [ "zfs" ];
+    kernelParams = [ "nohibernate" ];
+    zfs.devNodes = "/dev/";
     plymouth.enable = false;
+  };
+
+  services.zfs = {
+    trim.enable = true;
+    autoScrub = {
+      enable = true;
+      pools = [ "rpool" ];
+    };
+    autoSnapshot.enable = true;
   };
 
   # update the microcode
@@ -74,6 +86,7 @@
     enable = true;
     package = pkgs.wireshark;
   };
+  time.timeZone = "Europe/Berlin";
 
 
   programs.steam.enable = true;
@@ -83,7 +96,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "22.11"; # Did you read the comment?
 
 }
 

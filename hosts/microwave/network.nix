@@ -4,6 +4,7 @@
   ];
   networking = {
     hostName = "microwave"; # Define your hostname.
+    hostId = "7da4f1e6";
     firewall.enable = true;
     useNetworkd = true;
     wireguard.enable = true;
