@@ -1,6 +1,5 @@
 # General Desktop-related config
 { config, pkgs, ... }:
-
 {
   environment.systemPackages = with pkgs; [
     firefox-wayland
@@ -131,7 +130,7 @@
   qt5 = {
     enable = true;
     platformTheme = "gnome";
-    style ="adwaita-dark";
+    style = "adwaita-dark";
   };
 
   services.gnome.gnome-keyring.enable = true;

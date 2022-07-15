@@ -48,7 +48,6 @@
             ./modules/binary-caches.nix
             ./modules/science.nix
             ./modules/mail.nix
-            ./modules/emacs.nix
             ./modules/virtualization.nix
             ({ pkgs, ... }: {
               services.throttled.enable = true;
