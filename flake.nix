@@ -46,12 +46,7 @@
             ./modules/radio.nix
             ./modules/tlp.nix
             ./modules/binary-caches.nix
-            ./modules/science.nix
             ./modules/mail.nix
-            ./modules/virtualization.nix
-            ({ pkgs, ... }: {
-              services.throttled.enable = true;
-            })
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ fenix.overlay ];
               environment.systemPackages = with pkgs; [
