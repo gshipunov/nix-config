@@ -11,7 +11,7 @@
       ];
       substituters = [
         "https://microvm.cachix.org"
-        "https://nix-serve.hq.c3d2.de"
+        "https://hydra.hq.c3d2.de"
         "https://dump-dvb.cachix.org"
         "https://nix-community.cachix.org"
       ];
