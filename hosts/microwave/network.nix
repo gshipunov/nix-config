@@ -222,7 +222,7 @@
             FirewallMark = 34952; # 0x8888
             InvertRule = true;
             Table = "1000";
-            Priority = 10;
+            Priority = 100;
           };
         }
         {
@@ -230,14 +230,14 @@
             Family = "both";
             SuppressPrefixLength = 0;
             Table = "main";
-            Priority = 9;
+            Priority = 90;
           };
         }
       ] ++ map
         (net: {
           # only route global addresses over VPN
           routingPolicyRuleConfig = {
-            Priority = 8;
+            Priority = 80;
             To = net;
           };
         }) [
