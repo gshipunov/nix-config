@@ -2,10 +2,6 @@
   inputs = {
     nixpkgs-unstable.url = github:NixOS/nixpkgs/nixos-unstable;
     nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
-    home-manager = {
-      url = github:nix-community/home-manager;
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     sops-nix = {
       url = github:Mic92/sops-nix;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +23,6 @@
     , sops-nix
     , microvm
     , fenix
-    , home-manager
     , ...
     }:
     {
@@ -37,7 +32,6 @@
           system = "x86_64-linux";
           modules = [
             sops-nix.nixosModules.sops
-            home-manager.nixosModules.home-manager
             ./hosts/microwave
             ./modules/graphical.nix
             ./modules/basic-tools.nix
