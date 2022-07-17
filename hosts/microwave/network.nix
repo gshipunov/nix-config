@@ -155,8 +155,8 @@
         IPv6AcceptRA = true;
         DNS = "172.20.73.8";
         Domains = [
-          "~.c3d2.de"
-          "~.zentralwerk.org"
+          "~c3d2.de"
+          "~zentralwerk.org"
         ];
       };
       routes = [
