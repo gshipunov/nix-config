@@ -98,7 +98,7 @@
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
       pamixer
-      swaylock-fancy
+      swaylock
       swayidle
       wl-clipboard
       mako
