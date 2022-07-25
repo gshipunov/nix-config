@@ -23,9 +23,17 @@
       matchConfig = { Name = "enp1s0"; };
       networkConfig = {
         Address = "95.216.166.21/32";
-        Gateway = "172.31.1.1";
         DNS = "1.1.1.1";
       };
+      routes = [
+        {
+          routeConfig = {
+            Gateway = "172.31.1.1";
+            GatewayOnLink = true;
+            Destination = "0.0.0.0/0";
+          };
+        }
+      ];
     };
   };
 
