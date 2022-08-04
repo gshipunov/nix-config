@@ -32,18 +32,20 @@
           modules = [
             sops-nix.nixosModules.sops
             ./hosts/microwave
-            ./modules/graphical.nix
             ./modules/basic-tools.nix
-            ./modules/gnupg.nix
-            ./modules/hw-accel-intel.nix
-            ./modules/radio.nix
-            ./modules/tlp.nix
             ./modules/binary-caches.nix
+            ./modules/chromium.nix
+            ./modules/gnupg.nix
+            ./modules/graphical.nix
+            ./modules/hw-accel-intel.nix
             ./modules/mail.nix
+            ./modules/radio.nix
+            ./modules/science.nix
+            ./modules/tlp.nix
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ fenix.overlay ];
               environment.systemPackages = with pkgs; [
-                (fenix.packages."x86_64-linux".complete.withComponents [
+                (fenix.packages."x86_64-linux".stable.withComponents [
                   "cargo"
                   "clippy"
                   "rust-src"

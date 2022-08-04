@@ -2,15 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # (rWrapper.override{ packages = with rPackages; [
-    #                       ggplot2
-    #                       swirl
-    #                       languageserver
-    #                       dplyr
-    #                       data_table
-    #                     ]; })
-    #(rstudioWrapper.override{ packages = with rPackages; [ ggplot2 ]; })
-    texlive.combined.scheme-full
+    (rWrapper.override{ packages = with rPackages; [
+                          ggplot2
+                          swirl
+                          dplyr
+                          data_table
+                        ]; })
     gnuplot
     graphicsmagick
     zotero

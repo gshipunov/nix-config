@@ -2,11 +2,10 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # (ungoogled-chromium.override { enableVaapi = true; })
     chromium
   ];
 
-  nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland  --force-dark-mode --enable-features=WebUIDarkMode";
+  nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland  --force-dark-mode --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder,WebUIDarkMode";
 
   programs.chromium = {
     enable = true;
@@ -26,8 +25,9 @@
       "AutoplayAllowed" = false;
       "DefaultNotificationSetting" = 2;
       "BackgroundModeEnabled" = false;
-      "DefaultSearchProviderEnabled" = true;
-      "DefaultSearchProviderSearchURL" = "https://google.com/?q={searchTerms}";
+      # "DefaultSearchProviderEnabled" = true;
+      # "DefaultSearchProviderSearchURL" = "https://google.com/search?q={searchTerms}";
+      # "DefaultSearchProviderSearchURL" = "https://duckduckgo.com/?q={searchTerms}";
       "SearchSuggestEnable" = false;
     };
   };
