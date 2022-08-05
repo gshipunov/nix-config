@@ -1,20 +1,24 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-    # language servers
-    clang-tools
-    clang
-
-    sqlite
-    graphviz
+    direnv
   ];
+
+  programs.zsh.shellInit = ''
+    eval "$(direnv hook zsh)"
+  '';
+  programs.bash.shellInit = ''
+    eval "$(direnv hook bash)"
+  '';
+
 
   services.emacs = {
     install = true;
     enable = false;
-    # pure gtk, native compiled emacs with vterm and pdf-tools
-    package = with pkgs; ((emacsPackagesFor emacs).emacsWithPackages (epkgs: [ epkgs.vterm ]));
+    package = with pkgs; ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
+      vterm
+    ]));
     defaultEditor = false;
   };
 

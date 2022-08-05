@@ -14,10 +14,15 @@
       url = github:nix-community/fenix;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    emacs-overlay = {
+      url = github:nix-community/emacs-overlay;
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
     inputs@{ self
+    , emacs-overlay
     , nixpkgs
     , nixpkgs-unstable
     , sops-nix
@@ -35,6 +40,7 @@
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
             ./modules/chromium.nix
+            ./modules/emacs.nix
             ./modules/gnupg.nix
             ./modules/graphical.nix
             ./modules/hw-accel-intel.nix
@@ -42,6 +48,9 @@
             ./modules/radio.nix
             ./modules/science.nix
             ./modules/tlp.nix
+            {
+              nixpkgs.overlays = [ emacs-overlay.overlay ];
+            }
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ fenix.overlay ];
               environment.systemPackages = with pkgs; [
