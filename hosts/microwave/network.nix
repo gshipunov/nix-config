@@ -192,8 +192,8 @@
       wireguardPeers = [
         {
           wireguardPeerConfig = {
-            PublicKey = "C6SfQFOfq6/q9nHRdLDN98U/BTxH47Ec1l/PaQZuRk4=";
-            Endpoint = "169.150.196.2:51820";
+            PublicKey = "LMmlMjPQXY886ER2Rsjot4UZL44+1CqoI5niOhBU9mc=";
+            Endpoint = "169.150.196.15:51820";
             AllowedIPs = [ "0.0.0.0/0" "::0/0" ];
           };
         }
@@ -201,7 +201,7 @@
     };
     networks."10-wg-mullvad" = {
       matchConfig.Name = "wg-mullvad";
-      address = [ "10.65.79.164/32" "fc00:bbbb:bbbb:bb01::2:4fa3/128" ];
+      address = [ "10.66.157.228/32" "fc00:bbbb:bbbb:bb01::3:9de3/128" ];
       networkConfig = {
         DNS = "10.64.0.1";
         DNSDefaultRoute = true;
@@ -245,7 +245,7 @@
           };
         }) [
         # Public
-        "169.150.196.2/32"
+        "169.150.196.15/32"
         # "10.0.0.0/8"
         "10.13.37.0/24"
         "10.66.66.0/24"
