@@ -20,6 +20,7 @@
     xdg-utils
     nextcloud-client
     foot
+    qt5.qtwayland
   ];
 
   #on the desktop, we need nice fonts ^^
@@ -96,6 +97,13 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+    extraSessionCommands = ''
+      export SDL_VIDEODRIVER=wayland
+      export QT_QPA_PLATFORM=wayland-egl
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export QT_QPA_PLATFORMTHEME="gnome"
+      export QT_STYLE_OVERRIDE="adwaita-dark"
+    '';
     extraPackages = with pkgs; [
       pamixer
       swaylock
@@ -103,8 +111,7 @@
       wl-clipboard
       mako
       foot
-      wofi
-      wofi-emoji
+      rofi-wayland
       grim
       slurp
       waybar
