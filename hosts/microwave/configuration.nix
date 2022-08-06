@@ -36,6 +36,7 @@
       };
     };
     supportedFilesystems = [ "zfs" ];
+    kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
     kernelParams = [ "nohibernate" ];
     zfs.devNodes = "/dev/";
     plymouth.enable = false;
