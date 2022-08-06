@@ -14,10 +14,7 @@
       url = github:nix-community/fenix;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    emacs-overlay = {
-      url = github:nix-community/emacs-overlay;
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    emacs-overlay.url = github:nix-community/emacs-overlay/9019be27f46ed3a102b2e732cb679eb01217a839;
   };
 
   outputs =
