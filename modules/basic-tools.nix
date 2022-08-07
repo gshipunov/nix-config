@@ -58,7 +58,6 @@
     vi = "nvim";
     vf = "$EDITOR $(fzf)";
     vff = "$EDITOR $(ls|fzf)";
-    ssh = "TERM=xterm-256color ssh";
     mutt = "neomutt";
   };
 
