@@ -55,10 +55,10 @@
     ll = "lsd -lah";
     lt = "lsd --tree";
     vim = "nvim";
-    vi = "nvim";
     vf = "$EDITOR $(fzf)";
     vff = "$EDITOR $(ls|fzf)";
     mutt = "neomutt";
+    grep = "grep --color=auto";
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -70,10 +70,7 @@
       bindkey -e
     '';
     promptInit = ''
-            source /run/current-system/sw/share/zsh/plugins/liquidprompt/liquidprompt
-      if [[ -n "$IN_NIX_SHELL" ]]; then
-        prompt_tag "(nix-shell)"
-      fi
+      source /run/current-system/sw/share/zsh/plugins/liquidprompt/liquidprompt
     '';
   };
 

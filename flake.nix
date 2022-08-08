@@ -36,8 +36,6 @@
             ./hosts/microwave
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
-            ./modules/chromium.nix
-            ./modules/emacs.nix
             ./modules/gnupg.nix
             ./modules/graphical.nix
             ./modules/hw-accel-intel.nix

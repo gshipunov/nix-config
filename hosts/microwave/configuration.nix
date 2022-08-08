@@ -19,6 +19,7 @@
     gimp
     inkscape
     element-desktop-wayland
+    factorio
   ];
 
 

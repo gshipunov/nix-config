@@ -21,6 +21,7 @@
     nextcloud-client
     foot
     qt5.qtwayland
+    bashmount
   ];
 
   #on the desktop, we need nice fonts ^^
