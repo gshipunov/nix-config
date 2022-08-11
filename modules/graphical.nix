@@ -8,7 +8,7 @@
     screen-message
     qbittorrent
     dino
-    feh
+    imv
     mpv
     zathura
     brightnessctl
