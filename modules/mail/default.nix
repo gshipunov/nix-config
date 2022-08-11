@@ -27,7 +27,43 @@ in
   programs.msmtp = {
     enable = true;
     setSendmail = true;
+    extraConfig = ''
+      account mail@oxapentane.com
+      host smtp.migadu.com
+      port 587
+      from *@oxapentane.com
+      user mail@oxapentane.com
+      passwordeval cat ${config.sops.secrets."mail/oxapentane.com".path}
+      auth on
+      tls on
+      tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+      logfile ~/.msmtp.log
+
+      account grigory@shipunov.xyz
+      host smtp.migadu.com
+      port 587
+      from *@shipunov.xyz
+      user grigory@shipunov.xyz
+      passwordeval cat ${config.sops.secrets."mail/shipunov.xyz".path}
+      auth on
+      tls on
+      tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+      logfile ~/.msmtp.log
+
+      account dump@dvb.solutions
+      host smtp.migadu.com
+      port 587
+      from dump@dvb.solutions
+      user dump@dvb.solutions
+      passwordeval cat ${config.sops.secrets."mail/dvb.solutions".path}
+      auth on
+      tls on
+      tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+      logfile ~/.msmtp.log
+    '';
   };
+
+
   systemd.user = {
 
     services.mbsync = {
