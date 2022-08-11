@@ -39,7 +39,7 @@
             ./modules/gnupg.nix
             ./modules/graphical.nix
             ./modules/hw-accel-intel.nix
-            ./modules/mail.nix
+            ./modules/mail
             ./modules/radio.nix
             ./modules/science.nix
             ./modules/tlp.nix

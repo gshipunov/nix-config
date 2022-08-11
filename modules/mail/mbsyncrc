@@ -1,0 +1,74 @@
+IMAPStore mail@oxapentane.com-remote
+Host imap.migadu.com
+Port 993
+User mail@oxapentane.com
+PassCmd "cat /run/secrets/mail/oxapentane.com"
+AuthMechs LOGIN
+SSLType IMAPS
+
+MaildirStore mail@oxapentane.com-local
+Subfolders Verbatim
+Path /home/grue/mail/mail@oxapentane.com/
+Inbox /home/grue/mail/mail@oxapentane.com/INBOX
+
+Channel mail@oxapentane.com
+Expunge Both
+Master :mail@oxapentane.com-remote:
+Slave :mail@oxapentane.com-local:
+Create Both
+SyncState *
+Patterns *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
+
+IMAPStore grigory@shipunov.xyz-remote
+Host imap.migadu.com
+Port 993
+User grigory@shipunov.xyz
+PassCmd "cat /run/secrets/mail/shipunov.xyz"
+AuthMechs LOGIN
+SSLType IMAPS
+
+MaildirStore grigory@shipunov.xyz-local
+Subfolders Verbatim
+Path /home/grue/mail/grigory@shipunov.xyz/
+Inbox /home/grue/mail/grigory@shipunov.xyz/INBOX
+
+Channel grigory@shipunov.xyz
+Expunge Both
+Master :grigory@shipunov.xyz-remote:
+Slave :grigory@shipunov.xyz-local:
+Create Both
+SyncState *
+Patterns *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
+
+IMAPStore dump@dvb.solutions-remote
+Host imap.migadu.com
+Port 993
+User dump@dvb.solutions
+PassCmd "cat /run/secrets/mail/dvb.solutions"
+AuthMechs LOGIN
+SSLType IMAPS
+
+MaildirStore dump@dvb.solutions-local
+Subfolders Verbatim
+Path /home/grue/mail/dump@dvb.solutions/
+Inbox /home/grue/mail/dump@dvb.solutions/INBOX
+
+Channel dump@dvb.solutions
+Expunge Both
+Master :dump@dvb.solutions-remote:
+Slave :dump@dvb.solutions-local:
+Create Both
+SyncState *
+Patterns *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
