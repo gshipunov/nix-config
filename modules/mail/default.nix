@@ -70,7 +70,7 @@ in
       enable = true;
       after = [ "graphical.target" "network-online.target" ];
       script = ''
-        ${pkgs.isync}/bin/mbsync -a --config=${mbsyncConf}
+        ${pkgs.isync}/bin/mbsync -q -a --config=${mbsyncConf}
       '';
       serviceConfig = {
         Type = "oneshot";
