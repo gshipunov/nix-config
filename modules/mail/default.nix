@@ -82,8 +82,8 @@ in
       wantedBy = [ "timers.target" ];
       timerConfig = {
         Unit = "mbsync.service";
+        OnBootSec = "5m";
         OnUnitInactiveSec = "11m";
-        Persistent = true;
       };
     };
 
