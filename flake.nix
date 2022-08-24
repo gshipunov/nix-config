@@ -14,12 +14,10 @@
       url = github:nix-community/fenix;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    emacs-overlay.url = github:nix-community/emacs-overlay/9019be27f46ed3a102b2e732cb679eb01217a839;
   };
 
   outputs =
     inputs@{ self
-    , emacs-overlay
     , nixpkgs
     , nixpkgs-unstable
     , sops-nix
@@ -43,9 +41,6 @@
             ./modules/radio.nix
             ./modules/science.nix
             ./modules/tlp.nix
-            {
-              nixpkgs.overlays = [ emacs-overlay.overlay ];
-            }
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ fenix.overlay ];
               environment.systemPackages = with pkgs; [
