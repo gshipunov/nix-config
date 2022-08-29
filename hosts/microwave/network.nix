@@ -163,14 +163,14 @@
       routes = [
         {
           routeConfig = {
-            Gateway = "172.20.72.4";
+            Gateway = "172.20.72.1";
             Destination = "172.20.72.0/21";
             Metric = 666;
           };
         }
         {
           routeConfig = {
-            Gateway = "172.20.72.4";
+            Gateway = "172.20.72.1";
             Destination = "172.20.90.0/24";
             Metric = 666;
           };
