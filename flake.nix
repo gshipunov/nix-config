@@ -41,6 +41,7 @@
             ./modules/radio.nix
             ./modules/science.nix
             ./modules/tlp.nix
+            ./modules/virtualization.nix
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ fenix.overlay ];
               environment.systemPackages = with pkgs; [
