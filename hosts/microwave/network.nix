@@ -15,6 +15,7 @@
 
   services.resolved = {
     enable = true;
+    dnssec = "allow-downgrade";
   };
 
   # workaround for networkd waiting for shit
@@ -143,7 +144,7 @@
           wireguardPeerConfig = {
             PublicKey = "PG2VD0EB+Oi+U5/uVMUdO5MFzn59fAck6hz8GUyLMRo=";
             Endpoint = "81.201.149.152:1337";
-            AllowedIPs = [ "172.20.72.0/21" "172.22.90.0/24" ];
+            AllowedIPs = [ "172.20.72.0/21" "172.22.90.0/24" "172.22.99.0/24" ];
             PersistentKeepalive = 25;
           };
         }
@@ -156,25 +157,35 @@
         IPv6AcceptRA = true;
         DNS = "172.20.73.8";
         Domains = [
-          "~c3d2.de"
-          "~zentralwerk.org"
+          "~hq.c3d2.de"
+          "~serv.zentralwerk.org"
+          "~hq.zentralwerk.org"
+          "~cluster.zentralwerk.org"
         ];
       };
       routes = [
         {
           routeConfig = {
-            Gateway = "172.20.72.1";
+            Gateway = "172.20.72.4";
             Destination = "172.20.72.0/21";
-            Metric = 666;
+            Metric = 9999;
           };
         }
         {
           routeConfig = {
-            Gateway = "172.20.72.1";
+            Gateway = "172.20.72.4";
             Destination = "172.20.90.0/24";
-            Metric = 666;
+            Metric = 9999;
           };
         }
+        {
+          routeConfig = {
+            Gateway = "172.20.72.4";
+            Destination = "172.22.99.0/24";
+            Metric = 9999;
+          };
+        }
+
       ];
     };
 
