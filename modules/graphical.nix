@@ -14,8 +14,6 @@
     brightnessctl
     pulsemixer
     cmus
-    gtk-engine-murrine
-    gtk_engines
     gsettings-desktop-schemas
     xdg-utils
     nextcloud-client
@@ -27,7 +25,6 @@
   #on the desktop, we need nice fonts ^^
   fonts.fonts = with pkgs; [
     monoid
-    (nerdfonts.override { fonts = [ "Monoid" "Hack" "FiraMono" ]; })
     font-awesome
     dejavu_fonts
     julia-mono
@@ -115,7 +112,6 @@
       rofi-wayland
       grim
       slurp
-      waybar
       gnome3.adwaita-icon-theme
       i3status-rust
     ];
