@@ -77,7 +77,7 @@
             {
               microvm.vms.nextcloud = {
                 flake = self;
-                updateFlake = "git+file:///etc/nixos";
+                updateFlake = "github:oxapentane/nix-config/master";
               };
             }
           ];
