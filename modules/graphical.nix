@@ -14,6 +14,7 @@
     brightnessctl
     pulsemixer
     cmus
+    termusic
     gsettings-desktop-schemas
     xdg-utils
     nextcloud-client

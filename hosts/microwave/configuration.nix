@@ -18,7 +18,6 @@
     kicad
     gimp
     inkscape
-    factorio
   ];
 
 
@@ -36,6 +35,7 @@
     kernelParams = [ "nohibernate" ];
     zfs.devNodes = "/dev/";
     plymouth.enable = false;
+    tmpOnTmpfs = true;
   };
 
   services.zfs = {
