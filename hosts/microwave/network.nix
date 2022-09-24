@@ -203,8 +203,8 @@
       wireguardPeers = [
         {
           wireguardPeerConfig = {
-            PublicKey = "LMmlMjPQXY886ER2Rsjot4UZL44+1CqoI5niOhBU9mc=";
-            Endpoint = "169.150.196.15:51820";
+            PublicKey = "uUYbYGKoA6UBh1hfkAz5tAWFv4SmteYC9kWh7/K6Ah0=";
+            Endpoint = "92.60.40.209:51820";
             AllowedIPs = [ "0.0.0.0/0" "::0/0" ];
           };
         }
@@ -256,7 +256,7 @@
           };
         }) [
         # Public
-        "169.150.196.15/32"
+        "92.60.40.209/32"
         # "10.0.0.0/8"
         "10.13.37.0/24"
         "10.66.66.0/24"
