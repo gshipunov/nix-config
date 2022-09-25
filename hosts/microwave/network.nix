@@ -166,21 +166,21 @@
       routes = [
         {
           routeConfig = {
-            Gateway = "172.20.72.4";
+            Gateway = "172.20.76.225";
             Destination = "172.20.72.0/21";
             Metric = 9999;
           };
         }
         {
           routeConfig = {
-            Gateway = "172.20.72.4";
+            Gateway = "172.20.76.225";
             Destination = "172.20.90.0/24";
             Metric = 9999;
           };
         }
         {
           routeConfig = {
-            Gateway = "172.20.72.4";
+            Gateway = "172.20.76.225";
             Destination = "172.22.99.0/24";
             Metric = 9999;
           };
