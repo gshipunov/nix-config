@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     bat
-    lsd
     fd
     file
     fzf
@@ -16,6 +15,7 @@
     ripgrep
     tealdeer
     traceroute
+    tcpdump
     tree
     liquidprompt
     (aspellWithDicts (ps: with ps; [ en en-science en-computers ru de ]))
@@ -49,11 +49,11 @@
   };
 
   environment.shellAliases = {
-    ls = "lsd";
-    l = "lsd -l";
-    la = "lsd -la";
-    ll = "lsd -lah";
-    lt = "lsd --tree";
+    ls = "ls --color=auto";
+    l = "ls -l";
+    la = "ls -la";
+    ll = "ls -lah";
+    lt = "ls --tree";
     vim = "nvim";
     vf = "$EDITOR $(fzf)";
     vff = "$EDITOR $(ls|fzf)";

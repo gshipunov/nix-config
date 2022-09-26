@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    virtmanager
+    virt-manager
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];

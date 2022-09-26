@@ -8,6 +8,7 @@
     screen-message
     qbittorrent
     dino
+    gajim
     imv
     mpv
     zathura
@@ -80,7 +81,7 @@
 
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluezFull;
+    package = pkgs.bluez;
   };
 
   programs.zsh.vteIntegration = true;
@@ -113,7 +114,7 @@
       rofi-wayland
       grim
       slurp
-      gnome3.adwaita-icon-theme
+      gnome.adwaita-icon-theme
       i3status-rust
     ];
   };

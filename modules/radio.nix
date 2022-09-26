@@ -6,7 +6,7 @@
     gqrx
     cubicsdr
 
-    libusb
+    libusb1
     rtl-sdr
     hackrf
     soapyhackrf
