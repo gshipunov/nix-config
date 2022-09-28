@@ -17,13 +17,13 @@
     traceroute
     tcpdump
     tree
-    liquidprompt
     (aspellWithDicts (ps: with ps; [ en en-science en-computers ru de ]))
     exfatprogs
     nmap
     bind
     nnn
     man-pages
+    wlsunset
   ];
 
   nix = {
@@ -70,7 +70,7 @@
       bindkey -e
     '';
     promptInit = ''
-      source /run/current-system/sw/share/zsh/plugins/liquidprompt/liquidprompt
+      source ${pkgs.liquidprompt}/share/zsh/plugins/liquidprompt/liquidprompt
     '';
   };
 
@@ -79,6 +79,9 @@
       LP_ENABLE_SSH_COLORS=1
       LP_ENABLE_TITLE=1
       LP_ENABLE_SCREEN_TITLE=1
+      LP_ENABLE_TEMP=0
+      LP_ENABLE_SVN=0
+      LP_SSH_COLORS=1
     '';
   };
 

@@ -1,4 +1,4 @@
-{ lib, fetchFromGitHub, rustPlatform }:
+{ stdenv, lib, openssl, pkgconfig, fetchFromGitHub, rustPlatform }:
 
 rustPlatform.buildRustPackage rec {
   pname = "slick";
@@ -8,10 +8,13 @@ rustPlatform.buildRustPackage rec {
     owner = "nbari";
     repo = pname;
     rev = version;
-    sha256 = "033ecd2696bfd59fd959eb95f66875a45e5aec54";
+    sha256 = "sha256-GM9OHnySc3RVkfaK7yMf1LqpGdz3emq2H/3tSAph4jw=";
   };
 
-  cargoSha256 = lib.fakeSha256;
+  buildInputs = [ openssl pkgconfig ];
+  nativeBuildInputs = [ pkgconfig ];
+
+  cargoSha256 = "sha256-2WxFprq+AcXGXDMjMQvqKTkeWQEWM/z2Fz6qYPtSFGw=";
 
   meta = with lib; {
     description = "Async ZSH prompt";
