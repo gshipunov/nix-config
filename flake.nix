@@ -20,6 +20,12 @@
       url = github:nix-community/fenix;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    emacs-overlay = {
+      url = github:nix-community/emacs-overlay;
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs =
@@ -27,6 +33,7 @@
     , nixpkgs
     , nixpkgs-unstable
     , flake-utils
+    , emacs-overlay
     , sops-nix
     , microvm
     , fenix
@@ -56,6 +63,7 @@
             ./hosts/microwave
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
+            ./modules/emacs.nix
             ./modules/gnupg.nix
             ./modules/graphical.nix
             ./modules/hw-accel-intel.nix
@@ -68,6 +76,7 @@
               nixpkgs.overlays = [
                 fenix.overlay
                 self.overlays.default
+                emacs-overlay.overlay
               ];
               environment.systemPackages = with pkgs; [
                 (fenix.packages."x86_64-linux".stable.withComponents [
