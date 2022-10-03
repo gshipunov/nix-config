@@ -24,6 +24,7 @@
     nnn
     man-pages
     wlsunset
+    screen
   ];
 
   nix = {
@@ -87,4 +88,14 @@
 
   programs.iftop.enable = true;
   programs.mosh.enable = true;
+
+  programs.screen.screenrc = ''
+    defscrollback 10000
+
+    startup_message off
+
+    hardstatus on
+    hardstatus alwayslastline
+    hardstatus string "%w"
+  '';
 }
