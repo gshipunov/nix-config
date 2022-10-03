@@ -63,7 +63,7 @@
             ./hosts/microwave
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
-            ./modules/emacs.nix
+            ./modules/devtools.nix
             ./modules/gnupg.nix
             ./modules/graphical.nix
             ./modules/hw-accel-intel.nix
@@ -72,23 +72,6 @@
             ./modules/science.nix
             ./modules/tlp.nix
             ./modules/virtualization.nix
-            ({ pkgs, ... }: {
-              nixpkgs.overlays = [
-                fenix.overlay
-                self.overlays.default
-                emacs-overlay.overlay
-              ];
-              environment.systemPackages = with pkgs; [
-                (fenix.packages."x86_64-linux".stable.withComponents [
-                  "cargo"
-                  "clippy"
-                  "rust-src"
-                  "rustc"
-                  "rustfmt"
-                ])
-                rust-analyzer-nightly
-              ];
-            })
           ];
         };
         cirrus = nixpkgs.lib.nixosSystem {
