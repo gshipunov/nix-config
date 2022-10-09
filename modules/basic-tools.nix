@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -25,6 +25,7 @@
     man-pages
     wlsunset
     screen
+    pcmanfm
   ];
 
   nix = {
@@ -32,6 +33,13 @@
       experimental-features = nix-command flakes
     '';
   };
+
+  # override default nix shell nixpkgs# behaviour to use current flake lock
+  nix.registry =
+    let flakes = lib.filterAttrs (name: value: value ? outputs) inputs.self.inputs;
+    in builtins.mapAttrs (name: v: { flake = v; }) flakes;
+
+  nix.nixPath = lib.mapAttrsToList (name: value: "${name}=${value.outPath}") inputs.self.inputs;
 
 
   programs.tmux = {
@@ -69,6 +77,9 @@
     syntaxHighlighting.enable = true;
     interactiveShellInit = ''
       bindkey -e
+      export HISTFILE="$HOME/.zsh_history"
+      export HISTSIZE=10000000
+      export SAVEHIST=10000000
     '';
     promptInit = ''
       source ${pkgs.liquidprompt}/share/zsh/plugins/liquidprompt/liquidprompt
