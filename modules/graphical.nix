@@ -58,8 +58,8 @@
     allowBitmaps = true;
     useEmbeddedBitmaps = true;
     defaultFonts.emoji = [
-      "Twitter Color Emoji"
       "Noto Color Emoji"
+      "Twitter Color Emoji"
     ];
   };
 
