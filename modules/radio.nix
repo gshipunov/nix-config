@@ -10,6 +10,10 @@
     rtl-sdr
     hackrf
     soapyhackrf
+
+    sigdigger
+    suscan
+    sigutils
   ];
 
   hardware = {
