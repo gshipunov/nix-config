@@ -13,6 +13,7 @@
     (inputs.fenix.packages."x86_64-linux".stable.toolchain)
     # nix
     rnix-lsp
+    nixpkgs-fmt
   ];
 
   ## direnv
