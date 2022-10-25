@@ -20,16 +20,19 @@
       url = github:nix-community/fenix;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    emacs-overlay.url = github:nix-community/emacs-overlay;
   };
 
   outputs =
     inputs@{ self
+    , emacs-overlay
+    , fenix
+    , flake-utils
+    , microvm
     , nixpkgs
     , nixpkgs-unstable
-    , flake-utils
     , sops-nix
-    , microvm
-    , fenix
     , ...
     }:
 
@@ -57,6 +60,7 @@
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
             ./modules/devtools.nix
+            ./modules/emacs.nix
             ./modules/gnupg.nix
             ./modules/graphical.nix
             ./modules/hw-accel-intel.nix

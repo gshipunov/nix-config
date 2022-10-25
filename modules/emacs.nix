@@ -1,8 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
     direnv
+  ];
+
+  nixpkgs.overlays = [
+    inputs.emacs-overlay.overlay
   ];
 
   programs.zsh.shellInit = ''
