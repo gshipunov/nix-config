@@ -43,6 +43,7 @@
       in
       {
         packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
+        packages.imhex = pkgs.callPackage "${self}/pkgs/imhex.nix" { };
       })
     //
     {

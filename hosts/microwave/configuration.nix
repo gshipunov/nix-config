@@ -15,7 +15,7 @@
     tdesktop
     signal-desktop
     cubicsdr
-    #kicad
+    kicad
     gimp
     inkscape
   ];
