@@ -25,7 +25,6 @@
     man-pages
     wlsunset
     screen
-    pcmanfm
   ];
 
   nix = {
