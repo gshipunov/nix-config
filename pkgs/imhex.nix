@@ -1,4 +1,4 @@
-{ stdenv, lib, cmake, openssl, pkgconfig, wrapQtAppsHook, fetchFromGithub }: {
+{ stdenv, lib, cmake, openssl, pkgconfig, wrapQtAppsHook, fetchFromGithub }:
   stdenv.mkDerivation rec {
     pname = "imhex";
     version = "1.24.3";
@@ -9,9 +9,8 @@
       rev = "v${version}";
       sha256 = lib.fakeSha256;
     };
-  };
 
-  nariveBuildInputs = [
+  nativeBuildInputs = [
     cmake
   ];
-}
+  }

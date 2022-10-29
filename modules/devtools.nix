@@ -14,7 +14,14 @@
     # nix
     rnix-lsp
     nixpkgs-fmt
+    # julia
+    julia-bin
   ];
+
+  ## Julia
+  environment.variables = {
+    JULIA_NUM_THREADS = "8";
+  };
 
   ## direnv
   programs.bash.interactiveShellInit = ''

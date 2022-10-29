@@ -60,10 +60,11 @@
             ./hosts/microwave
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
+            ./modules/chromium.nix
             ./modules/devtools.nix
             ./modules/emacs.nix
             ./modules/gnupg.nix
-            ./modules/graphical.nix
+            ./modules/gnome.nix
             ./modules/hw-accel-intel.nix
             ./modules/mail
             ./modules/radio.nix

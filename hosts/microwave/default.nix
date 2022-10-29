@@ -3,7 +3,7 @@
     ./configuration.nix
     ./hardware-configuration.nix
 
-    ./network.nix
+    ./stateful-networking.nix
     ./secrets.nix
   ];
 }
