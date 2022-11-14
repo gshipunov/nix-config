@@ -73,7 +73,6 @@
       "plugdev"
       "dialout"
       "bluetooth"
-      "networkmanager"
     ];
     group = "users";
     home = "/home/grue";
@@ -85,7 +84,13 @@
     enable = true;
     package = pkgs.wireshark;
   };
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "Europe/Amsterdam";
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [ "all" ];
+    #supportedLocales = [ "en_US.UTF-8/UTF-8" "nl_NL.UTF-8/UTF-8" "ru_RU.UTF-8/UTF-8" ];
+  };
 
 
   programs.steam.enable = true;

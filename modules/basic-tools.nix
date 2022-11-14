@@ -12,6 +12,7 @@
     irssi
     killall
     neovim
+    nvimpager
     ripgrep
     tealdeer
     traceroute
@@ -53,7 +54,7 @@
   # set appropriate environ variables
   environment.variables = {
     EDITOR = "nvim";
-    PAGER = "less -F";
+    PAGER = "nvimpager";
   };
 
   environment.shellAliases = {

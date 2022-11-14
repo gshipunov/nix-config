@@ -2,8 +2,7 @@
   imports = [
     ./configuration.nix
     ./hardware-configuration.nix
-
-    ./stateful-networking.nix
+    ./network.nix
     ./secrets.nix
   ];
 }

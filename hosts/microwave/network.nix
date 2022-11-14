@@ -6,6 +6,7 @@
     hostName = "microwave"; # Define your hostname.
     hostId = "7da4f1e6";
     firewall.enable = true;
+    networkmanager.enable = false;
     useNetworkd = true;
     wireguard.enable = true;
     wireless.iwd = {
