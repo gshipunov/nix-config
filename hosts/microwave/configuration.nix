@@ -18,7 +18,6 @@
     kicad
     gimp
     inkscape
-    #(xfce.thunar.override { thunarPlugins = with xfce; [ thunar-volman thunar-archive-plugin ];})
   ];
 
 
