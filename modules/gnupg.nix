@@ -5,7 +5,7 @@
     gnupg
     opensc
 
-    yubioath-desktop
+    yubikey-personalization-gui
   ];
 
   # smartcard support

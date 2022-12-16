@@ -10,6 +10,7 @@ in
     notmuch
     pass
     w3m
+    links2
   ];
 
   sops.secrets = {

@@ -18,6 +18,7 @@
     kicad
     gimp
     inkscape
+    fractal-next
   ];
 
 
