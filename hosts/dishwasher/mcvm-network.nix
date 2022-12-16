@@ -45,7 +45,7 @@
   networking.nat = {
     enable = true;
     enableIPv6 = true;
-    externalInterface = "enp1s0";
+    externalInterface = "wlan0";
     internalInterfaces = [ "microvm-bridge" ];
   };
 

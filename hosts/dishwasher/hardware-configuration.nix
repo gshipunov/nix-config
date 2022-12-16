@@ -59,5 +59,7 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  networking.interfaces.wlan0.useDHCP = true;
+  networking.interfaces.enp1s0.useDHCP = true;
   services.logind.lidSwitch = "ignore";
 }

@@ -21,6 +21,7 @@
     hostName = "dishwasher"; # Define your hostname.
     useNetworkd = true;
     firewall.enable = true;
+    wireless.iwd.enable = true;
   };
 
   time.timeZone = "Europe/Amsterdam";
@@ -35,15 +36,22 @@
         Name = "enp1s0";
       };
       networkConfig = {
+        # DHCP = "yes";
+        # LinkLocalAddressing = "ipv6";
+        # IPv6AcceptRA = "yes";
+        Address = "10.1.1.50/24";
+      };
+      # dhcpV6Config = {
+      #   WithoutRA = "solicit";
+      # };
+      # ipv6AcceptRAConfig = {
+      #   DHCPv6Client = "yes";
+      # };
+    };
+    networks."aer" = {
+      matchConfig.name = "wlan0";
+      networkConfig = {
         DHCP = "yes";
-        LinkLocalAddressing = "ipv6";
-        IPv6AcceptRA = "yes";
-      };
-      dhcpV6Config = {
-        WithoutRA = "solicit";
-      };
-      ipv6AcceptRAConfig = {
-        DHCPv6Client = "yes";
       };
     };
   };
@@ -59,7 +67,7 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8" "nl_NL.UTF-8" "ru_RU.UTF-8" ];
+    supportedLocales = [ "all" ];
   };
 
   # List services that you want to enable:

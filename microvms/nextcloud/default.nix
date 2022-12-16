@@ -51,7 +51,7 @@
     enable = true;
     hostName = "nc.oxapentane.com";
     home = "/var/lib/nextcloud-oxa";
-    package = pkgs.nextcloud24;
+    package = pkgs.nextcloud25;
     maxUploadSize = "5000M";
     caching.redis = true;
     autoUpdateApps = {
@@ -69,6 +69,7 @@
       adminuser = "admin";
       adminpassFile = config.sops.secrets."nextcloud/adminpass".path;
     };
+    enableBrokenCiphersForSSE = false;
   };
 
   systemd.services."nextcloud-setup" = {

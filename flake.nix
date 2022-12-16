@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs-unstable.url = github:NixOS/nixpkgs/nixos-unstable;
 
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
+    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.11;
 
     flake-utils.url = github:numtide/flake-utils;
 
@@ -57,7 +57,7 @@
             ./hosts/microwave
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
-            ./modules/chromium.nix
+            # ./modules/chromium.nix
             ./modules/devtools.nix
             ./modules/gnupg.nix
             ./modules/sway.nix
