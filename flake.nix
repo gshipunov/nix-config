@@ -57,7 +57,7 @@
             ./hosts/microwave
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
-            # ./modules/chromium.nix
+            ./modules/chromium.nix
             ./modules/devtools.nix
             ./modules/gnupg.nix
             ./modules/sway.nix
