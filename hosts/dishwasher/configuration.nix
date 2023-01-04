@@ -26,10 +26,15 @@
 
   time.timeZone = "Europe/Amsterdam";
 
+  # fix wait-online target
+  systemd.services.systemd-networkd-wait-online.serviceConfig.ExecStart = [
+    "" # clear old command
+    "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"
+  ];
+
   systemd.network = {
 
     enable = true;
-    wait-online.ignoredInterfaces = [ "wlp2s0" ];
 
     networks."ether" = {
       matchConfig = {
