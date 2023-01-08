@@ -23,6 +23,9 @@ in
     "mail/dvb.solutions" = {
       owner = config.users.users.grue.name;
     };
+    "mail/tlm.solutions" = {
+      owner = config.users.users.grue.name;
+    };
   };
 
   programs.msmtp = {
@@ -57,6 +60,17 @@ in
       from dump@dvb.solutions
       user dump@dvb.solutions
       passwordeval cat ${config.sops.secrets."mail/dvb.solutions".path}
+      auth on
+      tls on
+      tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+      logfile ~/.msmtp.log
+
+      account grigory@tlm.solutions
+      host smtp.migadu.com
+      port 587
+      from grigory@tlm.solutions
+      user grigory@tlm.solutions
+      passwordeval cat ${config.sops.secrets."mail/tlm.solutions".path}
       auth on
       tls on
       tls_trust_file	/etc/ssl/certs/ca-certificates.crt

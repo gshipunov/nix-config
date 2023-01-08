@@ -72,3 +72,26 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
+IMAPStore grigory@tlm.solutions-remote
+Host imap.migadu.com
+Port 993
+User grigory@tlm.solutions
+PassCmd "cat /run/secrets/mail/tlm.solutions"
+AuthMechs LOGIN
+SSLType IMAPS
+
+MaildirStore grigory@tlm.solutions-local
+Subfolders Verbatim
+Path /home/grue/mail/grigory@tlm.solutions/
+Inbox /home/grue/mail/grigory@tlm.solutions/INBOX
+
+Channel grigory@tlm.solutions
+Expunge Both
+Master :grigory@tlm.solutions-remote:
+Slave :grigory@tlm.solutions-local:
+Create Both
+SyncState *
+Patterns *
+MaxMessages 0
+ExpireUnread no
+# End profile
