@@ -23,6 +23,7 @@
     nmap
     bind
     nnn
+    ranger
     man-pages
     wlsunset
     screen

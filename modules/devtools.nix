@@ -13,6 +13,7 @@
     (inputs.fenix.packages."x86_64-linux".complete.toolchain)
     # nix
     rnix-lsp
+    nil
     nixpkgs-fmt
     # julia
     julia-bin

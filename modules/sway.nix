@@ -10,6 +10,7 @@
     dino
     gajim
     imv
+    swayimg
     mpv
     zathura
     brightnessctl
