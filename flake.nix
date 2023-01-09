@@ -53,7 +53,14 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            sops-nix.nixosModules.sops
             ./hosts/toaster
+            ./modules/basic-tools.nix
+            ./modules/binary-caches.nix
+            ./modules/devtools.nix
+            ./modules/gnupg.nix
+            ./modules/sway.nix
+            ./modules/tlp.nix
           ];
         };
 

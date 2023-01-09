@@ -8,6 +8,8 @@
     screen-message
     qbittorrent
     dino
+    tdesktop
+    signal-desktop
     gajim
     imv
     swayimg
@@ -23,7 +25,7 @@
     foot
     qt5.qtwayland
     bashmount
-    (xfce.thunar.override { thunarPlugins = with xfce; [ thunar-volman thunar-archive-plugin ];})
+    (xfce.thunar.override { thunarPlugins = with xfce; [ thunar-volman thunar-archive-plugin ]; })
   ];
 
   #on the desktop, we need nice fonts ^^
