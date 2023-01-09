@@ -67,7 +67,6 @@
     createHome = true;
     extraGroups = [
       "wheel"
-      "wireshark"
       "video"
       "libvirtd"
       "plugdev"
@@ -80,10 +79,6 @@
     uid = 1000;
   };
 
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark;
-  };
   time.timeZone = "Europe/Amsterdam";
 
   i18n = {

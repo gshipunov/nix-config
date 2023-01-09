@@ -79,16 +79,11 @@
 
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
-            ./modules/chromium.nix
             ./modules/devtools.nix
             ./modules/gnupg.nix
             ./modules/sway.nix
             ./modules/hw-accel-intel.nix
-            ./modules/mail
-            ./modules/radio.nix
-            ./modules/science.nix
             ./modules/tlp.nix
-            ./modules/virtualization.nix
           ];
         };
 
