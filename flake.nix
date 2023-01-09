@@ -54,11 +54,16 @@
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
+
             ./hosts/toaster
+
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
             ./modules/devtools.nix
             ./modules/gnupg.nix
+            ./modules/mail
+            ./modules/radio.nix
+            ./modules/science.nix
             ./modules/sway.nix
             ./modules/tlp.nix
           ];
@@ -69,7 +74,9 @@
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
+
             ./hosts/microwave
+
             ./modules/basic-tools.nix
             ./modules/binary-caches.nix
             ./modules/chromium.nix

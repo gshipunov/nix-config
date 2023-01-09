@@ -11,7 +11,6 @@
       ];
     })
     gnuplot
-    graphicsmagick
     zotero
     python3Full
   ];

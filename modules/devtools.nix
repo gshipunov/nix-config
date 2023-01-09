@@ -17,7 +17,16 @@
     nixpkgs-fmt
     # julia
     julia-bin
+    # hardware
+    kicad
   ];
+
+  # Wireshark
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
+  users.users.grue.extraGroups = [ "wireshark" ];
 
   ## Julia
   environment.variables = {

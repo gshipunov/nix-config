@@ -111,6 +111,7 @@
     extraPackages = with pkgs; [
       pamixer
       swaylock
+      graphicsmagick
       swayidle
       wl-clipboard
       mako
