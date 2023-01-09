@@ -1,8 +1,10 @@
 { ... }: {
   imports = [
     ./hardware-configuration.nix
-    ./zfs.nix
+    ./network-vpns.nix
     ./network.nix
+    ./secrets.nix
+    ./zfs.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -10,6 +12,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  hardware.enableAllFirmware = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
