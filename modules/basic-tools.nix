@@ -94,6 +94,7 @@
       LP_ENABLE_SCREEN_TITLE=1
       LP_ENABLE_TEMP=0
       LP_ENABLE_SVN=0
+      LP_BATTERY_THRESHOLD=15
       LP_SSH_COLORS=1
     '';
   };

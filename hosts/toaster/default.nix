@@ -1,5 +1,6 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
+    ./amd.nix
     ./hardware-configuration.nix
     ./network-vpns.nix
     ./network.nix
@@ -8,6 +9,9 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = with pkgs; [
+    yt-dlp
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

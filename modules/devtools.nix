@@ -10,11 +10,12 @@
     direnv
     (nix-direnv.override { enableFlakes = true; })
     # rust
-    (inputs.fenix.packages."x86_64-linux".complete.toolchain)
+    (inputs.fenix.packages."x86_64-linux".stable.toolchain)
     # nix
     rnix-lsp
     nil
     nixpkgs-fmt
+    nix-index
     # julia
     julia-bin
     # hardware
