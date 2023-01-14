@@ -34,6 +34,7 @@
         add_header X-Permitted-Cross-Domain-Policies    "none"          always;
         add_header X-Robots-Tag                         "none"          always;
         add_header X-XSS-Protection                     "1; mode=block" always;
+        add_header Strict-Transport-Security            "max-age=31536000; includeSubDomains" always;
 
         # Remove X-Powered-By, which is an information leak
         fastcgi_hide_header X-Powered-By;
