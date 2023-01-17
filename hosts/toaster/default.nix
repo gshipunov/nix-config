@@ -10,6 +10,7 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    audacity
     yt-dlp
   ];
 
@@ -17,6 +18,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   hardware.enableAllFirmware = true;
+
+  # update the firmware
+  services.fwupd.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
