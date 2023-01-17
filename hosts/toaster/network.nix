@@ -46,7 +46,8 @@
       };
     };
     networks."10-wlan-bond" = {
-      matchConfig.MACAddress = "04:7b:cb:2a:aa:8c";
+      # matchConfig.MACAddress = "04:7b:cb:2a:aa:8c";
+      matchConfig.Name = "wlan0";
       networkConfig = {
         Bond = "james";
       };

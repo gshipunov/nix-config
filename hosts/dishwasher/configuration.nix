@@ -54,7 +54,7 @@
       # };
     };
     networks."aer" = {
-      matchConfig.name = "wlan0";
+      matchConfig.Name = "wlan0";
       networkConfig = {
         DHCP = "yes";
       };
