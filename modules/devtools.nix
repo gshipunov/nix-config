@@ -17,7 +17,7 @@
     nixpkgs-fmt
     nix-index
     # julia
-    julia-bin
+    julia
     # hardware
     kicad
   ];
