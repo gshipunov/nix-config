@@ -51,26 +51,6 @@
         "type": "github"
       }
     },
-    "funkwhale": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1660676854,
-        "narHash": "sha256-rEYCqRxIHBNtbFkGCllq7n3YSGuf7A+VzeUpsH0b3Ac=",
-        "owner": "oxapentane",
-        "repo": "funkwhale-flake",
-        "rev": "bda0049875ed662fa52c6beaa8f54d048ee448c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxapentane",
-        "repo": "funkwhale-flake",
-        "type": "github"
-      }
-    },
     "microvm": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -144,7 +124,6 @@
       "inputs": {
         "fenix": "fenix",
         "flake-utils": "flake-utils",
-        "funkwhale": "funkwhale",
         "microvm": "microvm",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
