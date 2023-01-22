@@ -13,14 +13,6 @@
     audacity
     yt-dlp
   ];
-  # integrate fzf into shell, >23.05 only
-  # to be moved to basic tools at some point
-  programs = {
-    fzf = {
-      keybindings = true;
-      fuzzyCompletion = true;
-    };
-  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

@@ -57,7 +57,7 @@
 
             ./hosts/toaster
 
-            ./modules/basic-tools.nix
+            ./modules/basic-tools
             ./modules/binary-caches.nix
             ./modules/devtools.nix
             ./modules/gnupg.nix
@@ -77,7 +77,7 @@
 
             ./hosts/microwave
 
-            ./modules/basic-tools.nix
+            ./modules/basic-tools
             ./modules/binary-caches.nix
             ./modules/devtools.nix
             ./modules/gnupg.nix
@@ -93,7 +93,7 @@
           modules = [
             sops-nix.nixosModules.sops
             ./hosts/cirrus
-            ./modules/basic-tools.nix
+            ./modules/basic-tools
           ];
         };
 
@@ -104,7 +104,7 @@
             sops-nix.nixosModules.sops
             microvm.nixosModules.host
             ./hosts/dishwasher
-            ./modules/basic-tools.nix
+            ./modules/basic-tools
             ./modules/binary-caches.nix
 
             {

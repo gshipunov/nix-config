@@ -1,6 +1,10 @@
 { lib, config, pkgs, inputs, ... }:
 
 {
+  imports = [
+    ./fzf.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     bat
     fd
