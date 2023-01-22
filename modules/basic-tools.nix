@@ -80,6 +80,8 @@
       export HISTFILE="$HOME/.zsh_history"
       export HISTSIZE=10000000
       export SAVEHIST=10000000
+      # allow comments
+      setopt interactivecomments
     '';
     promptInit = ''
       source ${pkgs.liquidprompt}/share/zsh/plugins/liquidprompt/liquidprompt
@@ -96,6 +98,11 @@
       LP_BATTERY_THRESHOLD=15
       LP_SSH_COLORS=1
     '';
+  };
+  # integrate fzf into shell
+  programs.fzf = {
+    keybindings = true;
+    fuzzyCompletion = true;
   };
 
   programs.iftop.enable = true;

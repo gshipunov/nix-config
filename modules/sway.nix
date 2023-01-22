@@ -132,10 +132,14 @@
 
   services.udisks2.enable = true;
   environment.shellAliases = {
+    # mounting shit
     mnt = "udisksctl mount -b";
     umnt = "udisksctl unmount -b";
     unlock = "udisksctl unlock -b";
     lock = "udisksctl lock -b";
+    # easier navigation
+    pwc = "pwd|wl-copy";
+    cdp = "cd $(wl-paste)";
   };
 
   qt = {
