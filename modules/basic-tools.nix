@@ -99,11 +99,6 @@
       LP_SSH_COLORS=1
     '';
   };
-  # integrate fzf into shell
-  programs.fzf = {
-    keybindings = true;
-    fuzzyCompletion = true;
-  };
 
   programs.iftop.enable = true;
   programs.mosh.enable = true;
