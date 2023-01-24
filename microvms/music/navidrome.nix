@@ -5,7 +5,7 @@
     settings = {
       BaseUrl = "/";
       EnableExternalServices = false;
-      MusicFolder = "/var/lib/navidrome/library";
+      MusicFolder = "/var/lib/music";
       Port = 4533;
       ScanSchedule = "@every 17min";
       TranscondigCacheSize = "5GiB";
