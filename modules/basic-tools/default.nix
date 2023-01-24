@@ -58,7 +58,8 @@
   # set appropriate environ variables
   environment.variables = {
     EDITOR = "nvim";
-    PAGER = "less -F";
+    PAGER = "less";
+    LESS = "-X -R -F";
   };
 
   environment.shellAliases = {
@@ -72,6 +73,8 @@
     vff = "$EDITOR $(ls|fzf)";
     mutt = "neomutt";
     grep = "grep --color=auto";
+    nix-build="${pkgs.nix-output-monitor}/bin/nom-build";
+    nix-shell="${pkgs.nix-output-monitor}/bin/nom-shell";
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -86,6 +89,19 @@
       export SAVEHIST=10000000
       # allow comments
       setopt interactivecomments
+
+      # hacky wrapper for nix, so we can use nom automagically
+      export _nom_cmd=${pkgs.nix-output-monitor}/bin/nom
+      function nix {
+          case $1 in
+              build|shell|develop)
+                  echo \[SUBSTITUTION\] ''$_nom_cmd ''${@:1} 1>&2
+                  ''$_nom_cmd ''${@:1}
+                  ;;
+              *)
+                  ${pkgs.nix}/bin/nix $@
+          esac
+      }
     '';
     promptInit = ''
       source ${pkgs.liquidprompt}/share/zsh/plugins/liquidprompt/liquidprompt
