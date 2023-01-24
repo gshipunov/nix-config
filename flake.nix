@@ -106,13 +106,6 @@
             ./hosts/dishwasher
             ./modules/basic-tools
             ./modules/binary-caches.nix
-
-            {
-              microvm.vms.nextcloud = {
-                flake = self;
-                updateFlake = "github:oxapentane/nix-config/master";
-              };
-            }
           ];
         };
 
@@ -123,6 +116,16 @@
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
             ./microvms/nextcloud
+          ];
+        };
+
+        music = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            sops-nix.nixosModules.sops
+            microvm.nixosModules.microvm
+            ./microvms/music
           ];
         };
       };

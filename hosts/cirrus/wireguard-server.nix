@@ -66,6 +66,14 @@
             PersistentKeepalive = 25;
           };
         }
+        # music
+        {
+          wireguardPeerConfig = {
+            PublicKey = "vQNkp51S9qLsu97dLPj0/EqFwvVtRFZpMHufgKhxum0=";
+            AllowedIPs = [ "10.34.45.101/32" ];
+            PersistentKeepalive = 25;
+          };
+        }
       ];
     };
     networks."oxaproxy" = {
