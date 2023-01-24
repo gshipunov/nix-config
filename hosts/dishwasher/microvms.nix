@@ -6,7 +6,7 @@
     };
     music = {
       flake = flake;
-      updateFlake = "github:oxapentane/nix-config/navidrome";
+      updateFlake = "github:oxapentane/nix-config/master";
     };
   };
 }
