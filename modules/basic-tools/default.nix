@@ -84,6 +84,7 @@
       export HISTFILE="$HOME/.zsh_history"
       export HISTSIZE=10000000
       export SAVEHIST=10000000
+      setopt HIST_IGNORE_ALL_DUPS
       # allow comments
       setopt interactivecomments
 
