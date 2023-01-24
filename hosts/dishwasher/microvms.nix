@@ -1,11 +1,11 @@
-{ self, ... }: {
+{ flake, ... }: {
   microvm.vms = {
     nextcloud = {
-      flake = self;
+      flake = flake;
       updateFlake = "github:oxapentane/nix-config/master";
     };
     music = {
-      flake = self;
+      flake = flake;
       updateFlake = "github:oxapentane/nix-config/navidrome";
     };
   };

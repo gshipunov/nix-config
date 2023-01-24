@@ -100,6 +100,7 @@
         dishwasher = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
+          extraArgs = { flake = self; };
           modules = [
             sops-nix.nixosModules.sops
             microvm.nixosModules.host
