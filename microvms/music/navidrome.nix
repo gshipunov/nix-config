@@ -7,7 +7,7 @@
       EnableExternalServices = false;
       MusicFolder = "/var/lib/music";
       Port = 4533;
-      ScanSchedule = "@every 17min";
+      ScanSchedule = "@every 11m";
       TranscondigCacheSize = "5GiB";
     };
   };
