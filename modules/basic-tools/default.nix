@@ -9,7 +9,6 @@
     bat
     fd
     file
-    fzf
     git
     gnupg
     htop
@@ -69,8 +68,6 @@
     ll = "ls -lah";
     lt = "ls --tree";
     vim = "nvim";
-    vf = "$EDITOR $(fzf)";
-    vff = "$EDITOR $(ls|fzf)";
     mutt = "neomutt";
     grep = "grep --color=auto";
     nix-build="${pkgs.nix-output-monitor}/bin/nom-build";
