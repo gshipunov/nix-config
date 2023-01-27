@@ -40,7 +40,7 @@
       in
       {
         packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
-        packages.imhex = pkgs.callPackage "${self}/pkgs/imhex.nix" { };
+        packages.imhex = pkgs.libsForQt5.callPackage "${self}/pkgs/imhex.nix" { };
       })
     //
     {
@@ -48,6 +48,7 @@
         inherit (self.packages.${prev.system})
           slick;
       };
+
       nixosConfigurations = {
         toaster = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
