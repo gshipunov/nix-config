@@ -2,6 +2,7 @@
   imports = [
     ./navidrome.nix
     ./oxaproxy.nix
+    ./upload-user.nix
   ];
 
   microvm = {
