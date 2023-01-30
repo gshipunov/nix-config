@@ -1,6 +1,10 @@
 { config, ... }: {
+  security.sudo.wheelNeedsPassword = false;
+
   users.users.caretaker = {
     isNormalUser = true;
+    home = "/home/caretaker";
+    createHome = true;
     extraGroups = [
       "wheel"
       "navidrome"

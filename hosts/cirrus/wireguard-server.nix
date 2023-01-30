@@ -13,6 +13,7 @@
     # port-forward ssh to the music machine
     extraCommands = ''
       iptables -t nat -I PREROUTING -p tcp --dport 2020 -j DNAT --to-destination 10.34.45.101:22
+      iptables -t nat -A POSTROUTING -j MASQUERADE
     '';
     extraStopCommands = ''
       iptables -t nat -D PREROUTING -p tcp --dport 2020 -j DNAT --to-destination 10.34.45.101:22 || true
