@@ -1,7 +1,27 @@
 { config, ... }:
 {
-  networking.firewall.allowedUDPPorts = [ 51820 51821 ];
+  networking.firewall = {
+    allowedUDPPorts = [
+      # wireguards
+      51820
+      51821
+    ];
+    allowedTCPPorts = [
+      # port forward ssh to music
+      2020
+    ];
+    # port-forward ssh to the music machine
+    extraCommands = ''
+      iptables -t nat -I PREROUTING -p tcp --dport 2020 -j DNAT --to-destination 10.34.45.101:22
+    '';
+    extraStopCommands = ''
+      iptables -t nat -D PREROUTING -p tcp --dport 2020 -j DNAT --to-destination 10.34.45.101:22 || true
+    '';
+  };
+
+
   networking.wireguard.enable = true;
+
   systemd.network = {
     # oxalab
     netdevs."oxalab" = {
