@@ -2,6 +2,7 @@
   imports = [
     ./amd.nix
     ./hardware-configuration.nix
+    ./irc.nix
     ./network-vpns.nix
     ./network.nix
     ./secrets.nix
