@@ -1,25 +1,46 @@
 { pkgs, config, ... }: {
-  containers.irc = {
-    autoStart = true;
-    privateNetwork = true;
-    localAddress = "10.34.44.100/24";
+  services.nginx = {
+    # reverse-proxy irc traffic on 7000
+    streamConfig = ''
+      upstream soju {
+        server 127.0.0.1:6667;
+      }
 
-    config = { config, pkgs, ... }: {
-      services.soju = {
-        hostname = "mr_bouncy.oxapentane.com";
-        enable = true;
-        enableMessageLogging = true;
-        acceptProxyIP = [
-          "192.168.100.1"
-        ];
+      server {
+        listen 7000 ssl;
+        listen [::]:7000 ssl;
+
+        ssl_certificate /var/lib/acme/mrbouncy.oxapentane.com/fullchain.pem;
+        ssl_certificate_key /var/lib/acme/mrbouncy.oxapentane.com/key.pem;
+        ssl_trusted_certificate /var/lib/acme/mrbouncy.oxapentane.com/chain.pem;
+
+        proxy_pass soju;
+      }
+    '';
+    # just here to get the cert for irc reverse proxy
+    virtualHosts = {
+      "mrbouncy.oxapentane.com" = {
+        enableACME = true;
+        forceSSL = true;
+        locations = {
+          "/" = {
+            # no content for now, here just for no-boilerplate cert
+            return = "204";
+          };
+        };
       };
-
-      networking.firewall = {
-        enable = true;
-        allowedTCPPorts = [ 6697 22 ];
-      };
-
-      system.stateVersion = "22.11";
     };
   };
+
+  services.soju = {
+    hostName = "mrbouncy.oxapentane.com";
+    listen = [ "irc+insecure://127.0.0.1:6667" ];
+    enable = true;
+    enableMessageLogging = true;
+    acceptProxyIP = [ "localhost" ];
+  };
+
+  environment.systemPackages = [ pkgs.soju ]; # expose soju mgmt commands
+
+  networking.firewall.allowedTCPPorts = [ 7000 ];
 }
