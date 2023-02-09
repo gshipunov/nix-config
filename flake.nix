@@ -44,7 +44,7 @@
       })
     //
     {
-      overlays.default = final: prev: {
+      overlays.default = _final: prev: {
         inherit (self.packages.${prev.system})
           slick;
       };
