@@ -9,6 +9,7 @@
     clang-tools
     direnv
     (nix-direnv.override { enableFlakes = true; })
+    sops
     # rust
     (inputs.fenix.packages."x86_64-linux".stable.toolchain)
     # nix
