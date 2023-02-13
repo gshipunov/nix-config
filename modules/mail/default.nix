@@ -8,7 +8,6 @@ in
     msmtp
     neomutt
     notmuch
-    pass
     w3m
     links2
   ];
@@ -81,6 +80,7 @@ in
 
   systemd.user = {
 
+    # Service and timer to sync imap to local maildir
     services.mbsync = {
       enable = true;
       after = [ "graphical.target" "network-online.target" ];
@@ -99,6 +99,28 @@ in
         Unit = "mbsync.service";
         OnBootSec = "5m";
         OnUnitInactiveSec = "11m";
+      };
+    };
+
+    # service and timer to flush the msmtp queue
+    services.flush-msmtpq = {
+      enable = true;
+      after = [ "graphical.target" "network-online.target" ];
+      script = ''
+        ${pkgs.msmtp}/bin/msmtp-queue -r
+      '';
+      serviceConfig = {
+        Type = "oneshot";
+      };
+    };
+
+    timers.flush-msmtpq = {
+      enable = true;
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        Unit = "flush-msmtpq.service";
+        OnBootSec = "11m";
+        OnUnitInactiveSec = "13m";
       };
     };
 
