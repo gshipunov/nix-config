@@ -23,7 +23,7 @@
       matchConfig = { Name = "enp1s0"; };
       networkConfig = {
         Address = "95.216.166.21/32";
-        DNS = "1.1.1.1";
+        DNS = "9.9.9.9";
       };
       routes = [
         {

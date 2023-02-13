@@ -13,6 +13,12 @@
   services.resolved = {
     enable = true;
     dnssec = "allow-downgrade";
+    fallbackDns = [
+      "9.9.9.9"
+      "2620:fe::fe"
+      "149.112.112.112"
+      "2620:fe::9"
+    ];
   };
 
   # workaround for networkd waiting for shit
