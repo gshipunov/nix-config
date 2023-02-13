@@ -10,10 +10,6 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
-    audacity
-    yt-dlp
-  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

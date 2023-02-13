@@ -26,6 +26,10 @@
     qt5.qtwayland
     bashmount
     (xfce.thunar.override { thunarPlugins = with xfce; [ thunar-volman thunar-archive-plugin ]; })
+    audacity
+    yt-dlp
+    tor-browser-bundle-bin
+    ffmpeg-full
   ];
 
   #on the desktop, we need nice fonts ^^
@@ -121,6 +125,7 @@
       slurp
       gnome.adwaita-icon-theme
       i3status-rust
+      wlsunset
     ];
   };
   environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; };

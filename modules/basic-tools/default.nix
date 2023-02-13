@@ -27,8 +27,10 @@
     nnn
     ranger
     man-pages
-    wlsunset
     screen
+    unzip
+    usbutils
+    pciutils
   ];
 
   nix = {
