@@ -107,7 +107,6 @@
             ./hosts/dishwasher
             ./modules/basic-tools
             ./modules/binary-caches.nix
-	        { config._module.args = { flake = self; }; }
           ];
         };
 
