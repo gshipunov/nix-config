@@ -12,25 +12,4 @@
     in builtins.mapAttrs (_name: v: { flake = v; }) flakes;
 
   nix.nixPath = lib.mapAttrsToList (name: value: "${name}=${value.outPath}") inputs.self.inputs;
-
-  environment.shellAliases = {
-    nix-build="${pkgs.nix-output-monitor}/bin/nom-build";
-    nix-shell="${pkgs.nix-output-monitor}/bin/nom-shell";
-  };
-
-  programs.zsh.interactiveShellInit = ''
-      # hacky wrapper for nix, so we can use nom automagically
-      export _nom_cmd=${pkgs.nix-output-monitor}/bin/nom
-      function nix {
-          case $1 in
-              build|shell|develop)
-                  echo \[SUBSTITUTION\] ''$_nom_cmd ''${@:1} 1>&2
-                  ''$_nom_cmd ''${@:1}
-                  ;;
-              *)
-                  ${pkgs.nix}/bin/nix $@
-          esac
-      }
-      compdef nix=_nix
-  '';
 }
