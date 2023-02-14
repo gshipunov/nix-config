@@ -113,6 +113,7 @@
       export QT_STYLE_OVERRIDE="adwaita-dark"
     '';
     extraPackages = with pkgs; [
+      alacritty
       pamixer
       swaylock
       graphicsmagick

@@ -9,13 +9,16 @@
     extraConfig = ''
       # all the colors we can get
       set-option -g default-terminal "tmux-256color"
-      set-option -ga terminal-overrides ",foot*:Tc"
 
       # emacs keys in status
       set -g status-keys emacs
 
       # set focus events
       set-option -g focus-events on
+
+      # curlies
+      set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+      set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
 
       # title
       set -g set-titles on
