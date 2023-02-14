@@ -20,6 +20,11 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    tmux-yank = {
+      url = "github:tmux-plugins/tmux-yank";
+      flake = false;
+    };
   };
 
   outputs =

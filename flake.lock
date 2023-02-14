@@ -127,7 +127,8 @@
         "microvm": "microvm",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "tmux-yank": "tmux-yank"
       }
     },
     "rust-analyzer-src": {
@@ -165,6 +166,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "tmux-yank": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1601619684,
+        "narHash": "sha256-hRvkBf+YrWycecnDixAsD4CAHg3KsioomfJ/nLl5Zgs=",
+        "owner": "tmux-plugins",
+        "repo": "tmux-yank",
+        "rev": "1b1a436e19f095ae8f825243dbe29800a8acd25c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tmux-plugins",
+        "repo": "tmux-yank",
         "type": "github"
       }
     }

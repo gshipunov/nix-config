@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -6,6 +6,54 @@
     historyLimit = 500000;
     aggressiveResize = true;
     terminal = "tmux-256color";
+    extraConfig = ''
+      # all the colors we can get
+      set-option -g default-terminal "tmux-256color"
+      set-option -ga terminal-overrides ",foot*:Tc"
+
+      # emacs keys in status
+      set -g status-keys emacs
+
+      # set focus events
+      set-option -g focus-events on
+
+      # title
+      set -g set-titles on
+      set -g set-titles-string "#T"
+
+      # mouse
+      set -g mouse on
+
+      # theming
+      #  modes
+      setw -g clock-mode-colour white
+
+      # panes
+      set -g pane-border-style 'fg=colour244'
+      set -g pane-active-border-style 'fg=colour03'
+
+      #bind b break-pane -d
+
+      # statusbar
+      set -g status-position bottom
+      set -g status-justify left
+      set -g status-style 'bg=default fg=colour15'
+      set -g status-right '[#S][@#H][%H:%M][%Y-%m-%d]'
+      set -g status-left '(^_^)'
+      #set -g status-right-length 50
+      set -g status-left-length 40
+      setw -g window-status-current-style 'fg=brightgreen bg=default bold'
+      setw -g window-status-current-format ' #I#[fg=colour15]:#W#[fg=brightgreen]#F '
+      setw -g window-status-style 'fg=gray bg=default'
+      setw -g window-status-format ' #I#[fg=colour15]:#W#[fg=gray bold]#F '
+      setw -g window-status-bell-style 'fg=colour255 bg=colour1 bold'
+
+      # messages
+      set -g message-style 'fg=black bg=white bold'
+
+      # copy to clipboard support
+      run-shell ${inputs.self.inputs.tmux-yank}/yank.tmux
+    '';
   };
 
   programs.zsh.interactiveShellInit = ''
