@@ -12,6 +12,10 @@ in
     links2
   ];
 
+  environment.shellAliases = {
+    mutt = "neomutt";
+  };
+
   sops.secrets = {
     "mail/oxapentane.com" = {
       owner = config.users.users.grue.name;

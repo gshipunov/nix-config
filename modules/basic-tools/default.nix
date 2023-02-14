@@ -3,6 +3,8 @@
 {
   imports = [
     ./fzf.nix
+    ./multiplexers.nix
+    ./nix.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -27,34 +29,10 @@
     nnn
     ranger
     man-pages
-    screen
     unzip
     usbutils
     pciutils
   ];
-
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
-  # override default nix shell nixpkgs# behaviour to use current flake lock
-  nix.registry =
-    let flakes = lib.filterAttrs (_name: value: value ? outputs) inputs.self.inputs;
-    in builtins.mapAttrs (_name: v: { flake = v; }) flakes;
-
-  nix.nixPath = lib.mapAttrsToList (name: value: "${name}=${value.outPath}") inputs.self.inputs;
-
-
-  programs.tmux = {
-    enable = true;
-    keyMode = "vi";
-    escapeTime = 0;
-    historyLimit = 50000;
-    aggressiveResize = true;
-    terminal = "tmux-256color";
-  };
 
   # set appropriate environ variables
   environment.variables = {
@@ -70,10 +48,7 @@
     ll = "ls -lah";
     lt = "ls --tree";
     vim = "nvim";
-    mutt = "neomutt";
     grep = "grep --color=auto";
-    nix-build="${pkgs.nix-output-monitor}/bin/nom-build";
-    nix-shell="${pkgs.nix-output-monitor}/bin/nom-shell";
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -89,19 +64,6 @@
       setopt HIST_IGNORE_ALL_DUPS
       # allow comments
       setopt interactivecomments
-
-      # hacky wrapper for nix, so we can use nom automagically
-      export _nom_cmd=${pkgs.nix-output-monitor}/bin/nom
-      function nix {
-          case $1 in
-              build|shell|develop)
-                  echo \[SUBSTITUTION\] ''$_nom_cmd ''${@:1} 1>&2
-                  ''$_nom_cmd ''${@:1}
-                  ;;
-              *)
-                  ${pkgs.nix}/bin/nix $@
-          esac
-      }
     '';
     promptInit = ''
       source ${pkgs.liquidprompt}/share/zsh/plugins/liquidprompt/liquidprompt
@@ -123,13 +85,4 @@
   programs.iftop.enable = true;
   programs.mosh.enable = true;
 
-  programs.screen.screenrc = ''
-    defscrollback 10000
-
-    startup_message off
-
-    hardstatus on
-    hardstatus alwayslastline
-    hardstatus string "%w"
-  '';
 }
