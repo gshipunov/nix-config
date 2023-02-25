@@ -58,6 +58,7 @@
     open-sans
     twemoji-color-font
     twitter-color-emoji
+    iosevka
   ];
 
   fonts.enableDefaultFonts = true;

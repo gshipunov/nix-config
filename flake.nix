@@ -72,6 +72,7 @@
             ./modules/science.nix
             ./modules/sway.nix
             ./modules/tlp.nix
+            ./modules/virtualization.nix
           ];
         };
 
