@@ -4,9 +4,11 @@
     # general
     cmake
     gcc
+    gef
+    gdb
     binutils
-    clang
-    clang-tools
+    clang_15
+    clang-tools_15
     direnv
     (nix-direnv.override { enableFlakes = true; })
     sops
