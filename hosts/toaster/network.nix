@@ -30,36 +30,16 @@
   systemd.network = {
     enable = true;
 
-    # wait-online.ignoredInterfaces = [ "wlan0" "enp53s0" ];
-
-    # Interfaces on the machine
-    netdevs."10-james" = {
-      netdevConfig = {
-        Name = "james";
-        Kind = "bond";
-      };
-      bondConfig = {
-        Mode = "active-backup";
-        PrimaryReselectPolicy = "always";
-        MIIMonitorSec = "1s";
-      };
-    };
-    networks."10-ether-bond" = {
+    networks."10-ether" = {
       matchConfig.MACAddress = "e8:80:88:2f:c6:70";
       networkConfig = {
-        Bond = "james";
-        PrimarySlave = true;
+        DHCP = "yes";
+        IPv6AcceptRA = true;
       };
     };
-    networks."10-wlan-bond" = {
+    networks."10-wlan" = {
       # matchConfig.MACAddress = "04:7b:cb:2a:aa:8c";
       matchConfig.Name = "wlan0";
-      networkConfig = {
-        Bond = "james";
-      };
-    };
-    networks."10-james-bond" = {
-      matchConfig.Name = "james";
       networkConfig = {
         DHCP = "yes";
         IPv6AcceptRA = true;
