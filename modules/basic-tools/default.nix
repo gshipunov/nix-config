@@ -32,6 +32,7 @@
     unzip
     usbutils
     pciutils
+    ouch
   ];
 
   # set appropriate environ variables
