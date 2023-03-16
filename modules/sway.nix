@@ -1,14 +1,22 @@
 # General Desktop-related config
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
     firefox-wayland
     wl-clipboard
-    pulseaudioFull
     screen-message
     qbittorrent
     dino
     tdesktop
+    # (tdesktop.overrideAttrs (old: rec {
+    #   version = "4.6.7";
+    #   src = fetchFromGitHub {
+    #     owner = "forkgram";
+    #     repo = "tdesktop";
+    #     rev = "v${version}";
+    #     sha256 = "sha256-KMV/t3AC/kZQVz31UPYEKU/An6ycdsabZazUVCA9yIU=";
+    #   };
+    # }))
     signal-desktop
     gajim
     imv
@@ -30,6 +38,9 @@
     yt-dlp
     tor-browser-bundle-bin
     ffmpeg-full
+    gimp
+    inkscape
+    blender
   ];
 
   #on the desktop, we need nice fonts ^^
@@ -74,19 +85,28 @@
 
   # Enable sound.
   security.rtkit.enable = true;
-  hardware.pulseaudio = {
-    enable = false;
-    zeroconf.discovery.enable = true;
-    extraClientConf = ''
-      autospawn=yes
-    '';
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
   };
 
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
+    config.pipewire-pulse =
+      let default-pipewire-pulse = lib.importJSON (pkgs.path + "/nixos/modules/services/desktops/pipewire/daemon/pipewire-pulse.conf.json");
+      in
+      default-pipewire-pulse // {
+        "context.modules" = default-pipewire-pulse."context.modules" ++ [
+          {
+            "name" = "libpipewire-module-zeroconf-discover";
+          }
+        ];
+      };
   };
+  hardware.pulseaudio.zeroconf.discovery.enable = true;
 
   hardware.bluetooth = {
     enable = true;
