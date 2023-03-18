@@ -135,6 +135,15 @@
             ./microvms/music
           ];
         };
+
+        news = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            sops-nix.nixosModules.sops
+            microvm.nixosModules.microvm
+          ];
+        };
       };
     };
 }
