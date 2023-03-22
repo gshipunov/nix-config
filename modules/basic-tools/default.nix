@@ -22,12 +22,12 @@
     traceroute
     tcpdump
     tree
-    (aspellWithDicts (ps: with ps; [ en en-science en-computers ru de ]))
+    (aspellWithDicts (ps: with ps; [ en en-science en-computers ru nl ]))
     exfatprogs
     nmap
     bind
     nnn
-    ranger
+    lf
     man-pages
     unzip
     usbutils
@@ -35,7 +35,6 @@
     ouch
   ];
 
-  # set appropriate environ variables
   environment.variables = {
     EDITOR = "nvim";
     PAGER = "less";
