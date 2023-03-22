@@ -2,11 +2,11 @@
   microvm.vms = {
     nextcloud = {
       flake = inputs.self;
-      updateFlake = "git+https://git.sr.ht/~oxapentane/oxalab-config?ref=master";
+      updateFlake = "github:oxapentane/nix-config/master";
     };
     music = {
       flake = inputs.self;
-      updateFlake = "git+https://git.sr.ht/~oxapentane/oxalab-config?ref=master";
+      updateFlake = "github:oxapentane/nix-config/master";
     };
   };
 }
