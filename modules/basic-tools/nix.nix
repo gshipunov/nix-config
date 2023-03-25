@@ -6,6 +6,9 @@
     '';
   };
 
+  # nix output-monitor
+  environment.systemPackages = [ pkgs.nix-output-monitor ];
+
   # override default nix shell nixpkgs# behaviour to use current flake lock
   nix.registry =
     let flakes = lib.filterAttrs (_name: value: value ? outputs) inputs.self.inputs;
