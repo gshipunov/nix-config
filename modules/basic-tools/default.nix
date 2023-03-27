@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -13,6 +13,7 @@
     file
     git
     gnupg
+    glow
     htop
     irssi
     killall
