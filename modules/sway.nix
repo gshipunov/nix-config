@@ -95,16 +95,6 @@
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
-    config.pipewire-pulse =
-      let default-pipewire-pulse = lib.importJSON (pkgs.path + "/nixos/modules/services/desktops/pipewire/daemon/pipewire-pulse.conf.json");
-      in
-      default-pipewire-pulse // {
-        "context.modules" = default-pipewire-pulse."context.modules" ++ [
-          {
-            "name" = "libpipewire-module-zeroconf-discover";
-          }
-        ];
-      };
   };
   hardware.pulseaudio.zeroconf.discovery.enable = true;
 
