@@ -21,7 +21,6 @@
     hostName = "dishwasher"; # Define your hostname.
     useNetworkd = true;
     firewall.enable = true;
-    wireless.iwd.enable = true;
   };
 
   time.timeZone = "Europe/Amsterdam";
@@ -41,17 +40,16 @@
         Name = "enp1s0";
       };
       networkConfig = {
-        # DHCP = "yes";
-        # LinkLocalAddressing = "ipv6";
-        # IPv6AcceptRA = "yes";
-        Address = "10.1.1.50/24";
+        DHCP = "yes";
+        LinkLocalAddressing = "ipv6";
+        IPv6AcceptRA = "yes";
       };
-      # dhcpV6Config = {
-      #   WithoutRA = "solicit";
-      # };
-      # ipv6AcceptRAConfig = {
-      #   DHCPv6Client = "yes";
-      # };
+      dhcpV6Config = {
+        WithoutRA = "solicit";
+      };
+      ipv6AcceptRAConfig = {
+        DHCPv6Client = "yes";
+      };
     };
     networks."aer" = {
       matchConfig.Name = "wlan0";
