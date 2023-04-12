@@ -1,5 +1,5 @@
 # General Desktop-related config
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     firefox-wayland
@@ -138,6 +138,7 @@
       gnome.adwaita-icon-theme
       i3status-rust
       wlsunset
+      kanshi
     ];
   };
   environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; };
