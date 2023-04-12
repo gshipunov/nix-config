@@ -37,6 +37,14 @@
         IPv6AcceptRA = true;
       };
     };
+    networks."10-dock" = {
+      matchConfig.Name = "enp5s0f4u1u1";
+      networkConfig = {
+        DHCP = "yes";
+        IPv6AcceptRA = true;
+      };
+      dhcpV4Config = { RouteMetric = 666; };
+    };
     networks."10-wlan" = {
       # matchConfig.MACAddress = "04:7b:cb:2a:aa:8c";
       matchConfig.Name = "wlan0";
