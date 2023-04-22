@@ -25,12 +25,18 @@
       url = "github:tmux-plugins/tmux-yank";
       flake = false;
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
     inputs@{ self
     , fenix
     , flake-utils
+    , lanzaboote
     , microvm
     , nixpkgs
     , nixpkgs-unstable
@@ -60,6 +66,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
+            lanzaboote.nixosModules.lanzaboote
 
             ./hosts/toaster
 
