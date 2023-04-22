@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   services.fstrim.enable = true;
   services.zfs = {
     autoSnapshot.enable = true;
@@ -14,6 +14,6 @@
     supportedFilesystems = [ "zfs" ];
     kernelParams = [ "nohibernate" ];
     plymouth.enable = false;
-    tmpOnTmpfs = true;
+    tmp.useTmpfs = true;
   };
 }

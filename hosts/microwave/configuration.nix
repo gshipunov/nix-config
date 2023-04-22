@@ -36,7 +36,7 @@
     kernelParams = [ "nohibernate" ];
     zfs.devNodes = "/dev/";
     plymouth.enable = false;
-    tmpOnTmpfs = true;
+    tmp.useTmpfs = true;
   };
 
   services.zfs = {
