@@ -1,20 +1,22 @@
 { config, pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
+    amberol
     celluloid
+    dino
+    firefox-wayland
+    fluffychat
+    gnome-console
     gnome.gnome-boxes
+    gnome.gnome-terminal
     gnome.gnome-tweaks
     nextcloud-client
-    amberol
-    firefox-wayland
-    element-desktop
-    wl-clipboard
     pulseaudioFull
-    screen-message
     qbittorrent
-    dino
-    gnome.gnome-terminal
-    #gnome-console
+    screen-message
+    signal-desktop
+    tdesktop
+    wl-clipboard
   ];
 
   environment.gnome.excludePackages = with pkgs; [
@@ -40,7 +42,7 @@
     };
   };
 
-  qt5 = {
+  qt = {
     enable = true;
     platformTheme = "gnome";
     style = "adwaita-dark";
