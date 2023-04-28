@@ -4,10 +4,7 @@
   networking = {
     hostName = "toaster";
     firewall.enable = true;
-    networkmanager.enable = false;
-    useNetworkd = true;
     wireguard.enable = true;
-    wireless.iwd.enable = true;
   };
 
   services.resolved = {
@@ -21,37 +18,22 @@
     ];
   };
 
-  # workaround for networkd waiting for shit
-  systemd.services.systemd-networkd-wait-online.serviceConfig.ExecStart = [
-    "" # clear old command
-    "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"
-  ];
-
-  systemd.network = {
-    enable = true;
-
-    networks."10-ether" = {
-      matchConfig.MACAddress = "e8:80:88:2f:c6:70";
-      networkConfig = {
-        DHCP = "yes";
-        IPv6AcceptRA = true;
-      };
-    };
-    networks."10-dock" = {
-      matchConfig.Name = "enp5s0f4u1u1";
-      networkConfig = {
-        DHCP = "yes";
-        IPv6AcceptRA = true;
-      };
-      dhcpV4Config = { RouteMetric = 666; };
-    };
-    networks."10-wlan" = {
-      # matchConfig.MACAddress = "04:7b:cb:2a:aa:8c";
-      matchConfig.Name = "wlan0";
-      networkConfig = {
-        DHCP = "yes";
-        IPv6AcceptRA = true;
-      };
-    };
+  # fixup the rpfilter fucking up the networkmanager wireguard
+  networking.firewall = {
+    # if packets are still dropped, they will show up in dmesg
+    logReversePathDrops = true;
+    # wireguard trips rpfilter up
+    extraCommands = ''
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 1337 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 1337 -j RETURN
+    '';
+    extraStopCommands = ''
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 1337 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 1337 -j RETURN || true
+    '';
   };
 }
