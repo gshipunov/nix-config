@@ -7,6 +7,7 @@
     screen-message
     qbittorrent
     dino
+    fluffychat
     tdesktop
     # (tdesktop.overrideAttrs (old: rec {
     #   version = "4.6.7";
