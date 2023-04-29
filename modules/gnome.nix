@@ -1,22 +1,16 @@
 { config, pkgs, ... }: {
 
+  imports = [
+    ./desktop-software.nix
+  ];
   environment.systemPackages = with pkgs; [
     amberol
     celluloid
-    dino
-    firefox-wayland
-    fluffychat
     gnome-console
     gnome.gnome-boxes
-    gnome.gnome-terminal
     gnome.gnome-tweaks
     nextcloud-client
-    pulseaudioFull
     qbittorrent
-    screen-message
-    signal-desktop
-    tdesktop
-    wl-clipboard
   ];
 
   environment.gnome.excludePackages = with pkgs; [

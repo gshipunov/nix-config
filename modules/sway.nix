@@ -1,24 +1,12 @@
 # General Desktop-related config
 { pkgs, ... }:
 {
+  imports = [
+    ./desktop-software.nix
+  ];
   environment.systemPackages = with pkgs; [
-    firefox-wayland
-    wl-clipboard
     screen-message
     qbittorrent
-    dino
-    fluffychat
-    tdesktop
-    # (tdesktop.overrideAttrs (old: rec {
-    #   version = "4.6.7";
-    #   src = fetchFromGitHub {
-    #     owner = "forkgram";
-    #     repo = "tdesktop";
-    #     rev = "v${version}";
-    #     sha256 = "sha256-KMV/t3AC/kZQVz31UPYEKU/An6ycdsabZazUVCA9yIU=";
-    #   };
-    # }))
-    signal-desktop
     gajim
     imv
     swayimg
@@ -36,12 +24,6 @@
     bashmount
     (xfce.thunar.override { thunarPlugins = with xfce; [ thunar-volman thunar-archive-plugin ]; })
     audacity
-    yt-dlp
-    tor-browser-bundle-bin
-    ffmpeg-full
-    gimp
-    inkscape
-    blender
   ];
 
   #on the desktop, we need nice fonts ^^

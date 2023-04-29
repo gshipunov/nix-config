@@ -1,17 +1,18 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    tdesktop
-    fluffychat
-    dino
-    signal-desktop
-    inkscape
-    gimp
     blender
-    kicad
-    wl-clipboard
-    firefox-wayland
-    tor-browser-bundle-bin
+    dino
     ffmpeg-full
+    firefox-wayland
+    fluffychat
+    gimp
+    inkscape
+    kicad
+    signal-desktop
+    tdesktop
+    tor-browser-bundle-bin
+    wl-clipboard
+    yt-dlp
   ];
 }
