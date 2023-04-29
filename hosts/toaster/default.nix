@@ -5,7 +5,6 @@
     ./irc.nix
     ./network.nix
     ./secrets.nix
-    ./secure-boot.nix
     ./zfs.nix
   ];
 
