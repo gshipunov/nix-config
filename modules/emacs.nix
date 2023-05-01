@@ -14,8 +14,9 @@
     enable = false;
     package = with pkgs; ((emacsPackagesFor emacsPgtk).emacsWithPackages (epkgs: with epkgs; [
       vterm
+      pdf-tools
     ]));
-    defaultEditor = false;
+    defaultEditor = true;
   };
 
 }

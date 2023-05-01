@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -36,11 +36,20 @@
     ouch
   ];
 
-  environment.variables = {
-    EDITOR = "nvim";
-    PAGER = "less";
-    LESS = "-X -R -F";
-  };
+  environment.variables =
+    let
+      editorconf =
+        if config.services.emacs.defaultEditor then
+          { }
+        else
+          {
+            EDITOR = "nvim";
+          };
+    in
+    {
+      PAGER = "less";
+      LESS = "-X -R -F";
+    } // editorconf;
 
   environment.shellAliases = {
     ls = "ls --color=auto";
