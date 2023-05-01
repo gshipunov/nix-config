@@ -13,5 +13,6 @@
     gnuplot
     zotero
     python3Full
+    paraview
   ];
 }
