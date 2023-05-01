@@ -21,32 +21,32 @@
       enableACME = true;
       forceSSL = true;
       extraConfig = ''
-      client_max_body_size 512M;
+        client_max_body_size 512M;
       '';
       locations = {
         "/" = {
-        proxyPass = "http://10.34.45.100:8080";
-      };
-      "/well-known/carddav" = {
-        return = "301 $scheme://$host/remote.php/dav";
-      };
-      "/well-known/caldav" = {
-        return = "301 $scheme://$host/remote.php/dav";
+          proxyPass = "http://10.34.45.100:8080";
+        };
+        "/well-known/carddav" = {
+          return = "301 $scheme://$host/remote.php/dav";
+        };
+        "/well-known/caldav" = {
+          return = "301 $scheme://$host/remote.php/dav";
+        };
       };
     };
-  };
 
-  "music.oxapentane.com" = {
-    enableACME = true;
-    forceSSL = true;
-    extraConfig = ''
-    client_max_body_size 32M;
-    '';
-    locations = {
-      "/" = {
-        proxyPass = "http://10.34.45.101:4533";
+    "music.oxapentane.com" = {
+      enableACME = true;
+      forceSSL = true;
+      extraConfig = ''
+        client_max_body_size 32M;
+      '';
+      locations = {
+        "/" = {
+          proxyPass = "http://10.34.45.101:4533";
+        };
       };
     };
   };
-};
 }
