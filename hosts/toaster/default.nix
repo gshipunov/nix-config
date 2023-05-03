@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./amd.nix
+    ./amdgpu-sg-fix.nix
     ./hardware-configuration.nix
     ./irc.nix
     ./network.nix
