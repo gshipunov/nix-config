@@ -34,6 +34,7 @@
     usbutils
     pciutils
     ouch
+    cryptsetup
   ];
 
   environment.variables =
