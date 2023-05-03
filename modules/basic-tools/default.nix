@@ -59,6 +59,8 @@
     lt = "ls --tree";
     vim = "nvim";
     grep = "grep --color=auto";
+    e = "$EDITOR";
+    v = "$EDITOR";
   };
 
   users.defaultUserShell = pkgs.zsh;
