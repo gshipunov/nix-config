@@ -7,6 +7,7 @@
     amberol
     celluloid
     gnome-console
+    gnome-obfuscate
     gnome.gnome-boxes
     gnome.gnome-tweaks
     nextcloud-client
