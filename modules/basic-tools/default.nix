@@ -35,6 +35,7 @@
     pciutils
     ouch
     cryptsetup
+    sshfs
   ];
 
   environment.variables =
