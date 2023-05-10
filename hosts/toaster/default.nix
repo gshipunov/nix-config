@@ -4,6 +4,7 @@
     ./amdgpu-sg-fix.nix
     ./hardware-configuration.nix
     ./irc.nix
+    ./network-vpns.nix
     ./network.nix
     ./secrets.nix
     ./zfs.nix
@@ -35,7 +36,6 @@
       "plugdev"
       "dialout"
       "bluetooth"
-      "networkmanager"
     ];
     group = "users";
     home = "/home/grue";
@@ -56,4 +56,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
+
 }
