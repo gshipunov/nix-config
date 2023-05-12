@@ -80,7 +80,7 @@
             ./modules/binary-caches.nix
             ./modules/devtools.nix
             ./modules/emacs.nix
-            ./modules/gnome.nix
+            ./modules/sway.nix
             ./modules/gnupg.nix
             ./modules/mail
             ./modules/radio.nix
