@@ -122,6 +122,7 @@
       i3status-rust
       wlsunset
       kanshi
+      wl-mirror
     ];
   };
   environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; };

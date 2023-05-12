@@ -24,9 +24,6 @@
       set -g set-titles on
       set -g set-titles-string "#T"
 
-      # mouse
-      set -g mouse on
-
       # theming
       #  modes
       setw -g clock-mode-colour white

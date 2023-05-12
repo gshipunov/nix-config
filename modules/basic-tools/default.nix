@@ -36,6 +36,7 @@
     ouch
     cryptsetup
     sshfs
+    whois
   ];
 
   environment.variables =

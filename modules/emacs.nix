@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -16,7 +16,7 @@
       vterm
       pdf-tools
     ]));
-    defaultEditor = true;
+    defaultEditor = lib.mkDefault false;
   };
 
 }
