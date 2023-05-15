@@ -48,5 +48,17 @@
         };
       };
     };
+    "news.oxapentane.com" = {
+      enableACME = true;
+      forceSSL = true;
+      extraConfig = ''
+        client_max_body_size 32M;
+      '';
+      locations = {
+        "/" = {
+          proxyPass = "http://10.34.45.102:8080";
+        };
+      };
+    };
   };
 }

@@ -6,6 +6,7 @@ keys:
   - &nextcloud age1ds7zgenz9a664jqx5308m6q5mgtavzmelg239xsj8mdh64pmqa9qtkffmk
   - &toaster age1qyj95tsntreefqeetawqy5pf26456s9c0v3tzz8yzs706c0jsg6qv56jzk
   - &music age1aj7mgq8jxv0n5rnpqtgu4l56ymqyq86qacn3jp7ve2emk0eheuaqgm4rtt
+  - &news  age1aj7mgq8jxv0n5rnpqtgu4l56ymqyq86qacn3jp7ve2emk0eheuaqgm4rtt
 creation_rules:
   - path_regex: secrets/microwave/[^/]+\.yaml$
     key_groups:
@@ -43,3 +44,9 @@ creation_rules:
         - *admin_oxa
         age:
         - *music
+  - path_regex: secrets/news/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        age:
+        - *news

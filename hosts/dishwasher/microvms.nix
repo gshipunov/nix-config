@@ -8,5 +8,9 @@
       flake = inputs.self;
       updateFlake = "github:oxapentane/nix-config/master";
     };
+    news = {
+      flake = inputs.self;
+      updateFlake = "github:oxapentane/nix-config/master";
+    };
   };
 }

@@ -95,6 +95,14 @@
             PersistentKeepalive = 25;
           };
         }
+        # news
+        {
+          wireguardPeerConfig = {
+            PublicKey = "guzNmsPcQw4EGSLU3X0SP+WPKAcoMc+xv9SLWdHV1V0=";
+            AllowedIPs = [ "10.34.45.102/32" ];
+            PersistentKeepalive = 25;
+          };
+        }
       ];
     };
     networks."oxaproxy" = {

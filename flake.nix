@@ -156,6 +156,7 @@
           modules = [
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
+            ./microvms/news
           ];
         };
       };
