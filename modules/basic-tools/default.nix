@@ -37,6 +37,7 @@
     cryptsetup
     sshfs
     whois
+    mtr
   ];
 
   environment.variables =
