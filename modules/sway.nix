@@ -24,6 +24,7 @@
     bashmount
     (xfce.thunar.override { thunarPlugins = with xfce; [ thunar-volman thunar-archive-plugin ]; })
     audacity
+    udiskie
   ];
 
   #on the desktop, we need nice fonts ^^
