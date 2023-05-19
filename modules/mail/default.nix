@@ -8,6 +8,7 @@ in
     msmtp
     neomutt
     notmuch
+    alot
     w3m
     links2
   ];
