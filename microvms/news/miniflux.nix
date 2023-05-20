@@ -2,8 +2,8 @@
 let
   listenport = 8080;
 in
-  {
-    sops.secrets."miniflux-admin" = { };
+{
+  sops.secrets."miniflux-admin" = { };
 
   networking.firewall.interfaces.oxaproxy.allowedTCPPorts = [ listenport ];
   services.miniflux = {
