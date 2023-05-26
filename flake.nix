@@ -169,5 +169,11 @@
           ];
         };
       };
+
+      hydraJobs =
+        let
+          get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
+        in
+        nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
     };
 }
