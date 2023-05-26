@@ -4,7 +4,6 @@
     ./amdgpu-sg-fix.nix
     ./hardware-configuration.nix
     ./irc.nix
-    ./network-vpns.nix
     ./network.nix
     ./secrets.nix
     ./secure-boot.nix
