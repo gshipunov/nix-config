@@ -1,5 +1,5 @@
-{ config, pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ iwgtk ];
+{ pkgs, ... }: {
+  users.users.grue.extraGroups = [ "networkmanager" ];
 
   networking = {
     hostName = "toaster";
