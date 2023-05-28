@@ -4,7 +4,7 @@
     ./amdgpu-sg-fix.nix
     ./hardware-configuration.nix
     ./irc.nix
-    ./network.nix
+    ./stateful-network.nix
     ./secrets.nix
     ./secure-boot.nix
     ./zfs.nix
