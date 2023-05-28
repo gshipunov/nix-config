@@ -33,7 +33,7 @@
     };
 
     networks."111-host" = {
-      matchConfig.Name = "enp0s8";
+      matchConfig.MACAddress = "02:00:00:00:00:00";
       networkConfig = {
         Address = "10.99.99.100/24";
       };

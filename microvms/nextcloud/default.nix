@@ -70,7 +70,6 @@
       adminuser = "admin";
       adminpassFile = config.sops.secrets."nextcloud/adminpass".path;
     };
-    enableBrokenCiphersForSSE = false;
   };
 
   systemd.services."nextcloud-setup" = {
@@ -104,7 +103,7 @@
     interfaces = [{
       type = "tap";
       id = "vm-nextcloud";
-      mac = "EA:40:E8:60:C5:36";
+      mac = "02:00:00:00:00:00";
     }];
   };
 

@@ -27,7 +27,7 @@
     interfaces = [{
       type = "tap";
       id = "vm-news";
-      mac = "EA:40:E8:60:C5:38";
+      mac = "02:00:00:00:00:02";
     }];
   };
 

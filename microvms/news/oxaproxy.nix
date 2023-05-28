@@ -43,7 +43,7 @@
     };
 
     networks."111-host" = {
-      matchConfig.Name = "enp0s8";
+      matchConfig.MACAddress = (builtins.elemAt config.microvm.interfaces 0).mac;
       networkConfig = {
         Address = "10.99.99.102/24";
       };

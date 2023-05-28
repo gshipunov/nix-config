@@ -28,7 +28,7 @@
     interfaces = [{
       type = "tap";
       id = "vm-music";
-      mac = "EA:40:E8:60:C5:37";
+      mac = "02:00:00:00:00:01";
     }];
   };
 
