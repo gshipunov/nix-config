@@ -89,24 +89,6 @@
           ];
         };
 
-        microwave = nixpkgs-unstable.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-
-            ./hosts/microwave
-
-            ./modules/basic-tools
-            ./modules/binary-caches.nix
-            ./modules/devtools.nix
-            ./modules/gnupg.nix
-            ./modules/sway.nix
-            ./modules/hw-accel-intel.nix
-            ./modules/tlp.nix
-          ];
-        };
-
         cirrus = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
