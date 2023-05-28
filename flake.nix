@@ -36,10 +36,19 @@
         flake-utils.follows = "flake-utils";
       };
     };
+
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        flake-utils.follows = "flake-utils";
+      };
+    };
   };
 
   outputs =
     inputs@{ self
+    , emacs-overlay
     , fenix
     , flake-utils
     , lanzaboote
@@ -79,6 +88,7 @@
             ./modules/basic-tools
             ./modules/binary-caches.nix
             ./modules/devtools.nix
+            ./modules/emacs.nix
             ./modules/gnome.nix
             ./modules/gnupg.nix
             ./modules/mail

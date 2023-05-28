@@ -12,7 +12,14 @@
   services.emacs = {
     install = true;
     enable = false;
-    package = with pkgs; ((emacsPackagesFor emacsPgtk).emacsWithPackages (epkgs: with epkgs; [
+    package = with pkgs; ((emacsPackagesFor (emacsPgtk.overrideAttrs (old: {
+      passthru = old.passthru // {
+        treeSitter = true;
+      };
+    }))).emacsWithPackages (epkgs: with epkgs; [
+      # treesitter bits
+      treesit-grammars.with-all-grammars
+
       vterm
       pdf-tools
     ]));
