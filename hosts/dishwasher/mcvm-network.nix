@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ ... }:
+{
   systemd.network = {
     netdevs."microvm-bridge".netdevConfig = {
       Kind = "bridge";
