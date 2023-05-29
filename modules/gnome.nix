@@ -95,6 +95,7 @@
     open-sans
     twemoji-color-font
     twitter-color-emoji
+    iosevka-bin
   ];
 
   fonts.enableDefaultFonts = true;
