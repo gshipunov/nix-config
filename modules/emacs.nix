@@ -12,7 +12,7 @@
   services.emacs = {
     install = true;
     enable = false;
-    package = with pkgs; ((emacsPackagesFor (emacsPgtk.overrideAttrs (old: {
+    package = with pkgs; ((emacsPackagesFor (emacs-pgtk.overrideAttrs (old: {
       passthru = old.passthru // {
         treeSitter = true;
       };
@@ -23,7 +23,7 @@
       vterm
       pdf-tools
     ]));
-    defaultEditor = lib.mkDefault false;
+    defaultEditor = lib.mkDefault true;
   };
 
 }

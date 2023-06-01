@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -106,6 +106,7 @@
             sops-nix.nixosModules.sops
             ./hosts/cirrus
             ./modules/basic-tools
+            ./modules/server
           ];
         };
 
@@ -118,6 +119,7 @@
             ./hosts/dishwasher
             ./modules/basic-tools
             ./modules/binary-caches.nix
+            ./modules/server
           ];
         };
 
@@ -128,6 +130,7 @@
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
             ./microvms/nextcloud
+            ./modules/server
           ];
         };
 
@@ -138,6 +141,7 @@
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
             ./microvms/music
+            ./modules/server
           ];
         };
 
@@ -148,6 +152,7 @@
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
             ./microvms/news
+            ./modules/server
           ];
         };
       };
