@@ -160,6 +160,20 @@
             ./modules/server
           ];
         };
+
+        noctilucent = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            sops-nix.nixosModules.sops
+
+            ./hosts/noctilucent
+            ./modules/server
+
+            ./modules/basic-tools
+            ./modules/binary-caches.nix
+          ];
+        };
       };
 
       hydraJobs =
