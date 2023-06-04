@@ -11,7 +11,6 @@
     bat
     fd
     file
-    git
     gnupg
     glow
     htop
@@ -38,7 +37,7 @@
     sshfs
     whois
     mtr
-  ];
+  ] ++ (if config.networking.hostName == "toaster" then [ gitFull ] else [ git ]);
 
   environment.variables =
     let
