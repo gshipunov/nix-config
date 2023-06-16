@@ -5,6 +5,7 @@
       # wireguards
       51820
       51821
+      34197
     ];
     allowedTCPPorts = [
       # port forward ssh to music
@@ -13,10 +14,12 @@
     # port-forward ssh to the music machine
     extraCommands = ''
       iptables -t nat -I PREROUTING -p tcp --dport 2020 -j DNAT --to-destination 10.34.45.101:22
+      iptables -t nat -I PREROUTING -p udp --dport 34197 -j DNAT --to-destination 10.34.45.111:34197
       iptables ! -o lo -t nat -A POSTROUTING -j MASQUERADE
     '';
     extraStopCommands = ''
       iptables -t nat -D PREROUTING -p tcp --dport 2020 -j DNAT --to-destination 10.34.45.101:22 || true
+      iptables -t nat -D PREROUTING -p udp --dport 34197 -j DNAT --to-destination 10.34.45.111:34197 || true
     '';
   };
 
@@ -40,7 +43,6 @@
         {
           # microwave
           wireguardPeerConfig = {
-            # nextcloud down, have to keep things in here: https://www.youtube.com/watch?v=1c6v7j1TUBI
             PublicKey = "0zpfcNrmbsNwwbnDDX4SMl4BVTB0zuhGKixT9TJQoHc=";
             AllowedIPs = [ "10.66.66.10/32" ];
             PersistentKeepalive = 25;
@@ -49,7 +51,6 @@
         {
           # Dishwasher
           wireguardPeerConfig = {
-            # nextcloud down, have to keep things in here: https://www.youtube.com/watch?v=1c6v7j1TUBI
             PublicKey = "AdWUBbyeRkxdP9HUu25PpISoxbgQ8oeCw3BmV93xtAw=";
             AllowedIPs = [ "10.66.66.100/32" ];
             PersistentKeepalive = 25;
@@ -100,6 +101,13 @@
           wireguardPeerConfig = {
             PublicKey = "guzNmsPcQw4EGSLU3X0SP+WPKAcoMc+xv9SLWdHV1V0=";
             AllowedIPs = [ "10.34.45.102/32" ];
+            PersistentKeepalive = 25;
+          };
+        }
+        {
+          wireguardPeerConfig = {
+            PublicKey = "6rwSThPEfTyYvMVSnHNcNPRntCHEQFyscF2SodI8A34=";
+            AllowedIPs = [ "10.34.45.111/32" ];
             PersistentKeepalive = 25;
           };
         }
