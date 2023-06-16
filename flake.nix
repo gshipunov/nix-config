@@ -44,6 +44,11 @@
         flake-utils.follows = "flake-utils";
       };
     };
+
+    nixd = {
+      url = "github:nix-community/nixd";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -53,6 +58,7 @@
     , flake-utils
     , lanzaboote
     , microvm
+    , nixd
     , nixpkgs
     , nixpkgs-unstable
     , sops-nix
