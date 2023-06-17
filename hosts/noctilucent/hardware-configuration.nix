@@ -6,11 +6,11 @@
   boot.initrd.kernelModules = [ "nvme" ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/627952eb-107a-43c3-8223-bfea9af92837";
+    device = "/dev/disk/by-uuid/e9356185-9812-4873-8822-13c8aef59948";
     fsType = "ext4";
   };
   fileSystems."/boot" = {
-    device = "dev/disk/by-uuid/5CA6-CCE4";
+    device = "dev/disk/by-uuid/6F78-D438";
     fsType = "vfat";
   };
 
