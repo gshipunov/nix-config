@@ -36,29 +36,14 @@
         flake-utils.follows = "flake-utils";
       };
     };
-
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
-    nixd = {
-      url = "github:nix-community/nixd";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
     inputs@{ self
-    , emacs-overlay
     , fenix
     , flake-utils
     , lanzaboote
     , microvm
-    , nixd
     , nixpkgs
     , nixpkgs-unstable
     , sops-nix

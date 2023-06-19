@@ -17,7 +17,6 @@
     # nix
     rnix-lsp
     nil
-    inputs.nixd.packages."x86_64-linux".nixd
     nixpkgs-fmt
     nix-index
     # julia
