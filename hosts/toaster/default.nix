@@ -37,6 +37,7 @@
       "plugdev"
       "dialout"
       "bluetooth"
+      "libvirtd"
     ];
     group = "users";
     home = "/home/grue";
