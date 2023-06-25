@@ -52,7 +52,7 @@
     enable = true;
     hostName = "nc.oxapentane.com";
     home = "/var/lib/nextcloud-oxa";
-    package = pkgs.nextcloud26;
+    package = pkgs.nextcloud27;
     maxUploadSize = "5000M";
     caching.redis = true;
     autoUpdateApps = {
