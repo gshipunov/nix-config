@@ -5,6 +5,9 @@
     gnuradio
     gqrx
     cubicsdr
+    sdrangel
+    multimon-ng
+    sox
 
     libusb1
     rtl-sdr
