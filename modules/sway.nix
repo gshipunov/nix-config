@@ -11,7 +11,7 @@
     imv
     swayimg
     mpv
-    zathura
+    evince
     brightnessctl
     pulsemixer
     cmus
@@ -24,7 +24,6 @@
     bashmount
     (xfce.thunar.override { thunarPlugins = with xfce; [ thunar-volman thunar-archive-plugin ]; })
     audacity
-    udiskie
   ];
 
   #on the desktop, we need nice fonts ^^
@@ -152,14 +151,16 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
-  # required to autounlock gnome-keyring
-  services.xserver = {
+  services.greetd = {
     enable = true;
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting \"$(${pkgs.fortune}/bin/fortune -s)\" --cmd ${pkgs.sway}/bin/sway";
+      };
     };
   };
-  programs.gnupg.agent.pinentryFlavor = "gnome3";
+
+  programs.gnupg.agent.pinentryFlavor = "curses";
 }
