@@ -5,6 +5,6 @@
     ./secrets.nix
     ./oxalab.nix
     ./mcvm-network.nix
-    # ./microvms.nix
+    ./microvms.nix
   ];
 }
