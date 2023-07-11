@@ -16,8 +16,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
-    useDHCP = true;
-    interfaces.enp1s0.useDHCP = true;
     hostName = "dishwasher"; # Define your hostname.
     useNetworkd = true;
     firewall.enable = true;
@@ -37,7 +35,7 @@
 
     networks."ether" = {
       matchConfig = {
-        Name = "enp1s0";
+        Name = "enp53s0";
       };
       networkConfig = {
         DHCP = "yes";
