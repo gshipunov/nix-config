@@ -9,57 +9,54 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/2971597a-b364-405d-8bb2-287556e819e1";
-      fsType = "btrfs";
-      options = [ "subvol=nixos" "compress=zstd" "noatime" ];
-    };
-
-  fileSystems."/var/lib" =
-    {
-      device = "/dev/disk/by-uuid/2971597a-b364-405d-8bb2-287556e819e1";
-      fsType = "btrfs";
-      options = [ "subvol=var-lib" "compress=zstd" "noatime" ];
-    };
-
-  fileSystems."/var/log" =
-    {
-      device = "/dev/disk/by-uuid/2971597a-b364-405d-8bb2-287556e819e1";
-      fsType = "btrfs";
-      options = [ "subvol=var-log" "compress=zstd" "noatime" ];
-    };
-
-  fileSystems."/var/microvms" =
-    {
-      device = "/dev/disk/by-uuid/2971597a-b364-405d-8bb2-287556e819e1";
-      fsType = "btrfs";
-      options = [ "subvol=microvms" "compress=zstd" "noatime" ];
+      device = "rpool/nixos";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
     };
 
   fileSystems."/nix" =
     {
-      device = "/dev/disk/by-uuid/2971597a-b364-405d-8bb2-287556e819e1";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+      device = "rpool/nixos/nix";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+    };
+
+  fileSystems."/home" =
+    {
+      device = "rpool/userdata/home";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/2A04-BFAE";
+      device = "/dev/disk/by-uuid/A8AA-1CC4";
       fsType = "vfat";
+      options = [ "X-mount.mkdir" ];
     };
 
-  swapDevices = [ ];
+  swapDevices =
+    [{
+      device = "/dev/disk/by-partuuid/f9712640-96a5-46e1-b07d-53b0cba19057";
+      randomEncryption = true;
+    }];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  networking.interfaces.enp53s0.useDHCP = lib.mkDefault true;
+  networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  networking.interfaces.wlan0.useDHCP = true;
-  networking.interfaces.enp1s0.useDHCP = true;
-  services.logind.lidSwitch = "ignore";
 }
