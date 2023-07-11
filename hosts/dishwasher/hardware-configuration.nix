@@ -35,6 +35,13 @@
       options = [ "zfsutil" ];
     };
 
+  fileSystems."/var/lib" =
+    {
+      device = "rpool/userdata/var-lib";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+    };
+
   fileSystems."/boot" =
     {
       device = "/dev/disk/by-uuid/A8AA-1CC4";
