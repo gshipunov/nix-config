@@ -120,9 +120,9 @@
       slurp
       gnome.adwaita-icon-theme
       i3status-rust
-      wlsunset
       kanshi
       wl-mirror
+      gammastep
     ];
   };
   environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; };
