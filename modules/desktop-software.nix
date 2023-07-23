@@ -14,5 +14,6 @@
     tor-browser-bundle-bin
     wl-clipboard
     yt-dlp
+    libreoffice
   ];
 }

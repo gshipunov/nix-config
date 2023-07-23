@@ -12,6 +12,7 @@
     gnome.gnome-tweaks
     nextcloud-client
     qbittorrent
+    spotify
   ];
 
   environment.gnome.excludePackages = with pkgs; [
@@ -71,6 +72,7 @@
   programs.bash.vteIntegration = true;
 
   fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     monoid
     font-awesome
     dejavu_fonts

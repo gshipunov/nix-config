@@ -41,7 +41,7 @@
       };
       wireguardPeers = [
         {
-          # microwave
+          # toaster
           wireguardPeerConfig = {
             PublicKey = "0zpfcNrmbsNwwbnDDX4SMl4BVTB0zuhGKixT9TJQoHc=";
             AllowedIPs = [ "10.66.66.10/32" ];

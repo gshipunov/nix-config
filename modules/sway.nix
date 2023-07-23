@@ -22,7 +22,7 @@
     foot
     qt5.qtwayland
     bashmount
-    (xfce.thunar.override { thunarPlugins = with xfce; [ thunar-volman thunar-archive-plugin ]; })
+    gnome.nautilus
     audacity
   ];
 

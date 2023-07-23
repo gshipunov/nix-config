@@ -97,6 +97,15 @@
     '';
   };
 
+  programs.nix-ld.enable = true;
+  environment.variables = {
+      NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
+        pkgs.stdenv.cc.cc
+      ];
+      NIX_LD = lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
+  };
+
+
   programs.iftop.enable = true;
   programs.mosh.enable = true;
 

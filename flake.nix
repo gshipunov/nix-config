@@ -2,19 +2,19 @@
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     flake-utils.url = "github:numtide/flake-utils";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     microvm = {
       url = "github:astro/microvm.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-stable";
         flake-utils.follows = "flake-utils";
       };
     };
@@ -44,7 +44,7 @@
     , flake-utils
     , lanzaboote
     , microvm
-    , nixpkgs
+    , nixpkgs-stable
     , nixpkgs-unstable
     , sops-nix
     , ...
@@ -53,11 +53,12 @@
     flake-utils.lib.eachDefaultSystem
       (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
       in
       {
-        packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
-        packages.imhex = pkgs.libsForQt5.callPackage "${self}/pkgs/imhex.nix" { };
+        packages.slick = pkgs-unstable.callPackage "${self}/pkgs/slick.nix" { };
+        # packages.imhex = pkgs-unstable.libsForQt5.callPackage "${self}/pkgs/imhex.nix" { };
       })
     //
     {
@@ -67,29 +68,7 @@
       };
 
       nixosConfigurations = {
-        toaster = nixpkgs-unstable.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-            lanzaboote.nixosModules.lanzaboote
-
-            ./hosts/toaster
-
-            ./modules/basic-tools
-            ./modules/binary-caches.nix
-            ./modules/devtools.nix
-            ./modules/sway.nix
-            ./modules/gnupg.nix
-            ./modules/mail
-            ./modules/radio.nix
-            ./modules/science.nix
-            ./modules/tlp.nix
-            ./modules/virtualization.nix
-          ];
-        };
-
-        cirrus = nixpkgs.lib.nixosSystem {
+        cirrus = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -100,7 +79,7 @@
           ];
         };
 
-        dishwasher = nixpkgs.lib.nixosSystem {
+        dishwasher = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -113,7 +92,7 @@
           ];
         };
 
-        nextcloud = nixpkgs.lib.nixosSystem {
+        nextcloud = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -124,7 +103,7 @@
           ];
         };
 
-        music = nixpkgs.lib.nixosSystem {
+        music = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -135,7 +114,7 @@
           ];
         };
 
-        news = nixpkgs.lib.nixosSystem {
+        news = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -146,7 +125,7 @@
           ];
         };
 
-        noctilucent = nixpkgs.lib.nixosSystem {
+        noctilucent = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -165,6 +144,6 @@
         let
           get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
         in
-        nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
+        nixpkgs-stable.lib.mapAttrs get-toplevel self.nixosConfigurations;
     };
 }
