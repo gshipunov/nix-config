@@ -1,51 +1,33 @@
 {
   inputs = {
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     flake-utils.url = "github:numtide/flake-utils";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     microvm = {
       url = "github:astro/microvm.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-stable";
+        nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
       };
-    };
-
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     tmux-yank = {
       url = "github:tmux-plugins/tmux-yank";
       flake = false;
     };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
-        flake-utils.follows = "flake-utils";
-      };
-    };
   };
 
   outputs =
     inputs@{ self
-    , fenix
     , flake-utils
-    , lanzaboote
     , microvm
-    , nixpkgs-stable
-    , nixpkgs-unstable
+    , nixpkgs
     , sops-nix
     , ...
     }:
@@ -53,12 +35,11 @@
     flake-utils.lib.eachDefaultSystem
       (system:
       let
-        pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+        pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        packages.slick = pkgs-unstable.callPackage "${self}/pkgs/slick.nix" { };
-        # packages.imhex = pkgs-unstable.libsForQt5.callPackage "${self}/pkgs/imhex.nix" { };
+        packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
+        # packages.imhex = pkgs.libsForQt5.callPackage "${self}/pkgs/imhex.nix" { };
       })
     //
     {
@@ -68,7 +49,7 @@
       };
 
       nixosConfigurations = {
-        cirrus = nixpkgs-stable.lib.nixosSystem {
+        cirrus = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -79,7 +60,7 @@
           ];
         };
 
-        dishwasher = nixpkgs-stable.lib.nixosSystem {
+        dishwasher = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -92,7 +73,7 @@
           ];
         };
 
-        nextcloud = nixpkgs-stable.lib.nixosSystem {
+        nextcloud = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -103,7 +84,7 @@
           ];
         };
 
-        music = nixpkgs-stable.lib.nixosSystem {
+        music = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -114,7 +95,7 @@
           ];
         };
 
-        news = nixpkgs-stable.lib.nixosSystem {
+        news = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -125,7 +106,7 @@
           ];
         };
 
-        noctilucent = nixpkgs-stable.lib.nixosSystem {
+        noctilucent = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -144,6 +125,6 @@
         let
           get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
         in
-        nixpkgs-stable.lib.mapAttrs get-toplevel self.nixosConfigurations;
+        nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
     };
 }
