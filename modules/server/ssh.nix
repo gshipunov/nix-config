@@ -1,5 +1,6 @@
 { ... }:
 {
+  services.eternal-terminal.enable = true;
   programs.mosh.enable = true;
   services.openssh = {
     enable = true;
