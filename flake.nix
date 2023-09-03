@@ -54,6 +54,7 @@
             ./hosts/dishwasher
             ./modules/basic-tools
             ./modules/binary-caches.nix
+            ./modules/virtualization.nix
             ./modules/server
           ];
         };
