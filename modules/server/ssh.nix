@@ -4,7 +4,7 @@
   programs.mosh.enable = true;
   services.openssh = {
     enable = true;
-    settings.PermitRootLogin = "no";
+    settings.PermitRootLogin = "prohibit-password";
     settings.PasswordAuthentication = false;
   };
 
