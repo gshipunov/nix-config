@@ -70,7 +70,6 @@
       adminuser = "admin";
       adminpassFile = config.sops.secrets."nextcloud/adminpass".path;
     };
-    enableBrokenCiphersForSSE = false;
   };
 
   systemd.services."nextcloud-setup" = {
