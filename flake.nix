@@ -10,13 +10,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    microvm = {
-      url = "github:astro/microvm.nix/v0.4.0";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
+    # microvm = {
+    #   url = "github:astro/microvm.nix/v0.4.0";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     flake-utils.follows = "flake-utils";
+    #   };
+    # };
 
     tmux-yank = {
       url = "github:tmux-plugins/tmux-yank";
@@ -37,7 +37,7 @@
     flake-utils.lib.eachDefaultSystem
       (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = nixpkgs-stable.legacyPackages.${system};
       in
       {
         # packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
@@ -150,6 +150,6 @@
         let
           get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
         in
-        nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
+        nixpkgs-stable.lib.mapAttrs get-toplevel self.nixosConfigurations;
     };
 }
