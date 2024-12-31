@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -28,7 +28,7 @@
     inputs@{ self
     , flake-utils
     , microvm
-    , nixpkgs
+    , nixpkgs-stable
     , nixpkgs-unstable
     , sops-nix
     , ...
@@ -56,7 +56,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
-            lanzaboote.nixosModules.lanzaboote
+            # lanzaboote.nixosModules.lanzaboote
 
             ./hosts/toaster
 
@@ -73,77 +73,77 @@
           ];
         };
 
-        cirrus = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-            ./hosts/cirrus
-            ./modules/basic-tools
-            ./modules/server
-          ];
-        };
+        # cirrus = nixpkgs-stable.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   specialArgs = { inherit inputs; };
+        #   modules = [
+        #     sops-nix.nixosModules.sops
+        #     ./hosts/cirrus
+        #     ./modules/basic-tools
+        #     ./modules/server
+        #   ];
+        # };
 
-        dishwasher = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-            microvm.nixosModules.host
-            ./hosts/dishwasher
-            ./modules/basic-tools
-            ./modules/binary-caches.nix
-            ./modules/virtualization.nix
-            ./modules/server
-          ];
-        };
+        # dishwasher = nixpkgs-stable.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   specialArgs = { inherit inputs; };
+        #   modules = [
+        #     sops-nix.nixosModules.sops
+        #     microvm.nixosModules.host
+        #     ./hosts/dishwasher
+        #     ./modules/basic-tools
+        #     ./modules/binary-caches.nix
+        #     ./modules/virtualization.nix
+        #     ./modules/server
+        #   ];
+        # };
 
-        nextcloud = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-            microvm.nixosModules.microvm
-            ./microvms/nextcloud
-            ./modules/server
-          ];
-        };
+        # nextcloud = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   specialArgs = { inherit inputs; };
+        #   modules = [
+        #     sops-nix.nixosModules.sops
+        #     microvm.nixosModules.microvm
+        #     ./microvms/nextcloud
+        #     ./modules/server
+        #   ];
+        # };
 
-        music = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-            microvm.nixosModules.microvm
-            ./microvms/music
-            ./modules/server
-          ];
-        };
+        # music = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   specialArgs = { inherit inputs; };
+        #   modules = [
+        #     sops-nix.nixosModules.sops
+        #     microvm.nixosModules.microvm
+        #     ./microvms/music
+        #     ./modules/server
+        #   ];
+        # };
 
-        news = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-            microvm.nixosModules.microvm
-            ./microvms/news
-            ./modules/server
-          ];
-        };
+        # news = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   specialArgs = { inherit inputs; };
+        #   modules = [
+        #     sops-nix.nixosModules.sops
+        #     microvm.nixosModules.microvm
+        #     ./microvms/news
+        #     ./modules/server
+        #   ];
+        # };
 
-        noctilucent = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
+        # noctilucent = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   specialArgs = { inherit inputs; };
+        #   modules = [
+        #     sops-nix.nixosModules.sops
 
-            ./hosts/noctilucent
-            ./modules/server
+        #     ./hosts/noctilucent
+        #     ./modules/server
 
-            ./modules/basic-tools
-            ./modules/binary-caches.nix
-          ];
-        };
+        #     ./modules/basic-tools
+        #     ./modules/binary-caches.nix
+        #   ];
+        # };
       };
 
       hydraJobs =
