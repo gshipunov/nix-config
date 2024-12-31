@@ -32,7 +32,22 @@
     , ...
     }:
 
+    flake-utils.lib.eachDefaultSystem
+      (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
+        # packages.imhex = pkgs.libsForQt5.callPackage "${self}/pkgs/imhex.nix" { };
+      })
+    //
     {
+      overlays.default = _final: prev: {
+        inherit (self.packages.${prev.system})
+          slick;
+      };
+
       nixosConfigurations = {
         cirrus = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
