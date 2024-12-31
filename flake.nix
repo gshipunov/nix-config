@@ -38,7 +38,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
+        # packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
         # packages.imhex = pkgs.libsForQt5.callPackage "${self}/pkgs/imhex.nix" { };
       })
     //
