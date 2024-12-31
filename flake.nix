@@ -7,7 +7,7 @@
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # microvm = {
@@ -27,7 +27,7 @@
   outputs =
     inputs@{ self
     , flake-utils
-    , microvm
+    # , microvm
     , nixpkgs-stable
     , nixpkgs-unstable
     , sops-nix
@@ -55,7 +55,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            sops-nix.nixosModules.sops
+            # sops-nix.nixosModules.sops
             # lanzaboote.nixosModules.lanzaboote
 
             ./hosts/toaster
@@ -63,9 +63,9 @@
             ./modules/basic-tools
             ./modules/binary-caches.nix
             ./modules/devtools.nix
-            ./modules/sway.nix
+            ./modules/gnome.nix
             ./modules/gnupg.nix
-            ./modules/mail
+            # ./modules/mail
             ./modules/radio.nix
             ./modules/science.nix
             ./modules/tlp.nix
@@ -146,10 +146,10 @@
         # };
       };
 
-      hydraJobs =
-        let
-          get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
-        in
-        nixpkgs-stable.lib.mapAttrs get-toplevel self.nixosConfigurations;
+      # hydraJobs =
+      #   let
+      #     get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
+      #   in
+      #   nixpkgs-stable.lib.mapAttrs get-toplevel self.nixosConfigurations;
     };
 }

@@ -3,12 +3,12 @@
     ./amd.nix
     ./amd-new-pstate.nix
     ./hardware-configuration.nix
-    ./irc.nix
+    # ./irc.nix
     ./stateful-network.nix
-    ./network.nix
-    ./network-vpns.nix
-    ./secrets.nix
-    ./secure-boot.nix
+    # ./network.nix
+    # ./network-vpns.nix
+    # ./secrets.nix
+    # ./secure-boot.nix
     ./zfs.nix
   ];
 
@@ -31,7 +31,7 @@
     supportedLocales = [ "all" ];
   };
 
-  users.users.grue = {
+  users.users."0xa" = {
     extraGroups = [
       "wheel"
       "video"
@@ -41,7 +41,7 @@
       "libvirtd"
     ];
     group = "users";
-    home = "/home/grue";
+    home = "/home/0xa";
     isNormalUser = true;
     uid = 1000;
   };
@@ -60,6 +60,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }

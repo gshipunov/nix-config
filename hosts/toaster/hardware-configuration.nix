@@ -9,86 +9,56 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+boot.zfs.extraPools = [ "zpool" ];
 
   fileSystems."/" =
-    {
-      device = "toasterpool/nixos/root";
+    { device = "zpool/root";
       fsType = "zfs";
-      options = [ "zfsutil" ];
+options = [ "zfsutil" ];
     };
 
   fileSystems."/nix" =
-    {
-      device = "toasterpool/nixos/nix";
+    { device = "zpool/nix";
       fsType = "zfs";
-      options = [ "zfsutil" ];
-    };
-
-  fileSystems."/var" =
-    {
-      device = "toasterpool/userdata/var";
-      fsType = "zfs";
-      options = [ "zfsutil" ];
-    };
-
-  fileSystems."/var/lib" =
-    {
-      device = "toasterpool/userdata/var/lib";
-      fsType = "zfs";
-      options = [ "zfsutil" ];
-    };
-
-  fileSystems."/var/log" =
-    {
-      device = "toasterpool/userdata/var/log";
-      fsType = "zfs";
-      options = [ "zfsutil" ];
+options = [ "zfsutil" ];
     };
 
   fileSystems."/home" =
-    {
-      device = "toasterpool/userdata/home";
+    { device = "zpool/data/home";
       fsType = "zfs";
-      options = [ "zfsutil" ];
+options = [ "zfsutil" ];
     };
 
-  fileSystems."/home/grue" =
-    {
-      device = "toasterpool/userdata/home/grue";
+  fileSystems."/var" =
+    { device = "zpool/data/var";
       fsType = "zfs";
-      options = [ "zfsutil" ];
+options = [ "zfsutil" ];
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/7663-6239";
+    { device = "/dev/disk/by-uuid/A170-F83D";
       fsType = "vfat";
-      options = [ "X-mount.mkdir" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices = [
-    {
-      device = "/dev/disk/by-id/nvme-eui.ace42e002621ff2b2ee4ac0000000001-part2";
-      randomEncryption = true;
-    }
-  ];
+  swapDevices =
+    [ { device = "/dev/disk/by-partuuid/8a544c8b-1a49-481b-a685-253ef7478b2c"; 
+randomEncryption = true;}
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-
-  networking.interfaces.enp1s0f0.useDHCP = lib.mkDefault true;
-  #networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
-  networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp1s0f0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp5s0f4u1u1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  # services.fprintd.enable = true;
 }

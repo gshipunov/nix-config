@@ -5,7 +5,6 @@
     dino
     ffmpeg-full
     firefox-wayland
-    fluffychat
     gimp
     inkscape
     kicad

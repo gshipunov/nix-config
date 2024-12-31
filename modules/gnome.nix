@@ -8,17 +8,16 @@
     celluloid
     gnome-console
     gnome-obfuscate
-    gnome.gnome-boxes
-    gnome.gnome-tweaks
+    gnome-boxes
+    gnome-tweaks
     nextcloud-client
     qbittorrent
   ];
 
   environment.gnome.excludePackages = with pkgs; [
-    gnome.totem
-    gnome.geary
-    gnome.gnome-music
-    gnome-console
+    totem
+    geary
+    gnome-music
   ];
 
 
@@ -30,7 +29,7 @@
 
   programs = {
     seahorse.enable = true;
-    gnupg.agent.pinentryFlavor = "gnome3";
+    gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
     evolution = {
       enable = true;
       plugins = [ pkgs.evolution-ews ];
@@ -70,7 +69,7 @@
   programs.zsh.vteIntegration = true;
   programs.bash.vteIntegration = true;
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     monoid
     font-awesome
     dejavu_fonts
@@ -87,7 +86,7 @@
     hack-font
     liberation_ttf
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     noto-fonts-extra
     proggyfonts
@@ -98,7 +97,7 @@
     iosevka-bin
   ];
 
-  fonts.enableDefaultFonts = true;
+  fonts.enableDefaultPackages = true;
   fonts.fontconfig = {
     enable = true;
     allowBitmaps = true;

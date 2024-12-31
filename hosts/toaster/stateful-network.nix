@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  users.users.grue.extraGroups = [ "networkmanager" ];
+  users.users."0xa".extraGroups = [ "networkmanager" ];
 
   networking = {
     hostName = "toaster";

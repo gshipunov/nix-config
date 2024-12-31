@@ -10,12 +10,12 @@
     clang_15
     clang-tools_15
     direnv
-    (nix-direnv.override { enableFlakes = true; })
+    # (nix-direnv.override { enableFlakes = true; })
     sops
     # rust
-    (inputs.fenix.packages."x86_64-linux".stable.toolchain)
+    # (inputs.fenix.packages."x86_64-linux".stable.toolchain)
     # nix
-    rnix-lsp
+    # rnix-lsp
     nil
     nixpkgs-fmt
     nix-index
@@ -30,7 +30,7 @@
     enable = true;
     package = pkgs.wireshark;
   };
-  users.users.grue.extraGroups = [ "wireshark" ];
+  users.users."0xa".extraGroups = [ "wireshark" ];
 
   ## Julia
   environment.variables = {
