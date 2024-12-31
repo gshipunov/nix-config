@@ -44,16 +44,28 @@
     },
     "nixpkgs": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1716633019,
         "narHash": "sha256-xim1b5/HZYbWaZKyI7cn9TJCM6ewNVZnesRr00mXeS4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "9d29cd266cebf80234c98dd0b87256b6be0af44e",
+=======
+        "lastModified": 1689431009,
+        "narHash": "sha256-hPgQCRWP5q/Xc4qOIP3c2krR9nQua78+t9EDiuey5nc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "af8279f65fe71ce5a448408034a8c06e2b4b2c66",
+>>>>>>> parent of 5b47cc3 (retire toaster, refactor a bit)
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+<<<<<<< HEAD
         "ref": "nixos-23.11",
+=======
+        "ref": "nixos-23.05",
+>>>>>>> parent of 5b47cc3 (retire toaster, refactor a bit)
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -74,11 +86,81 @@
         "type": "github"
       }
     },
+<<<<<<< HEAD
+=======
+    "nixpkgs-stable_2": {
+      "locked": {
+        "lastModified": 1689398528,
+        "narHash": "sha256-qVn/doWn20axR+KvmAAGexv0A5RVzcBbd5HfNMAMeVI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3dc2bc15956db2ff2316af45eefd45803fc1372b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1689373857,
+        "narHash": "sha256-mtBksyvhhT98Zsm9tYHuMKuLwUKDwv+BGTl6K5nOGhY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "dfdbcc428f365071f0ca3888f6ec8c25c3792885",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pre-commit-hooks-nix": {
+      "inputs": {
+        "flake-compat": [
+          "lanzaboote",
+          "flake-compat"
+        ],
+        "flake-utils": [
+          "lanzaboote",
+          "flake-utils"
+        ],
+        "gitignore": "gitignore",
+        "nixpkgs": [
+          "lanzaboote",
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": "nixpkgs-stable"
+      },
+      "locked": {
+        "lastModified": 1684842236,
+        "narHash": "sha256-rYWsIXHvNhVQ15RQlBUv67W3YnM+Pd+DuXGMvCBq2IE=",
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "rev": "61e567d6497bc9556f391faebe5e410e6623217f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "type": "github"
+      }
+    },
+>>>>>>> parent of 5b47cc3 (retire toaster, refactor a bit)
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "microvm": "microvm",
         "nixpkgs": "nixpkgs",
+<<<<<<< HEAD
+=======
+        "nixpkgs-unstable": "nixpkgs-unstable",
+>>>>>>> parent of 5b47cc3 (retire toaster, refactor a bit)
         "sops-nix": "sops-nix",
         "tmux-yank": "tmux-yank"
       }
@@ -88,7 +170,11 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+<<<<<<< HEAD
         "nixpkgs-stable": "nixpkgs-stable"
+=======
+        "nixpkgs-stable": "nixpkgs-stable_2"
+>>>>>>> parent of 5b47cc3 (retire toaster, refactor a bit)
       },
       "locked": {
         "lastModified": 1716692524,

@@ -5,7 +5,7 @@
     chromium
   ];
 
-  nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland  --force-dark-mode --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-native-gpu-memory-buffers --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization,WebUIDarkMode";
+  nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland  --force-dark-mode --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization,WebUIDarkMode";
 
   programs.chromium = {
     enable = true;

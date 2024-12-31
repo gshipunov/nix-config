@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -28,6 +29,7 @@
     , flake-utils
     , microvm
     , nixpkgs
+    , nixpkgs-unstable
     , sops-nix
     , ...
     }:
@@ -49,6 +51,28 @@
       };
 
       nixosConfigurations = {
+        toaster = nixpkgs-unstable.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            sops-nix.nixosModules.sops
+            lanzaboote.nixosModules.lanzaboote
+
+            ./hosts/toaster
+
+            ./modules/basic-tools
+            ./modules/binary-caches.nix
+            ./modules/devtools.nix
+            ./modules/sway.nix
+            ./modules/gnupg.nix
+            ./modules/mail
+            ./modules/radio.nix
+            ./modules/science.nix
+            ./modules/tlp.nix
+            ./modules/virtualization.nix
+          ];
+        };
+
         cirrus = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };

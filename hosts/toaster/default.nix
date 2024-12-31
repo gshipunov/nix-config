@@ -5,6 +5,8 @@
     ./hardware-configuration.nix
     ./irc.nix
     ./stateful-network.nix
+    ./network.nix
+    ./network-vpns.nix
     ./secrets.nix
     ./secure-boot.nix
     ./zfs.nix
