@@ -46,7 +46,7 @@ options = [ "zfsutil" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-partuuid/8a544c8b-1a49-481b-a685-253ef7478b2c"; 
+    [ { device = "/dev/disk/by-partuuid/037518f2-9fa0-44f0-9550-745e27bf1c1f";
 randomEncryption = true;}
     ];
 

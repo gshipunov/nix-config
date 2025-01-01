@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # microvm = {
     #   url = "github:astro/microvm.nix/v0.4.0";
     #   inputs = {
@@ -31,6 +33,7 @@
     , nixpkgs-stable
     , nixpkgs-unstable
     , sops-nix
+    , nixos-hardware
     , ...
     }:
 
@@ -57,6 +60,7 @@
           modules = [
             # sops-nix.nixosModules.sops
             # lanzaboote.nixosModules.lanzaboote
+            nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
 
             ./hosts/toaster
 
@@ -69,7 +73,7 @@
             ./modules/radio.nix
             ./modules/science.nix
             ./modules/tlp.nix
-            ./modules/virtualization.nix
+            # ./modules/virtualization.nix
           ];
         };
 

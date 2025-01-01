@@ -49,7 +49,7 @@
   programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
-    factorio
+    # factorio
   ];
 
   services.emacs.defaultEditor = false;

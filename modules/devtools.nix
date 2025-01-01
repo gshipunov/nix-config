@@ -23,6 +23,7 @@
     julia
     # hardware
     kicad
+    freecad-wayland
   ];
 
   # Wireshark
