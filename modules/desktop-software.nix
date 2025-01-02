@@ -13,5 +13,9 @@
     tor-browser-bundle-bin
     wl-clipboard
     yt-dlp
+    element-desktop
+    discord
+    spotify
   ];
+  programs.steam.enable = true;
 }
