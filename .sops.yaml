@@ -1,45 +1,10 @@
 keys:
   - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
-  - &cirrus age1qm70jkg7us4ft4x3nh7kwxlul022kteescjj83ywvjhysj6nsq5sw7l6p8
-  - &dishwasher age18t2dc53m7a53996fwcmuanwjtxxvvgkntpmdvd3q42pnkch6rajqnm4up8
-  - &nextcloud age1ds7zgenz9a664jqx5308m6q5mgtavzmelg239xsj8mdh64pmqa9qtkffmk
   - &toaster age1qyj95tsntreefqeetawqy5pf26456s9c0v3tzz8yzs706c0jsg6qv56jzk
-  - &music age1aj7mgq8jxv0n5rnpqtgu4l56ymqyq86qacn3jp7ve2emk0eheuaqgm4rtt
-  - &news age1dwem3slsm04jpmje2ru5n7fujkmz2kvhdat5htx2xnc2yqtyefeqchwx7f
 creation_rules:
-  - path_regex: secrets/cirrus/[^/]+\.yaml$
-    key_groups:
-      - pgp:
-        - *admin_oxa
-        age:
-        - *cirrus
-  - path_regex: secrets/dishwasher/[^/]+\.yaml$
-    key_groups:
-      - pgp:
-        - *admin_oxa
-        age:
-        - *dishwasher
-  - path_regex: secrets/nextcloud/[^/]+\.yaml$
-    key_groups:
-      - pgp:
-        - *admin_oxa
-        age:
-        - *nextcloud
   - path_regex: secrets/toaster/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
         age:
         - *toaster
-  - path_regex: secrets/music/[^/]+\.yaml$
-    key_groups:
-      - pgp:
-        - *admin_oxa
-        age:
-        - *music
-  - path_regex: secrets/news/[^/]+\.yaml$
-    key_groups:
-      - pgp:
-        - *admin_oxa
-        age:
-        - *news
