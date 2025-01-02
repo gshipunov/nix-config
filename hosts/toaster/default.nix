@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     # ./irc.nix
     ./stateful-network.nix
-    # ./secrets.nix
+    ./secrets.nix
     ./secure-boot.nix
     ./zfs.nix
   ];

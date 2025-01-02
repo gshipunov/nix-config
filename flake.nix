@@ -66,6 +66,7 @@
             # ./modules/virtualization.nix
             ./hosts/toaster/secure-boot.nix
             ./modules/chromium.nix
+            ./modules/mail
           ];
         };
         cloud = nixpkgs-stable.lib.nixosSystem {

@@ -19,16 +19,16 @@ in
 
   sops.secrets = {
     "mail/oxapentane.com" = {
-      owner = config.users.users.grue.name;
+      owner = config.users.users."0xa".name;
     };
     "mail/shipunov.xyz" = {
-      owner = config.users.users.grue.name;
+      owner = config.users.users."0xa".name;
     };
     "mail/dvb.solutions" = {
-      owner = config.users.users.grue.name;
+      owner = config.users.users."0xa".name;
     };
     "mail/tlm.solutions" = {
-      owner = config.users.users.grue.name;
+      owner = config.users.users."0xa".name;
     };
   };
 
