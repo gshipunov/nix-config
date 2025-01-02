@@ -41,28 +41,28 @@
     , nixpkgs-unstable
     , sops-nix
     , ...
-    }:
+  }:
 
-    {
-      nixosConfigurations = {
-        toaster = nixpkgs-unstable.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-            lanzaboote.nixosModules.lanzaboote
-            nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
+  {
+    nixosConfigurations = {
+      toaster = nixpkgs-unstable.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          sops-nix.nixosModules.sops
+          lanzaboote.nixosModules.lanzaboote
+          nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
 
-            ./hosts/toaster
+          ./hosts/toaster
 
-            ./modules/basic-tools
-            ./modules/binary-caches.nix
-            ./modules/devtools.nix
-            ./modules/gnome.nix
-            ./modules/gnupg.nix
-            ./modules/radio.nix
-            ./modules/science.nix
-            ./modules/tlp.nix
+          ./modules/basic-tools
+          ./modules/binary-caches.nix
+          ./modules/devtools.nix
+          ./modules/gnome.nix
+          ./modules/gnupg.nix
+          ./modules/radio.nix
+          ./modules/science.nix
+          ./modules/tlp.nix
             # ./modules/virtualization.nix
             ./hosts/toaster/secure-boot.nix
             ./modules/chromium.nix
@@ -95,5 +95,10 @@
           ];
         };
       };
-    };
-  }
+      hydraJobs =
+        let
+          get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
+        in
+        nixpkgs-stable.lib.mapAttrs get-toplevel self.nixosConfigurations;
+      };
+    }
