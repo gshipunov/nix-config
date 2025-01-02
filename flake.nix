@@ -71,10 +71,12 @@
         cloud = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          moudles = [
+          modules = [
             sops-nix.nixosModules.sops
 
             ./hosts/cloud
+
+            ./modules/basic-tools
           ];
         };
       };

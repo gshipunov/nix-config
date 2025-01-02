@@ -16,4 +16,6 @@
     in builtins.mapAttrs (_name: v: { flake = v; }) flakes;
 
   nix.nixPath = lib.mapAttrsToList (name: value: "${name}=${value.outPath}") inputs.self.inputs;
+
+  nixpkgs.config.allowUnfree = true;
 }
