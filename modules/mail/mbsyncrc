@@ -8,8 +8,8 @@ SSLType IMAPS
 
 MaildirStore mail@oxapentane.com-local
 Subfolders Verbatim
-Path /home/grue/mail/mail@oxapentane.com/
-Inbox /home/grue/mail/mail@oxapentane.com/INBOX
+Path /home/0xa/mail/mail@oxapentane.com/
+Inbox /home/0xa/mail/mail@oxapentane.com/INBOX
 
 Channel mail@oxapentane.com
 Expunge Both
@@ -33,8 +33,8 @@ SSLType IMAPS
 
 MaildirStore grigory@shipunov.xyz-local
 Subfolders Verbatim
-Path /home/grue/mail/grigory@shipunov.xyz/
-Inbox /home/grue/mail/grigory@shipunov.xyz/INBOX
+Path /home/0xa/mail/grigory@shipunov.xyz/
+Inbox /home/0xa/mail/grigory@shipunov.xyz/INBOX
 
 Channel grigory@shipunov.xyz
 Expunge Both
@@ -58,8 +58,8 @@ SSLType IMAPS
 
 MaildirStore dump@dvb.solutions-local
 Subfolders Verbatim
-Path /home/grue/mail/dump@dvb.solutions/
-Inbox /home/grue/mail/dump@dvb.solutions/INBOX
+Path /home/0xa/mail/dump@dvb.solutions/
+Inbox /home/0xa/mail/dump@dvb.solutions/INBOX
 
 Channel dump@dvb.solutions
 Expunge Both
@@ -82,8 +82,8 @@ SSLType IMAPS
 
 MaildirStore grigory@tlm.solutions-local
 Subfolders Verbatim
-Path /home/grue/mail/grigory@tlm.solutions/
-Inbox /home/grue/mail/grigory@tlm.solutions/INBOX
+Path /home/0xa/mail/grigory@tlm.solutions/
+Inbox /home/0xa/mail/grigory@tlm.solutions/INBOX
 
 Channel grigory@tlm.solutions
 Expunge Both

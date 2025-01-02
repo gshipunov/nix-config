@@ -44,15 +44,6 @@
     uid = 1000;
   };
 
-  programs.steam.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    # factorio
-    element-desktop
-    discord
-    spotify
-  ];
-
   services.emacs.defaultEditor = false;
 
   # This value determines the NixOS release from which the default
