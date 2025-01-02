@@ -9,45 +9,45 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-boot.zfs.extraPools = [ "zpool" ];
+    boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ "kvm-amd" ];
+    boot.extraModulePackages = [ ];
+    boot.zfs.extraPools = [ "zpool" ];
 
-  fileSystems."/" =
-    { device = "zpool/root";
+    fileSystems."/" =
+      { device = "zpool/root";
       fsType = "zfs";
-options = [ "zfsutil" ];
+      options = [ "zfsutil" ];
     };
 
-  fileSystems."/nix" =
-    { device = "zpool/nix";
+    fileSystems."/nix" =
+      { device = "zpool/nix";
       fsType = "zfs";
-options = [ "zfsutil" ];
+      options = [ "zfsutil" ];
     };
 
-  fileSystems."/home" =
-    { device = "zpool/data/home";
+    fileSystems."/home" =
+      { device = "zpool/data/home";
       fsType = "zfs";
-options = [ "zfsutil" ];
+      options = [ "zfsutil" ];
     };
 
-  fileSystems."/var" =
-    { device = "zpool/data/var";
+    fileSystems."/var" =
+      { device = "zpool/data/var";
       fsType = "zfs";
-options = [ "zfsutil" ];
+      options = [ "zfsutil" ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A170-F83D";
+    fileSystems."/boot" =
+      { device = "/dev/disk/by-uuid/A170-F83D";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-partuuid/037518f2-9fa0-44f0-9550-745e27bf1c1f";
-randomEncryption = true;}
+    swapDevices =
+      [ { device = "/dev/disk/by-partuuid/037518f2-9fa0-44f0-9550-745e27bf1c1f";
+      randomEncryption = true;}
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
