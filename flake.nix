@@ -77,6 +77,8 @@
             ./hosts/cloud
 
             ./modules/basic-tools
+            ./modules/server
+            ./modules/binary-caches.nix
           ];
         };
         minime = nixpkgs-stable.lib.nixosSystem {
@@ -88,6 +90,7 @@
             ./hosts/minime
             ./modules/basic-tools
             ./modules/server
+            ./modules/binary-caches.nix
           ];
         };
       };
