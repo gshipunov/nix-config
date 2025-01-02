@@ -50,6 +50,7 @@
     # factorio
     element-desktop
     discord
+    spotify
   ];
 
   services.emacs.defaultEditor = false;

@@ -5,12 +5,12 @@
     trim.enable = true;
     autoScrub = {
       enable = true;
-      pools = [ "toasterpool" ];
+      pools = [ "zpool" ];
     };
   };
   networking.hostId = "dca22577";
   boot = {
-    kernelPackages = let 
+    kernelPackages = let
  zfsCompatibleKernelPackages = lib.filterAttrs (
     name: kernelPackages:
     (builtins.match "linux_[0-9]+_[0-9]+" name) != null
