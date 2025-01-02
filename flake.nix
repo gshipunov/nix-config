@@ -34,12 +34,12 @@
   outputs =
     inputs@{ self
     , flake-utils
+    , lanzaboote
     , microvm
+    , nixos-hardware
     , nixpkgs-stable
     , nixpkgs-unstable
     , sops-nix
-    , nixos-hardware
-    , lanzaboote
     , ...
     }:
 
@@ -66,6 +66,15 @@
             # ./modules/virtualization.nix
             ./hosts/toaster/secure-boot.nix
             ./modules/chromium.nix
+          ];
+        };
+        cloud = nixpkgs-stable.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          moudles = [
+            sops-nix.nixosModules.sops
+
+            ./hosts/cloud
           ];
         };
       };
