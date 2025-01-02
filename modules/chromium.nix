@@ -13,7 +13,9 @@
       "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # privacy badger
       "ekhagklcjbdpajgpjgmbionohlpdbjgc" # zotero connector
       "nngceckbapebfimnlniiiahkandclblb" # bitwarden
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+      # "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+      "ddkjiahejlhfcafbddmgiahcphecmpfh" # ublock lite
+      "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock
     ];
     extraOpts = {
       "BrowserSignin" = 0;

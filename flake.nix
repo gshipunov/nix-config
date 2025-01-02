@@ -12,13 +12,18 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # microvm = {
-    #   url = "github:astro/microvm.nix/v0.4.0";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     flake-utils.follows = "flake-utils";
-    #   };
-    # };
+    microvm = {
+      url = "github:astro/microvm.nix/v0.5.0";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-stable";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
     tmux-yank = {
       url = "github:tmux-plugins/tmux-yank";
@@ -29,37 +34,23 @@
   outputs =
     inputs@{ self
     , flake-utils
-    # , microvm
+    , microvm
     , nixpkgs-stable
     , nixpkgs-unstable
     , sops-nix
     , nixos-hardware
+    , lanzaboote
     , ...
     }:
 
-    flake-utils.lib.eachDefaultSystem
-      (system:
-      let
-        pkgs = nixpkgs-stable.legacyPackages.${system};
-      in
-      {
-        # packages.slick = pkgs.callPackage "${self}/pkgs/slick.nix" { };
-        # packages.imhex = pkgs.libsForQt5.callPackage "${self}/pkgs/imhex.nix" { };
-      })
-    //
     {
-      overlays.default = _final: prev: {
-        inherit (self.packages.${prev.system})
-          slick;
-      };
-
       nixosConfigurations = {
         toaster = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            # sops-nix.nixosModules.sops
-            # lanzaboote.nixosModules.lanzaboote
+            sops-nix.nixosModules.sops
+            lanzaboote.nixosModules.lanzaboote
             nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
 
             ./hosts/toaster
@@ -69,91 +60,14 @@
             ./modules/devtools.nix
             ./modules/gnome.nix
             ./modules/gnupg.nix
-            # ./modules/mail
             ./modules/radio.nix
             ./modules/science.nix
             ./modules/tlp.nix
             # ./modules/virtualization.nix
+            ./hosts/toaster/secure-boot.nix
+            ./modules/chromium.nix
           ];
         };
-
-        # cirrus = nixpkgs-stable.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   specialArgs = { inherit inputs; };
-        #   modules = [
-        #     sops-nix.nixosModules.sops
-        #     ./hosts/cirrus
-        #     ./modules/basic-tools
-        #     ./modules/server
-        #   ];
-        # };
-
-        # dishwasher = nixpkgs-stable.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   specialArgs = { inherit inputs; };
-        #   modules = [
-        #     sops-nix.nixosModules.sops
-        #     microvm.nixosModules.host
-        #     ./hosts/dishwasher
-        #     ./modules/basic-tools
-        #     ./modules/binary-caches.nix
-        #     ./modules/virtualization.nix
-        #     ./modules/server
-        #   ];
-        # };
-
-        # nextcloud = nixpkgs.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   specialArgs = { inherit inputs; };
-        #   modules = [
-        #     sops-nix.nixosModules.sops
-        #     microvm.nixosModules.microvm
-        #     ./microvms/nextcloud
-        #     ./modules/server
-        #   ];
-        # };
-
-        # music = nixpkgs.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   specialArgs = { inherit inputs; };
-        #   modules = [
-        #     sops-nix.nixosModules.sops
-        #     microvm.nixosModules.microvm
-        #     ./microvms/music
-        #     ./modules/server
-        #   ];
-        # };
-
-        # news = nixpkgs.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   specialArgs = { inherit inputs; };
-        #   modules = [
-        #     sops-nix.nixosModules.sops
-        #     microvm.nixosModules.microvm
-        #     ./microvms/news
-        #     ./modules/server
-        #   ];
-        # };
-
-        # noctilucent = nixpkgs.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   specialArgs = { inherit inputs; };
-        #   modules = [
-        #     sops-nix.nixosModules.sops
-
-        #     ./hosts/noctilucent
-        #     ./modules/server
-
-        #     ./modules/basic-tools
-        #     ./modules/binary-caches.nix
-        #   ];
-        # };
       };
-
-      # hydraJobs =
-      #   let
-      #     get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
-      #   in
-      #   nixpkgs-stable.lib.mapAttrs get-toplevel self.nixosConfigurations;
     };
-}
+  }

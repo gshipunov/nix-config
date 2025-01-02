@@ -4,12 +4,7 @@
   environment.systemPackages = with pkgs; [
     virt-manager
     bridge-utils
-    vagrant
   ];
-
-  environment.variables = {
-    VAGRANT_DEFAULT_PROVIDER="libvirt";
-  };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 

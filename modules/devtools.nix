@@ -1,6 +1,12 @@
 { pkgs, inputs, ... }: {
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs;
+  let
+    kicad = pkgs.kicad.override {
+      addons = with pkgs.kicadAddons; [ kikit kikit-library ];
+    };
+  in
+  [
     # general
     cmake
     gcc
@@ -12,18 +18,13 @@
     direnv
     # (nix-direnv.override { enableFlakes = true; })
     sops
-    # rust
-    # (inputs.fenix.packages."x86_64-linux".stable.toolchain)
-    # nix
-    # rnix-lsp
     nil
     nixpkgs-fmt
     nix-index
-    # julia
     julia
-    # hardware
     kicad
     freecad-wayland
+    imhex
   ];
 
   # Wireshark
