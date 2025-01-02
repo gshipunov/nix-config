@@ -1,7 +1,8 @@
 keys:
   - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
-  - &toaster age1qyj95tsntreefqeetawqy5pf26456s9c0v3tzz8yzs706c0jsg6qv56jzk
+  - &toaster age1avaphjah4k8n80jrnraeqh9r94fu6awd6k37z4zfjssl5ft07qkqmuehcm
   - &cloud age1j3xpuuqaph5z885er90mftfsu6g3hw4q469k37a3veqktwntzdpqgue4z5
+  - &minime age1chq5k0t38882rtyljez8cwmvtcstu4tafzvveuhjrujvsqk72f9s9guc06
 creation_rules:
   - path_regex: secrets/toaster/[^/]+\.yaml$
     key_groups:
@@ -15,3 +16,9 @@ creation_rules:
         - *admin_oxa
         age:
         - *cloud
+  - path_regex: secrets/minime/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        age:
+        - *minime
