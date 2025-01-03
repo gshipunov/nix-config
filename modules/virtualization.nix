@@ -12,7 +12,7 @@
   virtualisation = {
     libvirtd = {
       enable = true;
-      qemu.runAsRoot = false;
+      qemu.runAsRoot = true;
       qemu.package = pkgs.qemu_full;
     };
     podman = {
