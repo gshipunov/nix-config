@@ -2,7 +2,7 @@
   systemd.network =
     let
       pubkey =  "uUYbYGKoA6UBh1hfkAz5tAWFv4SmteYC9kWh7/K6Ah0=";
-      endpoint = "92.60.40.209:51820";
+      endpoint = "169.150.196.15:51820";
       addr = [ "10.74.16.48/32" "fc00:bbbb:bbbb:bb01::b:102f/128" ];
     in
     {
