@@ -13,8 +13,9 @@
     gef
     gdb
     binutils
-    clang_15
-    clang-tools_15
+    binwalk
+    clang
+    clang-tools
     direnv
     # (nix-direnv.override { enableFlakes = true; })
     sops
