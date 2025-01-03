@@ -4,7 +4,7 @@
     ./amd-new-pstate.nix
     ./hardware-configuration.nix
     # ./irc.nix
-    ./stateful-network.nix
+    ./network
     ./secrets.nix
     ./secure-boot.nix
     ./zfs.nix
