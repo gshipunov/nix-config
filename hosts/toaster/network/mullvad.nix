@@ -2,7 +2,8 @@
   systemd.network =
     let
       pubkey =  "BChJDLOwZu9Q1oH0UcrxcHP6xxHhyRbjrBUsE0e07Vk=";
-      endpoint = "169.150.196.15:51820";
+      endpoint = "169.150.196.15";
+      port = "51820";
       addr = [ "10.74.16.48/32" "fc00:bbbb:bbbb:bb01::b:102f/128" ];
     in
     {
@@ -19,7 +20,7 @@
         wireguardPeers = [
           {
             PublicKey = pubkey;
-            Endpoint = endpoint;
+            Endpoint = "${endpoint}:${port}";
             AllowedIPs = [ "0.0.0.0/0" "::0/0" ];
           }
         ];
@@ -59,7 +60,7 @@
           To = net;
         }) [
         # Mullvad endpoint
-        "92.60.40.209/32"
+        "${endpoint}/32"
         # "10.0.0.0/8"
         "10.13.37.0/24"
         "10.66.66.0/24"
