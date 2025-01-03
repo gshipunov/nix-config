@@ -37,6 +37,7 @@
       "dialout"
       "bluetooth"
       "libvirtd"
+      "qemu-libvirtd"
     ];
     group = "users";
     home = "/home/0xa";
