@@ -53,7 +53,7 @@
 
   # Enable sound.
   security.rtkit.enable = true;
-  hardware.pulseaudio = {
+  services.pulseaudio = {
     enable = false;
     zeroconf.discovery.enable = true;
     extraClientConf = ''
