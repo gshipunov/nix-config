@@ -67,6 +67,7 @@
           ./hosts/toaster/secure-boot.nix
           ./modules/chromium.nix
           ./modules/mail
+          ./modules/wg
           ];
         };
         cloud = nixpkgs-stable.lib.nixosSystem {
@@ -80,6 +81,7 @@
             ./modules/basic-tools
             ./modules/server
             ./modules/binary-caches.nix
+            ./modules/wg
           ];
         };
         minime = nixpkgs-stable.lib.nixosSystem {
@@ -92,6 +94,7 @@
             ./modules/basic-tools
             ./modules/server
             ./modules/binary-caches.nix
+            ./modules/wg
           ];
         };
       };
