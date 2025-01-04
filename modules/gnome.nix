@@ -10,7 +10,6 @@
     gnome-obfuscate
     gnome-boxes
     gnome-tweaks
-    nextcloud-client
     qbittorrent
   ];
 
