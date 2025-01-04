@@ -17,12 +17,10 @@
     clang
     clang-tools
     direnv
-    # (nix-direnv.override { enableFlakes = true; })
     sops
     nil
     nixpkgs-fmt
     nix-index
-    julia
     kicad
     freecad-wayland
     imhex
