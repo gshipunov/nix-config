@@ -1,39 +1,63 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   imports = [
     ./mullvad.nix
     ./dumpdvb.nix
     ./zw.nix
   ];
 
-  # Networkmanager shouldn't interfere with systemd managed interfaces
-  networking.networkmanager.unmanaged =
-    let
-      systemd_netdevs = lib.attrsets.attrValues (lib.attrsets.mapAttrs (_name: value: value.netdevConfig.Name) config.systemd.network.netdevs);
-    in
-    systemd_netdevs;
+  environment.systemPackages = with pkgs; [ iwgtk ];
 
-    systemd.network ={
-      enable = true;
-      wait-online.enable = false; # uplink is managed by networkmanager
+  # kick out networkmanager
+  networking.networkmanager.enable = lib.mkForce false;
+  networking.useNetworkd = true;
+  systemd.network.enable = true;
+
+  networking = {
+    hostName = "toaster";
+    firewall.enable = true;
+    wireguard.enable = true;
+    wireless.iwd.enable = true;
+  };
+
+  services.resolved = {
+    enable = true;
+    dnssec = "allow-downgrade";
+    fallbackDns = [
+      "9.9.9.9"
+      "2620:fe::fe"
+      "149.112.112.112"
+      "2620:fe::9"
+    ];
+  };
+
+  # we might have no interwebs at all
+  systemd.network.wait-online.enable = false;
+
+  # uplinks
+  systemd.network.networks = {
+    "10-ether-uplink" = {
+      matchConfig.Name = "enp1s0f0";
+      networkConfig = {
+        DHCP = "yes";
+        IPv6AcceptRA = true;
+      };
     };
-
-    users.users."0xa".extraGroups = [ "networkmanager" ];
-
-    networking = {
-      hostName = "toaster";
-      firewall.enable = true;
-      wireguard.enable = true;
+    "10-dock-uplink" = {
+      matchConfig.Name = "enp5s0f4u1u1";
+      networkConfig = {
+        DHCP = "yes";
+        IPv6AcceptRA = true;
+      };
+      dhcpV4Config = { RouteMetric = 666; };
+      dhcpV6Config = { RouteMetric = 666; };
     };
-
-    services.resolved = {
-      enable = true;
-      dnssec = "allow-downgrade";
-      fallbackDns = [
-        "9.9.9.9"
-        "2620:fe::fe"
-        "149.112.112.112"
-        "2620:fe::9"
-      ];
+    "wlan-uplink" = {
+      matchConfig.Name = "wlan0";
+      networkConfig = {
+        DHCP = "yes";
+        IPv6AcceptRA = true;
+      };
     };
+  };
 
-  }
+}
