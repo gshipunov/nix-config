@@ -22,12 +22,12 @@
     foot
     qt5.qtwayland
     bashmount
-    gnome.nautilus
+    nautilus
     audacity
   ];
 
   #on the desktop, we need nice fonts ^^
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     monoid
     font-awesome
     dejavu_fonts
@@ -44,7 +44,7 @@
     hack-font
     liberation_ttf
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     noto-fonts-extra
     proggyfonts
@@ -55,7 +55,7 @@
     iosevka
   ];
 
-  fonts.enableDefaultFonts = true;
+  fonts.enableDefaultPackages = true;
   fonts.fontconfig = {
     enable = true;
     allowBitmaps = true;
@@ -71,7 +71,7 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
   };
 
   services.pipewire = {
@@ -79,7 +79,6 @@
     alsa.enable = true;
     pulse.enable = true;
   };
-  hardware.pulseaudio.zeroconf.discovery.enable = true;
 
   hardware.bluetooth = {
     enable = true;
@@ -118,7 +117,7 @@
       rofi-wayland
       grim
       slurp
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
       i3status-rust
       kanshi
       wl-mirror
@@ -162,5 +161,5 @@
     };
   };
 
-  programs.gnupg.agent.pinentryFlavor = "curses";
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-curses;
 }
