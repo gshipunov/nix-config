@@ -1,6 +1,13 @@
 { pkgs, config, ... }: {
   boot.initrd.kernelModules = [ "amdgpu" ];
 
+  boot.kernelParams = [
+    # use new amd pstate driver
+    "amd_pstate=active"
+    # try to fix weird flickering
+    "amdgpu.sg_display=0"
+  ];
+
  #  hardware.graphics = {
  #    extraPackages = with pkgs; [
  #      rocm-opencl-icd

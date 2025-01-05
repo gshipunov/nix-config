@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   imports = [
     ./amd.nix
-    ./amd-new-pstate.nix
     ./hardware-configuration.nix
     # ./irc.nix
     ./network
