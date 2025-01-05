@@ -63,7 +63,7 @@
           ./modules/radio.nix
           ./modules/science.nix
           ./modules/tlp.nix
-          # ./modules/virtualization.nix
+          ./modules/virtualization.nix
           ./hosts/toaster/secure-boot.nix
           ./modules/chromium.nix
           ./modules/mail
