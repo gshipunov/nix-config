@@ -11,6 +11,7 @@
     gnome-boxes
     gnome-tweaks
     qbittorrent
+    gnomeExtensions.caffeine
   ];
 
   environment.gnome.excludePackages = with pkgs; [
@@ -18,7 +19,6 @@
     geary
     gnome-music
   ];
-
 
   services.gnome = {
     evolution-data-server.enable = true;
