@@ -24,6 +24,7 @@
     kicad
     freecad-wayland
     imhex
+    python313Full
   ];
 
   # Wireshark
