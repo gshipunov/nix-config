@@ -1,11 +1,5 @@
 { config, pkgs, inputs, ... }:
-let
-  overlay-qemu_full-stable = final: prev: {
-    qemu_full = inputs.nixpkgs-stable.legacyPackages."x86_64-linux".qemu_full;
-  };
-in
 {
-  nixpkgs.overlays = [ overlay-qemu_full-stable ];
   environment.systemPackages = with pkgs; [
     virt-manager
     bridge-utils
