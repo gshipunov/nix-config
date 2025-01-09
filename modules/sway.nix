@@ -158,4 +158,11 @@
   };
 
   programs.gnupg.agent.pinentryPackage = pkgs.pinentry-curses;
+  programs.ssh = {
+    startAgent = true;
+    enableAskPassword = false;
+    extraConfig = ''
+      AddKeysToAgent yes
+    '';
+  };
 }
