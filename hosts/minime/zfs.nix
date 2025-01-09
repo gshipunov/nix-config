@@ -6,6 +6,8 @@
     autoScrub = {
       enable = true;
       pools = [ "zpool" ];
+      interval = "weekly";
+      randomizedDelaySec = "6h";
     };
   };
   networking.hostId = "41ba28ff";
