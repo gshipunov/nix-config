@@ -18,7 +18,6 @@
     termusic
     gsettings-desktop-schemas
     xdg-utils
-    nextcloud-client
     foot
     qt5.qtwayland
     bashmount
@@ -53,6 +52,7 @@
     twemoji-color-font
     twitter-color-emoji
     iosevka
+    nerd-fonts.hack
   ];
 
   fonts.enableDefaultPackages = true;
@@ -68,11 +68,6 @@
 
   # Enable sound.
   security.rtkit.enable = true;
-
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-  };
 
   services.pipewire = {
     enable = true;
@@ -92,8 +87,6 @@
   services.acpid.enable = true;
   programs.light.enable = true;
 
-  services.blueman.enable = true;
-
   programs.xwayland.enable = true;
   programs.sway = {
     enable = true;
@@ -104,24 +97,27 @@
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
       export QT_QPA_PLATFORMTHEME="gnome"
       export QT_STYLE_OVERRIDE="adwaita-dark"
+      # export WLR_DRM_NO_ATOMIC=1
     '';
     extraPackages = with pkgs; [
-      alacritty
-      pamixer
-      swaylock
-      graphicsmagick
-      swayidle
-      wl-clipboard
-      mako
-      foot
-      rofi-wayland
-      grim
-      slurp
       adwaita-icon-theme
-      i3status-rust
-      kanshi
-      wl-mirror
+      alacritty
+      bluetui
+      foot
       gammastep
+      graphicsmagick
+      grim
+      i3status-rust
+      impala
+      kanshi
+      mako
+      pamixer
+      rofi-wayland
+      slurp
+      swayidle
+      swaylock
+      wl-clipboard
+      wl-mirror
     ];
   };
   environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; };

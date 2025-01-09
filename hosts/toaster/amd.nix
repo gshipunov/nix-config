@@ -6,6 +6,8 @@
     "amd_pstate=active"
     # try to fix weird flickering
     "amdgpu.sg_display=0"
+    # some weird amd PSR shit...
+    "amdgpu.dcdebugmask=0x10"
   ];
 
  #  hardware.graphics = {

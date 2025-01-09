@@ -5,8 +5,6 @@
     ./zw.nix
   ];
 
-  environment.systemPackages = with pkgs; [ iwgtk ];
-
   # kick out networkmanager
   networking.networkmanager.enable = lib.mkForce false;
   networking.useNetworkd = true;
@@ -21,7 +19,7 @@
 
   services.resolved = {
     enable = true;
-    dnssec = "allow-downgrade";
+    dnssec = "false";
     fallbackDns = [
       "9.9.9.9"
       "2620:fe::fe"
