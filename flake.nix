@@ -58,7 +58,7 @@
           ./modules/basic-tools
           ./modules/binary-caches.nix
           ./modules/devtools.nix
-          ./modules/sway.nix
+          ./modules/gnome.nix
           ./modules/gnupg.nix
           ./modules/radio.nix
           ./modules/science.nix

@@ -94,6 +94,7 @@
     twemoji-color-font
     twitter-color-emoji
     iosevka-bin
+    nerd-fonts.hack
   ];
 
   fonts.enableDefaultPackages = true;
