@@ -1,10 +1,15 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   networking.dhcpcd.enable = false;
 
   networking.firewall.enable = true;
   # TODO: configure automatically in the module
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.allowedUDPPorts =
+    let
+      wg-nets = lib.filter (net: net.hosts.cloud.endpoint.enable) config.oxalab.wg;
+      wg-ports = map (net: net.hosts.cloud.endpoint.port) wg-nets;
+    in
+    wg-ports;
 
   networking.useNetworkd = true;
   systemd.network.enable = true;
