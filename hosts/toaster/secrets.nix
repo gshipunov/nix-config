@@ -13,7 +13,7 @@
     "wg/mullvad" = {
       owner = config.users.users.systemd-network.name;
     };
-    "wg/oxalab" = {
+    "wg/0xa-mgmt" = {
       owner = config.users.users.systemd-network.name;
     };
   };
