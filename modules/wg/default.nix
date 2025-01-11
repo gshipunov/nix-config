@@ -6,5 +6,6 @@
     ./options.nix
     # networks
     ./mgmt.nix
+    ./proxy.nix
   ];
 }
