@@ -76,6 +76,10 @@
             [
               # Mullvad endpoint
               "${endpoint}/32"
+              # zw endpoint
+              "81.201.149.152/32"
+              # oxalab/oxa endpoint
+              "188.245.196.27/32"
               # "10.0.0.0/8"
               "10.13.37.0/24"
               # 0xa-mgmt
