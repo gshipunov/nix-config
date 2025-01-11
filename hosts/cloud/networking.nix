@@ -2,6 +2,10 @@
 {
   networking.dhcpcd.enable = false;
 
+  networking.firewall.enable = true;
+  # TODO: configure automatically in the module
+  networking.firewall.allowedUDPPorts = [ 51820 ];
+
   networking.useNetworkd = true;
   systemd.network.enable = true;
   systemd.network = {
