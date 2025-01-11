@@ -1,5 +1,6 @@
 { config, ... }:
 {
+  networking.firewall.trustedInterfaces = [ "wg-0xa-mgmt" ];
   oxalab.wg = [
     {
       networkName = "0xa-mgmt";
