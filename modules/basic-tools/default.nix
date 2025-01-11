@@ -8,37 +8,48 @@
     ./nix-ld.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    bat
-    fd
-    file
-    gnupg
-    glow
-    htop
-    irssi
-    killall
-    neovim
-    ripgrep
-    tealdeer
-    traceroute
-    tcpdump
-    tree
-    (aspellWithDicts (ps: with ps; [ en en-science en-computers ru nl ]))
-    exfatprogs
-    nmap
-    bind
-    nnn
-    lf
-    man-pages
-    unzip
-    usbutils
-    pciutils
-    ouch
-    cryptsetup
-    sshfs
-    whois
-    mtr
-  ] ++ (if config.networking.hostName == "toaster" then [ gitFull ] else [ git ]);
+  environment.systemPackages =
+    with pkgs;
+    [
+      bat
+      fd
+      file
+      gnupg
+      glow
+      htop
+      irssi
+      killall
+      neovim
+      ripgrep
+      tealdeer
+      traceroute
+      tcpdump
+      tree
+      (aspellWithDicts (
+        ps: with ps; [
+          en
+          en-science
+          en-computers
+          ru
+          nl
+        ]
+      ))
+      exfatprogs
+      nmap
+      bind
+      nnn
+      lf
+      man-pages
+      unzip
+      usbutils
+      pciutils
+      ouch
+      cryptsetup
+      sshfs
+      whois
+      mtr
+    ]
+    ++ (if config.networking.hostName == "toaster" then [ gitFull ] else [ git ]);
 
   environment.variables =
     let
@@ -53,7 +64,8 @@
     {
       PAGER = "less";
       LESS = "-X -R -F";
-    } // editorconf;
+    }
+    // editorconf;
 
   environment.shellAliases = {
     ls = "ls --color=auto";

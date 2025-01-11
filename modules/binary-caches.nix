@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   nix = {
     extraOptions = ''
       builders-use-substitutes = true

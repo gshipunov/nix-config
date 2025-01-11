@@ -1,8 +1,11 @@
-{ lib
-, config
-, self
-, registry
-, ... }: {
+{
+  lib,
+  config,
+  self,
+  registry,
+  ...
+}:
+{
 
   config =
     let
@@ -17,10 +20,20 @@
         name = "30-wg-${net.networkName}";
         value = {
           matchConfig.Name = "wg-${net.networkName}";
-          networkConfig = {
-            Address = net.hosts.${currenthost}.address;
-            IPv6AcceptRA = false; # for now static IPv6
-          } // (if net.hosts.${currenthost}.endpoint.enable then {IPv4Forwarding=true; IPv6Forwarding=true; } else {});
+          networkConfig =
+            {
+              Address = net.hosts.${currenthost}.address;
+              IPv6AcceptRA = false; # for now static IPv6
+            }
+            // (
+              if net.hosts.${currenthost}.endpoint.enable then
+                {
+                  IPv4Forwarding = true;
+                  IPv6Forwarding = true;
+                }
+              else
+                { }
+            );
         };
       }) networks;
 
@@ -45,8 +58,7 @@
           wireguardPeers =
             let
               endpoint = lib.attrsets.filterAttrs (_k: v: v.endpoint.enable) net.hosts;
-              wg-peers-attrs = lib.attrsets.mapAttrs (_k: v:
-              {
+              wg-peers-attrs = lib.attrsets.mapAttrs (_k: v: {
                 PersistentKeepalive = 29;
                 PublicKey = v.publicKey;
                 Endpoint = "${v.endpoint.endpoint}:${toString v.endpoint.port}";
@@ -55,19 +67,24 @@
               wg-peers = lib.attrsets.attrValues wg-peers-attrs;
             in
             wg-peers;
-          };
-        }) net-client;
-        netdev-client = builtins.listToAttrs netdev-client-list;
+        };
+      }) net-client;
+      netdev-client = builtins.listToAttrs netdev-client-list;
 
-        maskip = (net: hostattrs:
-        if hostattrs.endpoint.enable then hostattrs.address else map (baseaddr:
-        if lib.strings.hasInfix "." baseaddr then "${baseaddr}/32" else "${baseaddr}/128"
-        ) (map (addr: builtins.elemAt (lib.strings.splitString "/" addr) 0) hostattrs.address));
+      maskip = (
+        net: hostattrs:
+        if hostattrs.endpoint.enable then
+          hostattrs.address
+        else
+          map (baseaddr: if lib.strings.hasInfix "." baseaddr then "${baseaddr}/32" else "${baseaddr}/128") (
+            map (addr: builtins.elemAt (lib.strings.splitString "/" addr) 0) hostattrs.address
+          )
+      );
       # endpoint
       # TODO: this requires bit more logic for allowedIPs if we have more then
       # 2 endpoints e.g. for routing client -> endpoint1 -> endpoint2 ->
       # client2
-      netdev-endpoint-list =  map (net: {
+      netdev-endpoint-list = map (net: {
         name = "30-wg-${net.networkName}";
         value = {
           netdevConfig = {
@@ -79,19 +96,27 @@
           wireguardPeers =
             let
               peers = lib.attrsets.filterAttrs (k: _v: k != currenthost) net.hosts;
-              wg-peers-attrs = lib.attrsets.mapAttrs (_k: v:
-              {
-                PersistentKeepalive = 29;
-                PublicKey = v.publicKey;
-                # only route to /32 or /128, i.e. single client
-                AllowedIPs = maskip net v;
-              } // (if !isNull v.endpoint.endpoint then { Endpoint = "${v.endpoint.endpoint}:${toString v.endpoint.port}"; } else {})) peers;
+              wg-peers-attrs = lib.attrsets.mapAttrs (
+                _k: v:
+                {
+                  PersistentKeepalive = 29;
+                  PublicKey = v.publicKey;
+                  # only route to /32 or /128, i.e. single client
+                  AllowedIPs = maskip net v;
+                }
+                // (
+                  if !isNull v.endpoint.endpoint then
+                    { Endpoint = "${v.endpoint.endpoint}:${toString v.endpoint.port}"; }
+                  else
+                    { }
+                )
+              ) peers;
               wg-peers = lib.attrsets.attrValues wg-peers-attrs;
             in
             wg-peers;
-          };
-        }) net-endpoint;
-        netdev-endpoint = builtins.listToAttrs netdev-endpoint-list;
+        };
+      }) net-endpoint;
+      netdev-endpoint = builtins.listToAttrs netdev-endpoint-list;
 
     in
     {
@@ -102,4 +127,4 @@
       systemd.network.networks = systemd-networks;
       systemd.network.netdevs = netdev-client // netdev-endpoint;
     };
-  }
+}

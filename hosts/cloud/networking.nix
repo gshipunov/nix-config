@@ -1,11 +1,12 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   networking.dhcpcd.enable = false;
 
   networking.useNetworkd = true;
   systemd.network.enable = true;
   systemd.network = {
     networks."30-uplink" = {
-      matchConfig.Name="enp1s0";
+      matchConfig.Name = "enp1s0";
       networkConfig = {
         Address = [
           "188.245.196.27/32"

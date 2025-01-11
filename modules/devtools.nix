@@ -1,31 +1,36 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
 
-  environment.systemPackages = with pkgs;
-  let
-    kicad = pkgs.kicad.override {
-      addons = with pkgs.kicadAddons; [ kikit kikit-library ];
-    };
-  in
-  [
-    # general
-    cmake
-    gcc
-    gef
-    gdb
-    binutils
-    binwalk
-    clang
-    clang-tools
-    direnv
-    sops
-    nil
-    nixpkgs-fmt
-    nix-index
-    kicad
-    freecad-wayland
-    imhex
-    python313Full
-  ];
+  environment.systemPackages =
+    with pkgs;
+    let
+      kicad = pkgs.kicad.override {
+        addons = with pkgs.kicadAddons; [
+          kikit
+          kikit-library
+        ];
+      };
+    in
+    [
+      # general
+      cmake
+      gcc
+      gef
+      gdb
+      binutils
+      binwalk
+      clang
+      clang-tools
+      direnv
+      sops
+      nil
+      nixpkgs-fmt
+      nix-index
+      kicad
+      freecad-wayland
+      imhex
+      python313Full
+    ];
 
   # Wireshark
   programs.wireshark = {

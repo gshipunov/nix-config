@@ -82,13 +82,15 @@ in
     '';
   };
 
-
   systemd.user = {
 
     # Service and timer to sync imap to local maildir
     services.mbsync = {
       enable = true;
-      after = [ "graphical.target" "network-online.target" ];
+      after = [
+        "graphical.target"
+        "network-online.target"
+      ];
       script = ''
         ${pkgs.isync}/bin/mbsync -q -a --config=${mbsyncConf}
       '';
@@ -110,7 +112,10 @@ in
     # service and timer to flush the msmtp queue
     services.flush-msmtpq = {
       enable = true;
-      after = [ "graphical.target" "network-online.target" ];
+      after = [
+        "graphical.target"
+        "network-online.target"
+      ];
       script = ''
         ${pkgs.msmtp}/bin/msmtp-queue -r
       '';

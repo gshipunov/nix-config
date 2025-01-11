@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   boot = {
     bootspec.enable = true;
     loader.systemd-boot.enable = lib.mkForce false;

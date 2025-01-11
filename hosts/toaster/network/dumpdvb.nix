@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   systemd.network = {
     # Wireguard
     # Dump-dvb
@@ -27,7 +28,10 @@
         IPv6AcceptRA = true;
       };
       routes = [
-        { Gateway = "10.13.37.1"; Destination = "10.13.37.0/24";  }
+        {
+          Gateway = "10.13.37.1";
+          Destination = "10.13.37.0/24";
+        }
       ];
     };
   };

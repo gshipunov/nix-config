@@ -120,7 +120,9 @@
       wl-mirror
     ];
   };
-  environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; };
+  environment.sessionVariables = {
+    GTK_THEME = "Adwaita:dark";
+  };
   xdg.portal = {
     enable = true;
     wlr.enable = true;

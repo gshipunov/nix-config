@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   boot.kernelParams = [
@@ -6,14 +7,14 @@
     "amd_pstate=active"
   ];
 
- #  hardware.graphics = {
- #    extraPackages = with pkgs; [
- #      rocm-opencl-icd
- #      rocm-opencl-runtime
- #      amdvlk
- #    ];
- #    extraPackages32 = with pkgs; [
- #      driversi686Linux.amdvlk
- #    ];
- #  };
+  #  hardware.graphics = {
+  #    extraPackages = with pkgs; [
+  #      rocm-opencl-icd
+  #      rocm-opencl-runtime
+  #      amdvlk
+  #    ];
+  #    extraPackages32 = with pkgs; [
+  #      driversi686Linux.amdvlk
+  #    ];
+  #  };
 }

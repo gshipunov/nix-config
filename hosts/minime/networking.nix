@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   networking.hostName = "minime"; # Define your hostname.
   networking.useNetworkd = true;
   networking.firewall.enable = true;
