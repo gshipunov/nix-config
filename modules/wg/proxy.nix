@@ -23,6 +23,14 @@
             publicIface = "enp1s0";
           };
         };
+        "authentik" = {
+          address = [
+            "10.89.88.2/24"
+            "fd31:185d:722f::2/48"
+          ];
+          publicKey = "";
+          privateKeyFile = config.sops.secrets."wg/0xa-proxy".path;
+        };
       };
     }
   ];

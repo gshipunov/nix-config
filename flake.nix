@@ -22,7 +22,13 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      # inputs.flake-parts.follows
     };
 
     tmux-yank = {
@@ -34,6 +40,7 @@
   outputs =
     inputs@{
       self,
+      authentik-nix,
       flake-utils,
       lanzaboote,
       microvm,
@@ -90,6 +97,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
+            microvm.nixosModules.host
 
             ./hosts/minime
             ./modules/basic-tools
@@ -98,7 +106,20 @@
             ./modules/wg
           ];
         };
+
+        authentik = nixpkgs-stable.lib.nixosSystem {
+          system = "x84_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            sops-nix.nixosModules.sops
+            microvm.nixosModules.microvm
+            authentik-nix.nixosModules.default
+
+            ./microvms/authentik
+            ./modules/server
       };
+
+
       hydraJobs =
         let
           get-toplevel = (
