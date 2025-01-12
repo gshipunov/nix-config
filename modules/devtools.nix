@@ -30,6 +30,8 @@
       freecad-wayland
       imhex
       python313Full
+      pkgs.nixfmt-rfc-style
+      treefmt
     ];
 
   # Wireshark
