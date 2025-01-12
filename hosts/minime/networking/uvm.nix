@@ -2,15 +2,15 @@
 {
   # TODO: make a module
   systemd.network = {
-    netdevs."10-uvm-br" = {
+    netdevs."10-microvm" = {
       netdevConfig = {
         Kind = "bridge";
-        Name = "uvm-br";
+        Name = "microvm";
       };
     };
 
-    networks."10-uvm-br" = {
-      matchConfig.Name = "uvm-br";
+    networks."10-microvm" = {
+      matchConfig.Name = "microvm";
       networkConfig = {
         DHCPServer = false;
         IPv6SendRA = true;
@@ -30,9 +30,9 @@
       ];
     };
 
-    networks."11-uvm-br" = {
+    networks."11-microvm" = {
       matchConfig.Name = "uvm-*";
-      networkConfig.Bridge = "uvm-br";
+      networkConfig.Bridge = "microvm";
     };
 
   };
@@ -40,6 +40,6 @@
     enable = true;
     enableIPv6 = true;
     externalInterface = "enp90s0";
-    internalInterfaces = [ "uvm-br" ];
+    internalInterfaces = [ "microvm" ];
   };
 }

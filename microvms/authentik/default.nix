@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  mac = "c0:ff:ee:00:00:00";
+  mac = "02:00:00:00:00:01";
 in
 {
   imports = [
@@ -18,7 +18,7 @@ in
   };
 
   microvm = {
-    hypervisor = "cloud-hypervisor";
+    hypervisor = "qemu";
     mem = 2 * 1024;
     vcpu = 2;
     interfaces = [
@@ -60,7 +60,10 @@ in
     enable = true;
     networks."11-host" = {
       matchConfig.MACAddress = mac;
-      networkConfig.Address = "10.99.99.10/24";
+      networkConfig = {
+        Address = "10.99.99.10/24";
+        DHCP = "no";
+      };
       routes = [
         {
           Gateway = "10.99.99.1";
