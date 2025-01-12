@@ -108,7 +108,7 @@
         };
 
         authentik = nixpkgs-stable.lib.nixosSystem {
-          system = "x84_64-linux";
+          system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
@@ -117,17 +117,8 @@
 
             ./microvms/authentik
             ./modules/server
+          ];
+        };
       };
-
-
-      hydraJobs =
-        let
-          get-toplevel = (
-            host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel
-          );
-        in
-        nixpkgs-stable.lib.mapAttrs get-toplevel self.nixosConfigurations;
-
-      formatter.x86_64-linux = nixpkgs-stable.legacyPackages.x86_64-linux.nixfmt-rfc-style;
     };
 }

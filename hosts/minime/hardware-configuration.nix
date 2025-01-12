@@ -65,6 +65,12 @@
     options = [ "zfsutil" ];
   };
 
+  fileSystems."/var/lib/microvms" = {
+    device = "zpool/data/var/lib/microvms";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+  };
+
   swapDevices = [
     {
       device = "/dev/disk/by-partuuid/7e7d0e0b-90b7-465c-a022-089b38e0f16d";

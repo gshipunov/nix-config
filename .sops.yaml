@@ -1,8 +1,11 @@
 keys:
   - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
+  # hosts
   - &toaster age1avaphjah4k8n80jrnraeqh9r94fu6awd6k37z4zfjssl5ft07qkqmuehcm
   - &cloud age1j3xpuuqaph5z885er90mftfsu6g3hw4q469k37a3veqktwntzdpqgue4z5
   - &minime age1chq5k0t38882rtyljez8cwmvtcstu4tafzvveuhjrujvsqk72f9s9guc06
+  # microvms
+  - &authentik age1s9hew4wpff69fmz5lxmn96f8r3xuhqydw82t2dwkrn2rqhcx9pfqm3whvd
 creation_rules:
   - path_regex: secrets/toaster/[^/]+\.yaml$
     key_groups:
@@ -22,3 +25,9 @@ creation_rules:
         - *admin_oxa
         age:
         - *minime
+  - path_regex: secrets/authentik/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        age:
+        - *authentik

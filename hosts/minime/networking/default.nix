@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     ./uplink.nix
     ./uvm.nix

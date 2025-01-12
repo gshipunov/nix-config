@@ -7,5 +7,8 @@
     "wg/0xa-mgmt" = {
       owner = config.users.users.systemd-network.name;
     };
+    "wg/0xa-proxy" = {
+      owner = config.users.users.systemd-network.name;
+    };
   };
 }

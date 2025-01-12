@@ -28,7 +28,7 @@
             "10.89.88.2/24"
             "fd31:185d:722f::2/48"
           ];
-          publicKey = "";
+          publicKey = "/0DRKWg3U/WuR8iYtH8bD2i+RXTWRzj6+MCS3xFfg1o=";
           privateKeyFile = config.sops.secrets."wg/0xa-proxy".path;
         };
       };
