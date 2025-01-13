@@ -117,6 +117,7 @@
 
             ./microvms/authentik
             ./modules/server
+            ./modules/wg
           ];
         };
       };
