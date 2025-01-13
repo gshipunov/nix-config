@@ -1,7 +1,7 @@
 { config, ... }:
 {
   imports = [
-    ./proxy.nix
+    ./authentik.nix
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
@@ -11,12 +11,26 @@
 
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
-    recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
     appendHttpConfig = ''
+      ### recommendedProxySettings minus proxy_redirect (breaks authentik)
+      # proxy_redirect          off;
+      proxy_connect_timeout   60s;
+      proxy_send_timeout      60s;
+      proxy_read_timeout      60s;
+      proxy_http_version      1.1;
+      proxy_set_header        "Connection" "";
+      proxy_set_header        Host $host;
+      proxy_set_header        X-Real-IP $remote_addr;
+      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header        X-Forwarded-Proto $scheme;
+      proxy_set_header        X-Forwarded-Host $host;
+      proxy_set_header        X-Forwarded-Server $host;
+
+      ### TLS
       # Add HSTS header with preloading to HTTPS requests.
       # Adding this header to HTTP requests is discouraged
       map $scheme $hsts_header {
