@@ -2,7 +2,11 @@
 {
   microvm.stateDir = "/var/lib/microvms";
   microvm.vms = {
-    authentik = {
+    auth = {
+      flake = inputs.self;
+      updateFlake = "github:gshipunov/nix-config/master";
+    };
+    radicale = {
       flake = inputs.self;
       updateFlake = "github:gshipunov/nix-config/master";
     };

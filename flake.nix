@@ -25,12 +25,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    authentik-nix = {
-      url = "github:nix-community/authentik-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      # inputs.flake-parts.follows
-    };
-
     tmux-yank = {
       url = "github:tmux-plugins/tmux-yank";
       flake = false;
@@ -40,7 +34,6 @@
   outputs =
     inputs@{
       self,
-      authentik-nix,
       flake-utils,
       lanzaboote,
       microvm,
@@ -107,19 +100,31 @@
           ];
         };
 
-        authentik = nixpkgs-stable.lib.nixosSystem {
+        auth = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
-            authentik-nix.nixosModules.default
 
-            ./microvms/authentik
+            ./microvms/auth
             ./modules/server
             ./modules/wg
           ];
         };
+
+      radicale = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          sops-nix.nixosModules.sops
+          microvm.nixosModules.microvm
+
+          ./microvms/radicale
+          ./modules/server
+          ./modules/wg
+        ];
       };
     };
+  };
 }

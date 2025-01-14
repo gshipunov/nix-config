@@ -23,12 +23,20 @@
             publicIface = "enp1s0";
           };
         };
-        "authentik" = {
+        "auth" = {
           address = [
-            "10.89.88.2/24"
-            "fd31:185d:722f::2/48"
+            "10.89.88.11/24"
+            "fd31:185d:722f::11/48"
           ];
-          publicKey = "/0DRKWg3U/WuR8iYtH8bD2i+RXTWRzj6+MCS3xFfg1o=";
+          publicKey = "5pW+lt3Xty8IdQ3ndcIXR3B7pl3hV+8M+EgvGmaRhyU=";
+          privateKeyFile = config.sops.secrets."wg/0xa-proxy".path;
+        };
+        "radicale" = {
+          address = [
+            "10.89.88.12/24"
+            "fd31:185d:722f::12/48"
+          ];
+          publicKey = "EIdTwWTqGJv9i2rV+Uu8d/QptGwFAFjHcHp/Hquhr3g=";
           privateKeyFile = config.sops.secrets."wg/0xa-proxy".path;
         };
       };

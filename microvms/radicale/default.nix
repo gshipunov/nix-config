@@ -1,30 +1,25 @@
 { config, lib, ... }:
 let
-  mac = "02:00:00:00:00:01";
+  mac = "02:00:00:00:00:02";
 in
 {
-  imports = [
-    ./authentik.nix
-  ];
-
-  sops.defaultSopsFile = ../../secrets/authentik/secrets.yaml;
+  sops.defaultSopsFile = ../../secrets/radicale/secrets.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   sops.secrets = {
     "wg/0xa-proxy" = {
       owner = config.users.users.systemd-network.name;
     };
-    "authentik/envfile" = { };
   };
 
   microvm = {
     hypervisor = "qemu";
-    mem = 2 * 1024;
-    vcpu = 2;
+    mem = 1 * 1024;
+    vcpu = 1;
     interfaces = [
       {
         type = "tap";
-        id = "uvm-authentik";
+        id = "uvm-radicale";
         mac = mac;
       }
     ];
@@ -61,7 +56,7 @@ in
     networks."11-host" = {
       matchConfig.MACAddress = mac;
       networkConfig = {
-        Address = "10.99.99.10/24";
+        Address = "10.99.99.12/24";
         DHCP = "no";
       };
       routes = [
@@ -74,6 +69,6 @@ in
     };
   };
 
-  networking.hostName = "authentik";
+  networking.hostName = "radicale";
   system.stateVersion = "24.11";
 }

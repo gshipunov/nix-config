@@ -5,7 +5,8 @@ keys:
   - &cloud age1j3xpuuqaph5z885er90mftfsu6g3hw4q469k37a3veqktwntzdpqgue4z5
   - &minime age1chq5k0t38882rtyljez8cwmvtcstu4tafzvveuhjrujvsqk72f9s9guc06
   # microvms
-  - &authentik age1s9hew4wpff69fmz5lxmn96f8r3xuhqydw82t2dwkrn2rqhcx9pfqm3whvd
+  - &auth age1vzwz5s35w9g8ck9l5zaq5skrnl3mqzf3hsnc9w22sj4k8tu8kqfstpg2a8
+  - &radicale age1j6z39kmnxkqa7jdcjsydy5cryjce7fttf225fh3pldyvq06ax3fq58mk8c
 creation_rules:
   - path_regex: secrets/toaster/[^/]+\.yaml$
     key_groups:
@@ -25,9 +26,15 @@ creation_rules:
         - *admin_oxa
         age:
         - *minime
-  - path_regex: secrets/authentik/[^/]+\.yaml$
+  - path_regex: secrets/auth/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
         age:
-        - *authentik
+        - *auth
+  - path_regex: secrets/radicale/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        age:
+        - *radicale
