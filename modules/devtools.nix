@@ -32,8 +32,13 @@
       python313Full
       pkgs.nixfmt-rfc-style
       treefmt
+      android-tools
     ];
 
+  # android stuff
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
   # Wireshark
   programs.wireshark = {
     enable = true;
