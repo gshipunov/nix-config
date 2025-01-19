@@ -3,6 +3,9 @@ let
   mac = "02:00:00:00:00:02";
 in
 {
+  imports = [
+    ./radicale.nix
+  ];
   sops.defaultSopsFile = ./secrets.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
