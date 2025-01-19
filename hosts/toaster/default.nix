@@ -1,14 +1,31 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./amd.nix
     ./hardware-configuration.nix
     # ./irc.nix
     ./network
-    ./secrets.nix
     ./secure-boot.nix
     ./zfs.nix
   ];
+
+  sops.defaultSopsFile = ./secrets.yaml;
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
+  sops.secrets = {
+    "wg/zw" = {
+      owner = config.users.users.systemd-network.name;
+    };
+    "wg/dvb" = {
+      owner = config.users.users.systemd-network.name;
+    };
+    "wg/mullvad" = {
+      owner = config.users.users.systemd-network.name;
+    };
+    "wg/0xa-mgmt" = {
+      owner = config.users.users.systemd-network.name;
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
 

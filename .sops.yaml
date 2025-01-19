@@ -8,31 +8,31 @@ keys:
   - &auth age1vzwz5s35w9g8ck9l5zaq5skrnl3mqzf3hsnc9w22sj4k8tu8kqfstpg2a8
   - &radicale age1j6z39kmnxkqa7jdcjsydy5cryjce7fttf225fh3pldyvq06ax3fq58mk8c
 creation_rules:
-  - path_regex: secrets/toaster/[^/]+\.yaml$
+  - path_regex: hosts/toaster/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
         age:
         - *toaster
-  - path_regex: secrets/cloud/[^/]+\.yaml$
+  - path_regex: hosts/cloud/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
         age:
         - *cloud
-  - path_regex: secrets/minime/[^/]+\.yaml$
+  - path_regex: hosts/minime/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
         age:
         - *minime
-  - path_regex: secrets/auth/[^/]+\.yaml$
+  - path_regex: hosts/auth/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
         age:
         - *auth
-  - path_regex: secrets/radicale/[^/]+\.yaml$
+  - path_regex: hosts/radicale/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa

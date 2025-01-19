@@ -3,7 +3,7 @@ let
   mac = "02:00:00:00:00:02";
 in
 {
-  sops.defaultSopsFile = ../../secrets/radicale/secrets.yaml;
+  sops.defaultSopsFile = ./secrets.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   sops.secrets = {
