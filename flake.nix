@@ -113,18 +113,18 @@
           ];
         };
 
-      radicale = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          sops-nix.nixosModules.sops
-          microvm.nixosModules.microvm
+        radicale = nixpkgs-stable.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            sops-nix.nixosModules.sops
+            microvm.nixosModules.microvm
 
-          ./hosts/radicale
-          ./modules/server
-          ./modules/wg
-        ];
+            ./hosts/radicale
+            ./modules/server
+            ./modules/wg
+          ];
+        };
       };
     };
-  };
 }
