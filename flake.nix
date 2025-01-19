@@ -107,7 +107,7 @@
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
 
-            ./microvms/auth
+            ./hosts/auth
             ./modules/server
             ./modules/wg
           ];
@@ -120,7 +120,7 @@
           sops-nix.nixosModules.sops
           microvm.nixosModules.microvm
 
-          ./microvms/radicale
+          ./hosts/radicale
           ./modules/server
           ./modules/wg
         ];
