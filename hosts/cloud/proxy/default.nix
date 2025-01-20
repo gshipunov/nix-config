@@ -2,6 +2,7 @@
 {
   imports = [
     ./auth.nix
+    ./dav-htaccess.nix
   ];
 
   networking.firewall.allowedTCPPorts = [
@@ -20,6 +21,10 @@
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
     appendHttpConfig = ''
+      proxy_buffers 4 256k;
+      proxy_buffer_size 128k;
+      proxy_busy_buffers_size 256k;
+
       ### TLS
       # Add HSTS header with preloading to HTTPS requests.
       # Adding this header to HTTP requests is discouraged
