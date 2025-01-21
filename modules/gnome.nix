@@ -53,13 +53,6 @@
 
   # Enable sound.
   security.rtkit.enable = true;
-  services.pulseaudio = {
-    enable = false;
-    zeroconf.discovery.enable = true;
-    extraClientConf = ''
-      autospawn=yes
-    '';
-  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -95,7 +88,6 @@
     twemoji-color-font
     twitter-color-emoji
     iosevka-bin
-    nerd-fonts.hack
   ];
 
   fonts.enableDefaultPackages = true;
