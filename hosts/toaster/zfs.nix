@@ -16,21 +16,8 @@
   };
   networking.hostId = "dca22577";
   boot = {
-    kernelPackages =
-      let
-        zfsCompatibleKernelPackages = lib.filterAttrs (
-          name: kernelPackages:
-          (builtins.match "linux_[0-9]+_[0-9]+" name) != null
-          && (builtins.tryEval kernelPackages).success
-          && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
-        ) pkgs.linuxKernel.packages;
-        latestKernelPackage = lib.last (
-          lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
-            builtins.attrValues zfsCompatibleKernelPackages
-          )
-        );
-      in
-      latestKernelPackage;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+    zfs.package = pkgs.zfs_2_3;
     supportedFilesystems = [ "zfs" ];
     kernelParams = [ "nohibernate" ];
     plymouth.enable = false;
