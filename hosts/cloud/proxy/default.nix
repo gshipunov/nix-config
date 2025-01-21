@@ -2,7 +2,7 @@
 {
   imports = [
     ./auth.nix
-    ./dav-htaccess.nix
+    ./dav.nix
   ];
 
   networking.firewall.allowedTCPPorts = [
@@ -16,14 +16,15 @@
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedTlsSettings = true;
-    recommendedProxySettings = true;
 
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
     appendHttpConfig = ''
-      proxy_buffers 4 256k;
-      proxy_buffer_size 128k;
-      proxy_busy_buffers_size 256k;
+      # upgrade websockets
+      map $http_upgrade $connection_upgrade_keepalive {
+        default upgrade;
+        '''      ''';
+      }
 
       ### TLS
       # Add HSTS header with preloading to HTTPS requests.
