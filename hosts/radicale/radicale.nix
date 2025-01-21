@@ -1,8 +1,5 @@
 { config, ... }:
 {
-  sops.secrets."radicale/htpasswd" = {
-    owner = config.users.users.radicale.name;
-  };
   services.radicale = {
     enable = true;
     settings = {
@@ -11,8 +8,7 @@
         ssl = "False";
       };
       auth = {
-        type = "htpasswd";
-        htpasswd_filename = config.sops.secrets."radicale/htpasswd".path;
+        type = "http_x_remote_user";
       };
       rights = {
         type = "owner_only";

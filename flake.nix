@@ -25,6 +25,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     tmux-yank = {
       url = "github:tmux-plugins/tmux-yank";
       flake = false;
@@ -34,6 +39,7 @@
   outputs =
     inputs@{
       self,
+      authentik-nix,
       flake-utils,
       lanzaboote,
       microvm,
@@ -106,6 +112,7 @@
           modules = [
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
+            authentik-nix.nixosModules.default
 
             ./hosts/auth
             ./modules/server
