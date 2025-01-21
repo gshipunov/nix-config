@@ -3,6 +3,7 @@
   imports = [
     ./auth.nix
     ./dav.nix
+    ./immich.nix
   ];
 
   networking.firewall.allowedTCPPorts = [

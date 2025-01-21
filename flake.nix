@@ -129,6 +129,19 @@
           ];
         };
 
+        immich = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            sops-nix.nixosModules.sops
+            microvm.nixosModules.microvm
+
+            ./hosts/immich
+            ./modules/server
+            ./modules/wg
+          ];
+        };
+
         radicale = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };

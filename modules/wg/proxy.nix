@@ -39,6 +39,14 @@
           publicKey = "EIdTwWTqGJv9i2rV+Uu8d/QptGwFAFjHcHp/Hquhr3g=";
           privateKeyFile = config.sops.secrets."wg/0xa-proxy".path;
         };
+        "immich" = {
+          address = [
+            "10.89.88.13/24"
+            "fd31:185d:722f::13/48"
+          ];
+          publicKey = "NXBlfKx4udjI6C7Dcp1Us7lYnE+L0avnMb1VSLxj42s=";
+          privateKeyFile = config.sops.secrets."wg/0xa-proxy".path;
+        };
       };
     }
   ];
