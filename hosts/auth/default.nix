@@ -13,7 +13,6 @@ in
     "wg/0xa-proxy" = {
       owner = config.users.users.systemd-network.name;
     };
-    "keycloak/db_pass" = { };
   };
 
   microvm = {
