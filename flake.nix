@@ -89,6 +89,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             sops-nix.nixosModules.sops
+            lix-module.nixosModules.default
 
             ./hosts/cloud
 
@@ -104,6 +105,7 @@
           modules = [
             sops-nix.nixosModules.sops
             microvm.nixosModules.host
+            lix-module.nixosModules.default
 
             ./hosts/minime
             ./modules/basic-tools
