@@ -47,6 +47,14 @@
           publicKey = "NXBlfKx4udjI6C7Dcp1Us7lYnE+L0avnMb1VSLxj42s=";
           privateKeyFile = config.sops.secrets."wg/0xa-proxy".path;
         };
+        "miniflux" = {
+          address = [
+            "10.89.88.14/24"
+            "fd31:185d:722f::14/48"
+          ];
+          publicKey = "2Lvjzg8k5EIR0Y5mlsCHOs1cJl1+1SL0QMxkKUmliE0=";
+          privateKeyFile = config.sops.secrets."wg/0xa-proxy".path;
+        };
       };
     }
   ];

@@ -8,6 +8,7 @@ keys:
   - &auth age1vzwz5s35w9g8ck9l5zaq5skrnl3mqzf3hsnc9w22sj4k8tu8kqfstpg2a8
   - &radicale age1j6z39kmnxkqa7jdcjsydy5cryjce7fttf225fh3pldyvq06ax3fq58mk8c
   - &immich age1afyntwvj672lcq2e4dpxmw3syplzurnnd8q8j3265843jeedpveqkp465z
+  - &miniflux age15ja22wd9tt60vn32sk59pp6c7vtjsn8y3rypn8qfnvxthug8sp0q6f72uh
 creation_rules:
   - path_regex: hosts/toaster/[^/]+\.yaml$
     key_groups:
@@ -45,3 +46,9 @@ creation_rules:
         - *admin_oxa
         age:
         - *immich
+  - path_regex: hosts/miniflux/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        age:
+        - *miniflux

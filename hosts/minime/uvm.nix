@@ -5,6 +5,7 @@
     "auth"
     "radicale"
     "immich"
+    "miniflux"
   ];
   microvm.vms = {
     auth = {

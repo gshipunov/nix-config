@@ -4,6 +4,7 @@
     ./auth.nix
     ./dav.nix
     ./immich.nix
+    ./news.nix
   ];
 
   networking.firewall.allowedTCPPorts = [
