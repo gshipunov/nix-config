@@ -42,7 +42,6 @@
       '';
     };
 
-
     locations."/outpost.goauthentik.io" = {
       proxyPass = "http://authentik/outpost.goauthentik.io";
       extraConfig = ''

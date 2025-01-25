@@ -1,7 +1,4 @@
 { config, ... }:
-let
-  grp = "miniflux-secret";
-in
 {
   sops.secrets."miniflux" = { };
 
@@ -10,7 +7,6 @@ in
     createDatabaseLocally = true;
     adminCredentialsFile = config.sops.secrets."miniflux".path;
     config = {
-      LOG_LEVEL="debug";
       LISTEN_ADDR = "10.89.88.14:8080";
       BASE_URL = "https://news.oxapentane.com";
       # oauth

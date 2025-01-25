@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  sops.secrets."authentik/env" = {};
+  sops.secrets."authentik/env" = { };
   services.authentik = {
     enable = true;
     environmentFile = config.sops.secrets."authentik/env".path;
