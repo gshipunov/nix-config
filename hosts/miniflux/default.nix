@@ -18,7 +18,7 @@ in
 
   microvm = {
     hypervisor = "qemu";
-    mem = 4 * 1024;
+    mem = 1 * 1024;
     vcpu = 2;
     interfaces = [
       {
