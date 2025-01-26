@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
 
   imports = [
     ./desktop-software.nix
+    ./fonts.nix
   ];
   environment.systemPackages = with pkgs; [
     amberol
@@ -61,45 +62,6 @@
 
   programs.zsh.vteIntegration = true;
   programs.bash.vteIntegration = true;
-
-  fonts.packages = with pkgs; [
-    monoid
-    font-awesome
-    dejavu_fonts
-    julia-mono
-    uw-ttyp0
-    gohufont
-    spleen
-    terminus_font
-    creep
-    corefonts
-    dina-font
-    fira
-    fira-mono
-    hack-font
-    liberation_ttf
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    noto-fonts-extra
-    proggyfonts
-    symbola
-    open-sans
-    twemoji-color-font
-    twitter-color-emoji
-    iosevka-bin
-  ];
-
-  fonts.enableDefaultPackages = true;
-  fonts.fontconfig = {
-    enable = true;
-    allowBitmaps = true;
-    useEmbeddedBitmaps = true;
-    defaultFonts.emoji = [
-      "Twitter Color Emoji"
-      "Noto Color Emoji"
-    ];
-  };
 
   hardware.bluetooth.enable = true;
 

@@ -30,7 +30,7 @@
       freecad-wayland
       imhex
       python313Full
-      pkgs.nixfmt-rfc-style
+      nixfmt-rfc-style
       treefmt
       android-tools
     ];
@@ -58,6 +58,10 @@
   programs.zsh.interactiveShellInit = ''
     eval "$(direnv hook zsh)"
   '';
+  programs.fish.interactiveShellInit = ''
+    direnv hook fish | source
+  '';
+
   # nix options for derivations to persist garbage collection
   nix.extraOptions = ''
     keep-outputs = true
