@@ -1,0 +1,5 @@
+excludes = [ "*.toml", "*.yaml", "*.gitignore", "*.lock", "*mbsyncrc" ]
+
+[formatter.nixfmt-rfc-style]
+command = "nixfmt"
+includes = "*.nix"

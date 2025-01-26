@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
   systemd.network =
     let

@@ -70,7 +70,7 @@
       netdev-client = builtins.listToAttrs netdev-client-list;
 
       maskip = (
-        net: hostattrs:
+        _net: hostattrs:
         if hostattrs.endpoint.enable then
           hostattrs.address
         else

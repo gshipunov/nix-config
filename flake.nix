@@ -43,15 +43,12 @@
 
   outputs =
     inputs@{
-      self,
       authentik-nix,
-      flake-utils,
       lanzaboote,
       lix-module,
       microvm,
       nixos-hardware,
       nixpkgs,
-      nixpkgs-unstable,
       sops-nix,
       ...
     }:
