@@ -1,15 +1,26 @@
-{ pkgs, ... }:
 {
-
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
+}:
+{
   environment.systemPackages =
     with pkgs;
     let
+      # kicad
       kicad = pkgs.kicad.override {
         addons = with pkgs.kicadAddons; [
           kikit
           kikit-library
         ];
       };
+
+      # binwalk v3 on 24.11
+      sys_ver = config.system.nixos.release;
+      unstablepkgs = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+      binwalkv3 = if lib.versionOlder "25.05" sys_ver then binwalk else unstablepkgs.binwalk;
     in
     [
       # general
@@ -18,7 +29,7 @@
       gef
       gdb
       binutils
-      binwalk
+      binwalkv3
       clang
       clang-tools
       direnv
