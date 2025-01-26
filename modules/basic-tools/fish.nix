@@ -14,6 +14,7 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
+      set fish_command_not_found
     '';
     shellAliases = {
       ls = "lsd --icon=never";

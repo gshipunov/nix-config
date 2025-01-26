@@ -73,8 +73,7 @@
     vim = "nvim";
     grep = "grep --color=auto";
   };
-  users.defaultUserShell = (if config.networking.hostName == "toaster" then pkgs.fish else pkgs.zsh);
-  users.users.root.shell = pkgs.zsh; # keep root shell posix compatible
+  users.defaultUserShell = pkgs.zsh; # keep root shell posix compatible
 
   programs.iftop.enable = true;
   programs.mosh.enable = true;

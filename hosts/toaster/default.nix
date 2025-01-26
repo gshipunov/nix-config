@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./amd.nix
@@ -60,6 +60,7 @@
     home = "/home/0xa";
     isNormalUser = true;
     uid = 1000;
+    shell = pkgs.fish;
   };
 
   services.emacs.defaultEditor = false;
