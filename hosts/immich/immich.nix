@@ -1,4 +1,12 @@
-{ config, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+let
+  immich-latest = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.immich;
+in
 {
   sops.secrets."immich.yaml" = {
     sopsFile = ./immich.yaml;
@@ -8,6 +16,7 @@
 
   services.immich = {
     enable = true;
+    package = immich-latest;
     host = "10.89.88.13";
     redis.enable = true;
     database.createDB = true;
