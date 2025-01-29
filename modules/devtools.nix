@@ -38,12 +38,14 @@
       nixpkgs-fmt
       nix-index
       kicad
+      kikit
       freecad-wayland
       imhex
       python313Full
       nixfmt-rfc-style
       treefmt
       android-tools
+      bacon
     ];
 
   # android stuff
@@ -56,11 +58,6 @@
     package = pkgs.wireshark;
   };
   users.users."0xa".extraGroups = [ "wireshark" ];
-
-  ## Julia
-  environment.variables = {
-    JULIA_NUM_THREADS = "8";
-  };
 
   ## direnv
   programs.bash.interactiveShellInit = ''
