@@ -10,12 +10,13 @@
     kicad
     signal-desktop
     tdesktop
-    tor-browser-bundle-bin
+    tor-browser
     wl-clipboard
     yt-dlp
     element-desktop
     discord
     spotify
+    mpv
   ];
   programs.steam.enable = true;
 }

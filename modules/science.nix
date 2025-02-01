@@ -4,5 +4,6 @@
     gnuplot
     zotero
     paraview
+    numbat
   ];
 }
